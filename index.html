@@ -1,0 +1,328 @@
+<!--DOCType HTML-->
+<!DOCTYPE html>
+
+<!-- Set language to English and preload, preloaded CSS-->
+<html lang="en" class="preload">
+
+<head>
+
+  <!-- Base URL for relative links -->
+  <base href="/~danielhipskind/Final_Project/">
+
+  <!-- Meta Tags -->
+  <meta charset="UTF-8">
+
+  <!-- Set viewport for responsive design -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- General Meta Tags -->
+  <meta name="description"
+    content="SiteForge - Open source website builder with powerful hosting solutions. Create, customize, and deploy your dream website easily">
+  <meta name="author" content="Daniel Hipskind">
+  <meta name="keywords" content="template, website builder, web hosting, open source, visual editor">
+  <meta name="theme-color" content="#04aa6d">
+
+  <!-- Apple Tags -->
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+
+  <!-- Microsoft Tags -->
+  <meta name="msapplication-TileColor" content="#04aa6d">
+  <meta name="msapplication-TileImage" content="./img/logo/SiteForge.png">
+  <meta name="msapplication-config" content="./img/logo/SiteForge.png">
+
+  <!-- Twitter Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@SiteForge">
+  <meta name="twitter:title" content="SiteForge - Open Source Website Builder">
+  <meta name="twitter:description" content="Create, customize, and deploy your dream website easily with SiteForge.">
+  <meta name="twitter:image" content="./img/logo/SiteForge.png">
+
+  <!-- Open Graph Tags -->
+  <meta property="og:title" content="SiteForge - Open Source Website Builder">
+  <meta property="og:description" content="Create, customize, and deploy your dream website easily with SiteForge.">
+  <meta property="og:image" content="./img/logo/SiteForge.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="SiteForge">
+  <meta property="og:locale" content="en_US">
+
+  <!-- CORS (Cross-Origin Resource Sharing) Permissions Policy
+  This policy restricts the use of certain features to improve security and privacy -->
+  <meta http-equiv="Permissions-Policy"
+    content="browsing-topics=(), interest-cohort=(), join-ad-interest-group=(), run-ad-auction=(), attribution-reporting=(), conversion-measurement=(), private-aggregation=(), shared-storage=(), private-state-token-issuance=(), private-state-token-redemption=()">
+  <meta http-equiv="Cross-Origin-Opener-Policy" content="same-origin">
+  <meta http-equiv="Cross-Origin-Embedder-Policy" content="require-corp">
+  <meta http-equiv="Cross-Origin-Resource-Policy" content="same-site">
+
+  <!-- Content Security Policy (CSP)
+  This policy helps to prevent XSS attacks by controlling the sources from which content can be loaded -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: http:; 
+            script-src 'self' 'unsafe-inline' 'unsafe-eval' https: http:; 
+            style-src 'self' 'unsafe-inline' https: http:; 
+            img-src 'self' data: https: http:; 
+            font-src 'self' https: http:; 
+            frame-src 'self' https: http:;
+            connect-src 'self' https: http:">
+
+  <!-- Add font preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Favicon and Apple Touch Icons -->
+  <link rel="icon" type="image/svg+xml" href="./img/logo/SiteForge.svg">
+  <link rel="stylesheet" type="text/css" href="css/main.css">
+  <link rel="stylesheet" type="text/css" href="css/index.css">
+  <link rel="alternate icon" type="image/png" href="./img/logo/SiteForge.png" />
+  <link rel="shortcut icon" href="./img/logo/SiteForge.ico" type="image/x-icon" />
+
+  <!-- Multiple Apple "touch" icons for different devices -->
+  <link rel="apple-touch-icon" href="./img/logo/apple-touch-icon.png" />
+  <link rel="apple-touch-icon" sizes="57x57" href="./img/logo/apple-touch-icon-57x57.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="./img/logo/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="76x76" href="./img/logo/apple-touch-icon-76x76.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="./img/logo/apple-touch-icon-114x114.png" />
+  <link rel="apple-touch-icon" sizes="120x120" href="./img/logo/apple-touch-icon-120x120.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="./img/logo/apple-touch-icon-144x144.png" />
+  <link rel="apple-touch-icon" sizes="152x152" href="./img/logo/apple-touch-icon-152x152.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="./img/logo/apple-touch-icon-180x180.png" />
+
+  <!-- Site name-->
+  <title>SiteForge - Open Source Website Builder</title>
+
+</head>
+
+<body>
+
+  <!--Cookie Consent-->
+  <div id="cookie-consent" class="cookie-banner hidden" role="alert">
+    <div class="cookie-content">
+      <p>We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies.
+        <a href="404" class="cookie-link">Learn more</a>
+      </p>
+      <div class="cookie-buttons">
+        <button id="cookie-accept" class="cookie-btn accept">Accept</button>
+        <button id="cookie-decline" class="cookie-btn decline">Decline</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header>
+
+    <!--Create navigation bar -->
+    <nav class="navbar" aria-label="Main navigation">
+      <div class="navbar-left">
+
+        <!-- Company Logo -->
+        <div class="logo">
+          <a href="./">
+            <img src="./img/logo/SiteForge-Light.svg" alt="SiteForge" class="logo-image light-mode">
+            <img src="./img/logo/SiteForge.svg" alt="SiteForge" class="logo-image dark-mode">
+          </a>
+        </div>
+
+        <!-- Hamburger Menu for Mobile -->
+        <button class="hamburger" aria-label="Toggle menu">
+          <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+          </span>
+        </button>
+
+        <!-- Navigation Links -->
+        <ul class="nav-links" role="menubar">
+          <li role="none"><a href="./" role="menuitem" aria-current="page">Home</a></li>
+          <li role="none"><a href="about" role="menuitem">About</a></li>
+          <li role="none"><a href="services" role="menuitem">Services</a></li>
+          <li role="none"><a href="examples" role="menuitem">Examples</a></li>
+          <li role="none"><a href="contact" role="menuitem">Contact</a></li>
+        </ul>
+      </div>
+      <!-- Authentication Buttons -->
+      <div class="navbar-right">
+        <div class="auth-buttons">
+
+          <!-- Theme Toggle -->
+          <button type="button" class="theme-toggle" aria-label="Toggle dark mode" data-theme-toggle>
+            <img src="./img/icons/sun.svg" alt="Theme Toggle" class="theme-icon" role="presentation">
+          </button>
+
+          <!-- Authentication Buttons -->
+          <button type="button" class="signup-btn">Sign Up for Free</button>
+          <button type="button" class="login-btn">Login</button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Start main content on page -->
+  <main id="main-content">
+
+    <!-- Hero Section -->
+    <section class="hero-section" aria-labelledby="hero-title">
+      <div class="hero-content">
+
+        <!-- Hero image loaded in with CSS -->
+        <h1 id="hero-title">Tired of complicated, costly website building?</h1>
+        <h2>Welcome to SiteForge</h2>
+        <p>SiteForge empowers you to create beyond your wildest dreams. Our software is open source and free to download
+          so you can edit, customize, and develop beyond your wildest dreams. Need somewhere to host your website? We've
+          got you too.</p>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section" aria-labelledby="features-title">
+      <h2 id="features-title" class="visually-hidden">Our Features</h2>
+      <section class="feature-card">
+        <img src="./img/index/design.svg" alt="Design icon" />
+        <h3>Smart Design Tools</h3>
+        <p>Choose between our intuitive visual editor or write clean code directly - the power is in your hands.</p>
+      </section>
+
+      <section class="feature-card">
+        <img src="./img/index/hosting.svg" alt="Hosting icon" />
+        <h3>Simple Hosting</h3>
+        <p>Deploy your site instantly with our one-click hosting solution or export to your preferred platform.</p>
+      </section>
+
+      <section class="feature-card">
+        <img src="./img/index/coding.svg" alt="Code icon" />
+        <h3>Open Source</h3>
+        <p>Built on open-source principles, allowing complete customization and community contributions.</p>
+      </section>
+    </section>
+
+    <!-- News Section -->
+    <section class="news-section">
+      <h2>Latest Updates</h2>
+      <div class="news-grid">
+        <article class="news-card">
+          <img src="./img/index/news1.jpg" alt="Visual Editor Update" />
+          <div class="news-content">
+            <h3>AI-Powered Visual Editor</h3>
+            <p>Our latest update brings intelligent design suggestions and automated responsive layouts.</p>
+            <a href="404" class="read-more">Read More</a>
+          </div>
+        </article>
+        <article class="news-card">
+          <img src="./img/index/news2.jpg" alt="Community Milestone" />
+          <div class="news-content">
+            <h3>10k Developer Milestone</h3>
+            <p>Our community has grown to 10,000 active developers! Check out our latest community features.</p>
+            <a href="404" class="read-more">Read More</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
+      <div class="newsletter-content">
+        <h2>Stay Updated</h2>
+        <p>Get the latest SiteForge news and updates delivered to your inbox.</p>
+        <form id="newsletterForm" class="newsletter-form">
+          <input type="email" id="newsletter-email" name="email" placeholder="Enter your email" autocomplete="email"
+            required>
+          <button type="submit" class="signup-btn" data-loading-text="Subscribing...">
+            Subscribe
+          </button>
+        </form>
+        <p class="newsletter-disclaimer">We respect your privacy. Unsubscribe at any time.</p>
+      </div>
+    </section>
+
+    <!-- Social Proof Section -->
+    <section class="social-proof-section">
+      <h2>What Our Users Say</h2>
+      <div class="testimonials-grid">
+        <blockquote class="testimonial">
+          <p>"SiteForge transformed our startup's web presence. We launched our site in days instead of weeks, and the
+            hosting is blazing fast."</p>
+          <cite>- Emma Chen, CTO at TechStart</cite>
+        </blockquote>
+        <blockquote class="testimonial">
+          <p>"As a freelance developer, I love how I can customize everything. The open-source nature means I'm not
+            locked into any proprietary system."</p>
+          <cite>- Marcus Rodriguez, Web Developer</cite>
+        </blockquote>
+        <blockquote class="testimonial">
+          <p>"The visual editor is fantastic for my clients, while I can still dive into the code when needed. Best of
+            both worlds!"</p>
+          <cite>- Sarah O'Connor, Agency Owner</cite>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- Call-to-Action Section -->
+    <section class="cta-section">
+      <div class="cta-content">
+        <h2>Ready to Build Your Dream Website Today?</h2>
+        <p>Sign Up for FREE today to get free instructions or use our hosting service with exclusive features!</p>
+        <button class="cta-button">Sign Up for Free</button>
+      </div>
+    </section>
+
+    <!-- Performance Metrics added using JS -->
+    <div class="performance-metrics" hidden>
+      <template id="metric-template">
+        <div class="metric">
+          <span class="metric-name"></span>
+          <span class="metric-value"></span>
+        </div>
+      </template>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+
+    <!-- Mini footer navigation -->
+    <nav class="footer-nav" aria-label="Footer navigation">
+      <ul class="footer-links">
+        <li><a href="./">Home</a></li>
+        <li><a href="about">About</a></li>
+        <li><a href="contact">Contact</a></li>
+        <li><a href="404">Privacy Policy</a></li>
+        <li><a href="404">Terms of Service</a></li>
+      </ul>
+    </nav>
+
+    <!-- Footer info/copyright -->
+    <div class="footer-info">
+      <p>&copy; 2025 SiteForge. All rights reserved.</p>
+    </div>
+
+    <!-- Social media links -->
+    <div class="social-media-icons" aria-label="Social media links">
+      <a href="404" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram">
+        <img src="./img/icons/instagram.svg" alt="Instagram" role="presentation">
+      </a>
+      <a href="404" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Facebook">
+        <img src="./img/icons/facebook.svg" alt="Facebook" role="presentation">
+      </a>
+      <a href="404" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Twitter">
+        <img src="./img/icons/Twitter.svg" alt="Twitter" role="presentation">
+      </a>
+      <a href="404" target="_blank" rel="noopener noreferrer" aria-label="Follow us on LinkedIn">
+        <img src="./img/icons/linkedin.svg" alt="LinkedIn" role="presentation">
+      </a>
+      <a href="404" target="_blank" rel="noopener noreferrer" aria-label="Follow us on GitHub">
+        <img src="./img/icons/github.svg" alt="GitHub" role="presentation">
+      </a>
+    </div>
+
+    <!-- Footer Bottom Sticky -->
+    <div class="footer-bottom">
+      <p class="credit">Template designed & built with <span class="heart">♥</span> by <a
+          href="https://danielhipskind.com/" target="_blank" rel="noopener noreferrer">Daniel Hipskind</a></p>
+      <p class="version">Version 1.0.0, <a href="README.md">Read More</a> about this project</p>
+    </div>
+  </footer>
+  <script type="application/javascript" src="./js/script.js"></script>
+</body>
+
+</html>

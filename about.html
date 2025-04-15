@@ -1,0 +1,416 @@
+<!--DOCType HTML-->
+<!DOCTYPE html>
+
+<!-- Set language to English and preload, preloaded CSS-->
+<html lang="en" class="preload">
+
+<head>
+
+    <!-- Base URL for relative links -->
+    <base href="/~danielhipskind/Final_Project/">
+
+    <!-- Meta Tags -->
+    <meta charset="UTF-8">
+
+    <!-- Set viewport for responsive design -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- General Meta Tags -->
+    <meta name="description"
+        content="SiteForge - Open source website builder with powerful hosting solutions. Create, customize, and deploy your dream website easily">
+    <meta name="author" content="Daniel Hipskind">
+    <meta name="keywords" content="template, website builder, web hosting, open source, visual editor">
+    <meta name="theme-color" content="#04aa6d">
+
+    <!-- Apple Tags -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Microsoft Tags -->
+    <meta name="msapplication-TileColor" content="#04aa6d">
+    <meta name="msapplication-TileImage" content="./img/logo/SiteForge.png">
+    <meta name="msapplication-config" content="./img/logo/SiteForge.png">
+
+    <!-- Twitter Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@SiteForge">
+    <meta name="twitter:title" content="About - SiteForge - Open Source Website Builder">
+    <meta name="twitter:description" content="Create, customize, and deploy your dream website easily with SiteForge.">
+    <meta name="twitter:image" content="./img/logo/SiteForge.png">
+
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="About - SiteForge - Open Source Website Builder">
+    <meta property="og:description" content="Create, customize, and deploy your dream website easily with SiteForge.">
+    <meta property="og:image" content="./img/logo/SiteForge.png">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="SiteForge">
+    <meta property="og:locale" content="en_US">
+
+    <!-- CORS (Cross-Origin Resource Sharing) Permissions Policy
+  This policy restricts the use of certain features to improve security and privacy -->
+    <meta http-equiv="Permissions-Policy"
+        content="browsing-topics=(), interest-cohort=(), join-ad-interest-group=(), run-ad-auction=(), attribution-reporting=(), conversion-measurement=(), private-aggregation=(), shared-storage=(), private-state-token-issuance=(), private-state-token-redemption=()">
+    <meta http-equiv="Cross-Origin-Opener-Policy" content="same-origin">
+    <meta http-equiv="Cross-Origin-Embedder-Policy" content="require-corp">
+    <meta http-equiv="Cross-Origin-Resource-Policy" content="same-site">
+
+    <!-- Content Security Policy (CSP)
+    This policy helps to prevent XSS attacks by controlling the sources from which content can be loaded -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; 
+            script-src 'self' 'unsafe-inline' 'unsafe-eval'; 
+            style-src 'self' 'unsafe-inline' http://fonts.googleapis.com; 
+            font-src 'self' http://fonts.gstatic.com; 
+            img-src 'self' data: https://*.google.com https://*.googleapis.com; 
+            frame-src 'self' https://*.google.com; 
+            connect-src 'self'">
+
+    <!-- Add font preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Favicon and Apple Touch Icons -->
+    <link rel="icon" type="image/svg+xml" href="./img/logo/SiteForge.svg">
+    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/about.css" />
+    <link rel="alternate icon" type="image/png" href="./img/logo/SiteForge.png" />
+    <link rel="shortcut icon" href="./img/logo/SiteForge.ico" type="image/x-icon" />
+
+    <!-- Multiple Apple "touch" icons for different devices -->
+    <link rel="apple-touch-icon" href="./img/logo/apple-touch-icon.png" />
+    <link rel="apple-touch-icon" sizes="57x57" href="./img/logo/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="./img/logo/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="76x76" href="./img/logo/apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="./img/logo/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon" sizes="120x120" href="./img/logo/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="./img/logo/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="./img/logo/apple-touch-icon-152x152.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="./img/logo/apple-touch-icon-180x180.png" />
+
+    <!-- Site name-->
+    <title>About - SiteForge</title>
+
+</head>
+
+<body>
+
+    <!--Cookie Consent for privacy-->
+    <div id="cookie-consent" class="cookie-banner hidden" role="alert">
+        <div class="cookie-content">
+            <p>We use cookies to enhance your experience. By continuing to visit this site you agree to our use of
+                cookies.
+                <a href="404" class="cookie-link">Learn more</a>
+            </p>
+            <div class="cookie-buttons">
+                <button id="cookie-accept" class="cookie-btn accept">Accept</button>
+                <button id="cookie-decline" class="cookie-btn decline">Decline</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <nav class="navbar" aria-label="Main navigation">
+            <div class="navbar-left">
+
+                <!-- Company Logo -->
+                <div class="logo">
+                    <a href="./">
+                        <img src="./img/logo/SiteForge-Light.svg" alt="SiteForge" class="logo-image light-mode">
+                        <img src="./img/logo/SiteForge.svg" alt="SiteForge" class="logo-image dark-mode">
+                    </a>
+                </div>
+
+                <!-- Hamburger Menu for Mobile -->
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span class="hamburger-box">
+                        <span class="hamburger-inner"></span>
+                    </span>
+                </button>
+
+                <!-- Navigation Links -->
+                <ul class="nav-links" role="menubar">
+                    <li role="none"><a href="./" role="menuitem">Home</a></li>
+                    <li role="none"><a href="about" role="menuitem" aria-current="page">About</a></li>
+                    <li role="none"><a href="services" role="menuitem">Services</a></li>
+                    <li role="none"><a href="examples" role="menuitem">Examples</a></li>
+                    <li role="none"><a href="contact" role="menuitem">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="navbar-right">
+                <div class="auth-buttons">
+
+                    <!-- Theme Toggle -->
+                    <button type="button" class="theme-toggle" aria-label="Toggle dark mode" data-theme-toggle>
+                        <img src="./img/icons/sun.svg" alt="Theme Toggle" class="theme-icon" role="presentation">
+                    </button>
+
+                    <!-- Authentication Buttons -->
+                    <button type="button" class="signup-btn">Sign Up for Free</button>
+                    <button type="button" class="login-btn">Login</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main-content">
+
+        <!-- Testimonials via Map -->
+        <section class="global-presence">
+            <h1>Trusted Worldwide 🌎</h1>
+            <div class="map-container">
+                <div class="world-map">
+                    <!-- Map added via CSS background -->
+                    <div class="testimonial-marker" data-location="us">
+                        <blockquote>
+                            "SiteForge revolutionized how we build and deploy websites"
+                            <div class="testimonial-footer">- Sarah Johnson, <span class="region">San Francisco,
+                                    USA</span></div>
+                        </blockquote>
+                    </div>
+                    <div class="testimonial-marker" data-location="na">
+                        <blockquote>
+                            "Revolutionary platform that transformed our workflow"
+                            <div class="testimonial-footer">- Michael Thompson, <span class="region">Toronto,
+                                    Canada</span></div>
+                        </blockquote>
+                    </div>
+                    <div class="testimonial-marker" data-location="sa">
+                        <blockquote>
+                            "Perfect balance of power and simplicity"
+                            <div class="testimonial-footer">- Isabella Santos, <span class="region">São Paulo,
+                                    Brazil</span></div>
+                        </blockquote>
+                    </div>
+                    <div class="testimonial-marker" data-location="eu">
+                        <blockquote>
+                            "Best-in-class development tools"
+                            <div class="testimonial-footer">- Pierre Dubois, <span class="region">Paris, France</span>
+                            </div>
+                        </blockquote>
+                    </div>
+                    <div class="testimonial-marker" data-location="africa">
+                        <blockquote>
+                            "Empowering developers across the continent"
+                            <div class="testimonial-footer">- Amara Okafor, <span class="region">Lagos, Nigeria</span>
+                            </div>
+                        </blockquote>
+                    </div>
+                    <div class="testimonial-marker" data-location="asia">
+                        <blockquote>
+                            "Exceptional support and documentation"
+                            <div class="testimonial-footer">- Jin Park, <span class="region">Seoul, South Korea</span>
+                            </div>
+                        </blockquote>
+                    </div>
+                    <div class="testimonial-marker" data-location="aus">
+                        <blockquote>
+                            "Outstanding performance and reliability"
+                            <div class="testimonial-footer">- Emma Wilson, <span class="region">Sydney, Australia</span>
+                            </div>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sameple awards company won -->
+        <section class="awards-timeline">
+            <div class="awards-content">
+
+                <h2>Journey of Excellence</h2>
+                <p class="section-description">Recognizing our commitment to innovation</p>
+
+                <div class="awards-container">
+                    <article class="award">
+                        <img src="./img/about/award1.svg" alt="Best Open Source Project 2024">
+                        <h3>Best Open Source Project 2024</h3>
+                        <p>Recognized for innovation in open source development</p>
+                    </article>
+                    <article class="milestone">
+                        <div class="milestone-content">
+                            <img src="./img/about/website.svg" alt="Best Open Source Project 2024">
+                            <h3>500K+</h3>
+                            <p>Websites Built</p>
+                        </div>
+                    </article>
+                    <article class="award">
+                        <img src="./img/about/award2.svg" alt="Developer Choice Award 2023">
+                        <h3>Developer Choice Award 2023</h3>
+                        <p>Voted #1 by the developer community</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sample team members -->
+        <section class="bottom-sections">
+            <div class="bottom-sections-content">
+                <div class="bottom-sections-grid">
+                    <section class="team-section">
+                        <h2 id="team-heading">Meet Our Leadership Team</h2>
+                        <p class="section-description">Passionate experts dedicated to revolutionizing web
+                            development</p>
+                        <div class="team-grid">
+                            <article class="team-member" aria-labelledby="member-1">
+                                <div class="member-image">
+                                    <img src="./img/about/danielhipskind.png" alt="Daniel Hipskind" loading="lazy">
+                                </div>
+                                <div class="member-info">
+                                    <h4 id="member-2">Daniel Hipskind</h4>
+                                    <p class="member-title">Chief Executive Officer</p>
+                                    <p class="member-bio">Tech innovator specializing in cloud architecture and
+                                        scalability</p>
+                                    <div class="member-social">
+                                        <a href="https://linkedin.com/in/danielhipskind" target="_blank"
+                                            rel="noopener noreferrer" aria-label="Daniel Hipskind on LinkedIn">
+                                            <img src="./img/icons/linkedin.svg" alt="LinkedIn" role="presentation">
+                                        </a>
+                                        <a href="https://github.com/greigh/" target="_blank" rel="noopener noreferrer"
+                                            aria-label="Daniel Hipskind (aka Greigh) on GitHub">
+                                            <img src="./img/icons/github.svg" alt="GitHub" role="presentation">
+                                        </a>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <article class="team-member" aria-labelledby="member-2">
+                                <div class="member-image">
+                                    <img src="./img/about/team2.png" alt="Maria Garcia" loading="lazy">
+                                </div>
+                                <div class="member-info">
+                                    <h4 id="member-2">Maria Garcia</h4>
+                                    <p class="member-title">Chief Technology Officer</p>
+                                    <p class="member-bio">Tech innovator specializing in cloud architecture and
+                                        scalability</p>
+                                    <div class="member-social">
+                                        <a href="404" target="_blank" rel="noopener noreferrer"
+                                            aria-label="Maria Garcia on LinkedIn">
+                                            <img src="./img/icons/linkedin.svg" alt="LinkedIn" role="presentation">
+                                        </a>
+                                        <a href="404" target="_blank" rel="noopener noreferrer"
+                                            aria-label="Maria Garcia on GitHub">
+                                            <img src="./img/icons/github.svg" alt="GitHub" role="presentation">
+                                        </a>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <article class="team-member" aria-labelledby="member-3">
+                                <div class="member-image">
+                                    <img src="./img/about/team3.png" alt="David Young" loading="lazy">
+                                </div>
+                                <div class="member-info">
+                                    <h4 id="member-3">David Young</h4>
+                                    <p class="member-title">Head of Design</p>
+                                    <p class="member-bio">UX expert focused on creating intuitive user experiences
+                                    </p>
+                                    <div class="member-social">
+                                        <a href="404" target="_blank" rel="noopener noreferrer"
+                                            aria-label="David Young on LinkedIn">
+                                            <img src="./img/icons/linkedin.svg" alt="LinkedIn" role="presentation">
+                                        </a>
+                                        <a href="404" target="_blank" rel="noopener noreferrer"
+                                            aria-label="David Young on GitHub">
+                                            <img src="./img/icons/github.svg" alt="GitHub" role="presentation">
+                                        </a>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </section>
+
+                    <!-- Timeline Section of the fake business -->
+                    <section class="timeline-section">
+                        <div class="mission-statement">
+                            <h3>Our Mission</h3>
+                            <p>To democratize web development by providing powerful, accessible tools that empower
+                                creators
+                                to build
+                                extraordinary websites without limitations.</p>
+                        </div>
+                        <h2 id="timeline-heading">Our Journey</h2>
+                        <p class="section-description">From startup to industry leader</p>
+                        <div class="timeline">
+                            <article class="timeline-item">
+                                <h4 class="date">2025</h4>
+                                <div class="content">
+                                    <h3>Global Expansion</h3>
+                                    <p>Reached 1 million users and 500k active websites worldwide</p>
+                                </div>
+                            </article>
+                            <article class="timeline-item">
+                                <h4 class="date">2024</h4>
+                                <div class="content">
+                                    <h3>Enterprise Launch</h3>
+                                    <p>Introduced enterprise-grade features and web-hosting for enhanced user
+                                        experience.</p>
+                                </div>
+                            </article>
+                            <article class="timeline-item">
+                                <h4 class="date">2023</h4>
+                                <div class="content">
+                                    <h3>First Release</h3>
+                                    <p>Initial launch of SiteForge with starting features such as many templates and
+                                        drag and drop functionality.</p>
+                                </div>
+                            </article>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+
+        <!-- Mini nav in footer -->
+        <nav class="footer-nav" aria-label="Footer navigation">
+            <ul class="footer-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li><a href="/privacy">Privacy Policy</a></li>
+                <li><a href="/terms">Terms of Service</a></li>
+            </ul>
+        </nav>
+
+        <!-- Footer info/copyright -->
+        <div class="footer-info">
+            <p>&copy; 2025 SiteForge. All rights reserved.</p>
+        </div>
+        <div class="social-media-icons" aria-label="Social media links">
+            <a href="404" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram">
+                <img src="./img/icons/instagram.svg" alt="Instagram" role="presentation">
+            </a>
+            <a href="404" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Facebook">
+                <img src="./img/icons/facebook.svg" alt="Facebook" role="presentation">
+            </a>
+            <a href="404" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Twitter">
+                <img src="./img/icons/Twitter.svg" alt="Twitter" role="presentation">
+            </a>
+            <a href="404" target="_blank" rel="noopener noreferrer" aria-label="Follow us on LinkedIn">
+                <img src="./img/icons/linkedin.svg" alt="LinkedIn" role="presentation">
+            </a>
+            <a href="404" target="_blank" rel="noopener noreferrer" aria-label="Follow us on GitHub">
+                <img src="./img/icons/github.svg" alt="GitHub" role="presentation">
+            </a>
+        </div>
+
+        <!-- Sticky footer bottom -->
+        <div class="footer-bottom">
+            <p class="credit">Template designed & built with <span class="heart">♥</span> by <a
+                    href="https://danielhipskind.com/" target="_blank" rel="noopener noreferrer">Daniel Hipskind</a>
+            </p>
+            <p class="version">Version 1.0.0, <a href="README.md">Read More</a> about this project</p>
+        </div>
+    </footer>
+    <script type="application/javascript" src="./js/script.js"></script>
+</body>
+
+</html>

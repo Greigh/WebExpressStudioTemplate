@@ -1,0 +1,404 @@
+<!--DOCType HTML-->
+<!DOCTYPE html>
+
+<!-- Set language to English and preload, preloaded CSS-->
+<html lang="en" class="preload">
+
+<head>
+
+    <!-- Base URL for relative links -->
+    <base href="/~danielhipskind/Final_Project/">
+
+    <!-- Meta Tags -->
+    <meta charset="UTF-8">
+
+    <!-- Set viewport for responsive design -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- General Meta Tags -->
+    <meta name="description"
+        content="SiteForge - Open source website builder with powerful hosting solutions. Create, customize, and deploy your dream website easily">
+    <meta name="author" content="Daniel Hipskind">
+    <meta name="keywords" content="template, website builder, web hosting, open source, visual editor">
+    <meta name="theme-color" content="#04aa6d">
+
+    <!-- Apple Tags -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Microsoft Tags -->
+    <meta name="msapplication-TileColor" content="#04aa6d">
+    <meta name="msapplication-TileImage" content="./img/logo/SiteForge.png">
+    <meta name="msapplication-config" content="./img/logo/SiteForge.png">
+
+    <!-- Twitter Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@SiteForge">
+    <meta name="twitter:title" content="SiteForge - Open Source Website Builder">
+    <meta name="twitter:description" content="Create, customize, and deploy your dream website easily with SiteForge.">
+    <meta name="twitter:image" content="./img/logo/SiteForge.png">
+
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="SiteForge - Open Source Website Builder">
+    <meta property="og:description" content="Create, customize, and deploy your dream website easily with SiteForge.">
+    <meta property="og:image" content="./img/logo/SiteForge.png">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="SiteForge">
+    <meta property="og:locale" content="en_US">
+
+    <!-- CORS (Cross-Origin Resource Sharing) Permissions Policy
+    This policy restricts the use of certain features to improve security and privacy -->
+    <meta http-equiv="Permissions-Policy"
+        content="browsing-topics=(), interest-cohort=(), join-ad-interest-group=(), run-ad-auction=(), attribution-reporting=(), conversion-measurement=(), private-aggregation=(), shared-storage=(), private-state-token-issuance=(), private-state-token-redemption=()">
+    <meta http-equiv="Cross-Origin-Opener-Policy" content="same-origin">
+    <meta http-equiv="Cross-Origin-Embedder-Policy" content="require-corp">
+    <meta http-equiv="Cross-Origin-Resource-Policy" content="same-site">
+
+    <!-- Content Security Policy (CSP)
+    This policy helps to prevent XSS attacks by controlling the sources from which content can be loaded -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; 
+            script-src 'self' 'unsafe-inline' 'unsafe-eval'; 
+            style-src 'self' 'unsafe-inline' http://fonts.googleapis.com; 
+            font-src 'self' http://fonts.gstatic.com; 
+            img-src 'self' data: https://*.google.com https://*.googleapis.com; 
+            frame-src 'self' https://*.google.com; 
+            connect-src 'self'">
+
+    <!-- Add font preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Favicon and Apple Touch Icons -->
+    <link rel="icon" type="image/svg+xml" href="./img/logo/SiteForge.svg">
+    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/examples.css" />
+    <link rel="alternate icon" type="image/png" href="./img/logo/SiteForge.png" />
+    <link rel="shortcut icon" href="./img/logo/SiteForge.ico" type="image/x-icon" />
+
+    <!-- Multiple Apple "touch" icons for different devices -->
+    <link rel="apple-touch-icon" href="./img/logo/apple-touch-icon.png" />
+    <link rel="apple-touch-icon" sizes="57x57" href="./img/logo/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="./img/logo/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="76x76" href="./img/logo/apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="./img/logo/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon" sizes="120x120" href="./img/logo/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="./img/logo/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="./img/logo/apple-touch-icon-152x152.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="./img/logo/apple-touch-icon-180x180.png" />
+
+    <!-- Site name-->
+    <title>Examples - SiteForge</title>
+
+</head>
+
+<body>
+    <!--Cookie Consent-->
+    <div id="cookie-consent" class="cookie-banner hidden" role="alert">
+        <div class="cookie-content">
+            <p>We use cookies to enhance your experience. By continuing to visit this site you agree to our use of
+                cookies.
+                <a href="404" class="cookie-link">Learn more</a>
+            </p>
+            <div class="cookie-buttons">
+                <button id="cookie-accept" class="cookie-btn accept">Accept</button>
+                <button id="cookie-decline" class="cookie-btn decline">Decline</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <nav class="navbar" aria-label="Main navigation">
+            <div class="navbar-left">
+                <div class="logo">
+                    <a href="./">
+                        <img src="./img/logo/SiteForge-Light.svg" alt="SiteForge" class="logo-image light-mode">
+                        <img src="./img/logo/SiteForge.svg" alt="SiteForge" class="logo-image dark-mode">
+                    </a>
+                </div>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span class="hamburger-box">
+                        <span class="hamburger-inner"></span>
+                    </span>
+                </button>
+
+                <!-- Navigation Links -->
+                <ul class="nav-links" role="menubar">
+                    <li role="none"><a href="./" role="menuitem">Home</a></li>
+                    <li role="none"><a href="about" role="menuitem">About</a></li>
+                    <li role="none"><a href="services" role="menuitem">Services</a></li>
+                    <li role="none"><a href="examples" role="menuitem" aria-current="page">Examples</a></li>
+                    <li role="none"><a href="contact" role="menuitem">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="navbar-right">
+                <div class="auth-buttons">
+
+                    <!-- Theme Toggle -->
+                    <button type="button" class="theme-toggle" aria-label="Toggle dark mode" data-theme-toggle>
+                        <img src="./img/icons/sun.svg" alt="Theme Toggle" class="theme-icon" role="presentation">
+                    </button>
+
+                    <!-- Authentication Buttons -->
+                    <button type="button" class="signup-btn">Sign Up for Free</button>
+                    <button type="button" class="login-btn">Login</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main-content">
+
+        <!-- Hero Section -->
+        <section class="examples-hero" aria-labelledby="examples-title">
+            <div class="examples-hero-content">
+
+                <!-- Hero will be inserted using CSS -->
+                <h1 id="examples-title">Example Sites & Themes</h1>
+                <p>Explore what's possible with SiteForge</p>
+
+            </div>
+        </section>
+
+        <!-- Featured Projects Section -->
+        <section class="featured-projects">
+            <h2>Popular Community Themes</h2>
+            <div class="projects-grid">
+                <article class="project-card">
+                    <div class="project-image">
+                        <img src="./img/examples/theme1.svg" alt="Business Portfolio Theme">
+                    </div>
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span class="tag">Professional</span>
+                            <span class="tag">Portfolio</span>
+                        </div>
+                        <h3>Business Portfolio</h3>
+                        <p>Clean and minimal portfolio theme for professionals and agencies.</p>
+                        <a href="404" class="view-project-btn">View Live Demo</a>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <div class="project-image">
+                        <img src="./img/examples/theme2.jpg" alt="E-Commerce Theme">
+                    </div>
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span class="tag">E-Commerce</span>
+                            <span class="tag">Shop</span>
+                        </div>
+                        <h3>E-Commerce Store</h3>
+                        <p>Modern e-commerce theme with shopping cart and payment integration.</p>
+                        <a href="404" class="view-project-btn">View Live Demo</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Theme Gallery Items -->
+        <section class="theme-showcase" aria-labelledby="themes-title">
+            <h2 id="themes-title" class="section-title">Premium Themes</h2>
+
+            <div class="themes-slider">
+                <!-- Theme 1 -->
+                <article class="theme-card active">
+                    <div class="theme-image">
+                        <img src="./img/examples/premium1.png" alt="Real Estate Theme" loading="lazy">
+                    </div>
+                    <div class="theme-content">
+                        <h3>Real Estate Pro</h3>
+                        <p>Professional theme for Real Estate websites</p>
+                        <div class="theme-meta">
+                            <span class="price">$129/yr</span>
+                            <span>or</span>
+                            <span>
+                                <button class="buy-pro" onclick="window.location.href='services'">Buy
+                                    Professional</button>
+                            </span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Theme 2 -->
+                <article class="theme-card">
+                    <div class="theme-image">
+                        <img src="./img/examples/premium2.png" alt="eCommerce Theme" loading="lazy">
+                    </div>
+                    <div class="theme-content">
+                        <h3>eCommerce Pro</h3>
+                        <p>Professional theme for eCommerce websites</p>
+                        <div class="theme-meta">
+                            <span class="price">$119/yr</span>
+                            <span>or</span>
+                            <span>
+                                <button class="buy-pro" onclick="window.location.href='services'">Buy
+                                    Professional</button>
+                            </span>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+
+            <!-- Add slider controls -->
+            <div class="slider-controls">
+                <div class="slider-nav">
+                    <button class="nav-dot active" aria-label="Go to slide 1"></button>
+                    <button class="nav-dot" aria-label="Go to slide 2"></button>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Client Showcase -->
+        <section class="client-showcase" aria-labelledby="clients-title">
+            <h2 id="clients-title" class="section-title">Built with SiteForge</h2>
+            <div class="clients-grid">
+                <!-- Client 1 -->
+                <article class="client-card">
+                    <img src="./img/examples/client1.png" alt="King Carrot" class="client-logo" loading="lazy">
+                    <div class="client-content">
+                        <h3>King Carrot</h3>
+                        <p>Local US-Midwest Grocery Store website with checkout, account management, and delivery
+                            options. We offer a wide range of organic products and local produce.</p>
+                        <div class="client-stats">
+                            <span class="stat">
+                                <strong>50%</strong>
+                                Increase in Sales
+                            </span>
+                            <span class="stat">
+                                <strong>30k+</strong>
+                                Monthly Visitors
+                            </span>
+                        </div>
+                        <a href="404" class="case-study-link">View Case Study</a>
+                    </div>
+                </article>
+
+                <!-- Client 2 -->
+                <article class="client-card">
+                    <img src="./img/examples/client2.png" alt="Green Earth Solutions" class="client-logo"
+                        loading="lazy">
+                    <div class="client-content">
+                        <h3>Green Earth Solutions</h3>
+                        <p>Environmental consulting firm website with resource library and sustainability initiatives.
+                            We help them focus on reducing their carbon footprint and improve sustainability while they
+                            have time to bring their projects to life.</p>
+                        <div class="client-stats">
+                            <span class="stat">
+                                <strong>40%</strong>
+                                Lead Generation
+                            </span>
+                            <span class="stat">
+                                <strong>25k+</strong>
+                                Downloads
+                            </span>
+                        </div>
+                        <a href="404" class="case-study-link">View Case Study</a>
+                    </div>
+                </article>
+
+                <!-- Client 3 -->
+                <article class="client-card">
+                    <img src="./img/examples/client3.png" alt="Culinary Masters" class="client-logo" loading="lazy">
+                    <div class="client-content">
+                        <h3>Culinary Masters</h3>
+                        <p>Restaurant chain with integrated booking system and a focus on local ingredients. We provide
+                            a seamless online ordering experience for their customers.</p>
+                        <div class="client-stats">
+                            <span class="stat">
+                                <strong>75%</strong>
+                                Online Bookings
+                            </span>
+                            <span class="stat">
+                                <strong>15k+</strong>
+                                Monthly Orders
+                            </span>
+                        </div>
+                        <a href="404" class="case-study-link">View Case Study</a>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+        <!-- Resources Section -->
+        <section class="resources-section" aria-labelledby="resources-title">
+            <h2 id="resources-title" class="section-title">Resources & Downloads</h2>
+            <div class="resources-grid">
+                <article class="resource-card">
+                    <img src="./img/examples/download.svg" alt="Download" class="resource-icon">
+                    <h3>Free Download</h3>
+                    <p>Get started quickly with our pre-built community templates in our Free Download. </p>
+                    <a href="404" class="download-btn">Download</a>
+                </article>
+
+                <article class="resource-card">
+                    <img src="./img/examples/document.svg" alt="Documentation" class="resource-icon">
+                    <h3>Documentation</h3>
+                    <p>Comprehensive guides and API documentation.</p>
+                    <a href="404" class="download-btn">View Docs</a>
+                </article>
+
+                <article class="resource-card">
+                    <img src="./img/examples/developer.svg" alt="Developer Tools" class="resource-icon">
+                    <h3>Developer Tools</h3>
+                    <p>Essential free community tools and premimum plugins for development.</p>
+                    <a href="404" class="download-btn">View Resources</a>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <nav class="footer-nav" aria-label="Footer navigation">
+            <ul class="footer-links">
+                <li><a href="./">Home</a></li>
+                <li><a href="about">About</a></li>
+                <li><a href="contact">Contact</a></li>
+                <li><a href="404">Privacy Policy</a></li>
+                <li><a href="404">Terms of Service</a></li>
+            </ul>
+        </nav>
+
+        <!-- Copyright / Footer Info -->
+        <div class="footer-info">
+            <p>&copy; 2025 SiteForge. All rights reserved.</p>
+        </div>
+
+        <!-- Social media links -->
+        <div class="social-media-icons" aria-label="Social media links">
+            <a href="404" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram">
+                <img src="./img/icons/instagram.svg" alt="Instagram" role="presentation">
+            </a>
+            <a href="404" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Facebook">
+                <img src="./img/icons/facebook.svg" alt="Facebook" role="presentation">
+            </a>
+            <a href="404" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Twitter">
+                <img src="./img/icons/Twitter.svg" alt="Twitter" role="presentation">
+            </a>
+            <a href="404" target="_blank" rel="noopener noreferrer" aria-label="Follow us on LinkedIn">
+                <img src="./img/icons/linkedin.svg" alt="LinkedIn" role="presentation">
+            </a>
+            <a href="404" target="_blank" rel="noopener noreferrer" aria-label="Follow us on GitHub">
+                <img src="./img/icons/github.svg" alt="GitHub" role="presentation">
+            </a>
+        </div>
+
+        <!-- Footer Bottom Sticky -->
+        <div class="footer-bottom">
+            <p class="credit">Template designed & built with <span class="heart">♥</span> by <a
+                    href="https://danielhipskind.com/" target="_blank" rel="noopener noreferrer">Daniel Hipskind</a></p>
+            <p class="version">Version 1.0.0, <a href="README.md">Read More</a> about this project</p>
+        </div>
+    </footer>
+    <script type="application/javascript" src="./js/script.js"></script>
+</body>
+
+</html>

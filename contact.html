@@ -1,0 +1,336 @@
+<!--DOCType HTML-->
+<!DOCTYPE html>
+
+<!-- Set language to English and preload, preloaded CSS-->
+<html lang="en" class="preload">
+
+<head>
+    <!-- Base URL for relative links -->
+    <base href="/~danielhipskind/Final_Project/">
+
+    <!-- Meta Tags -->
+    <meta charset="UTF-8">
+
+    <!-- Set viewport for responsive design -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- General Meta Tags -->
+    <meta name="description"
+        content="SiteForge - Open source website builder with powerful hosting solutions. Create, customize, and deploy your dream website easily">
+    <meta name="author" content="Daniel Hipskind">
+    <meta name="keywords" content="template, website builder, web hosting, open source, visual editor">
+    <meta name="theme-color" content="#04aa6d">
+
+    <!-- Apple Tags -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Microsoft Tags -->
+    <meta name="msapplication-TileColor" content="#04aa6d">
+    <meta name="msapplication-TileImage" content="./img/logo/SiteForge.png">
+    <meta name="msapplication-config" content="./img/logo/SiteForge.png">
+
+    <!-- Twitter Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@SiteForge">
+    <meta name="twitter:title" content="SiteForge - Open Source Website Builder">
+    <meta name="twitter:description" content="Create, customize, and deploy your dream website easily with SiteForge.">
+    <meta name="twitter:image" content="./img/logo/SiteForge.png">
+
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="SiteForge - Open Source Website Builder">
+    <meta property="og:description" content="Create, customize, and deploy your dream website easily with SiteForge.">
+    <meta property="og:image" content="./img/logo/SiteForge.png">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="SiteForge">
+    <meta property="og:locale" content="en_US">
+
+    <!-- CORS (Cross-Origin Resource Sharing) Permissions Policy
+    This policy restricts the use of certain features to improve security and privacy -->
+    <meta http-equiv="Permissions-Policy"
+        content="browsing-topics=(), interest-cohort=(), join-ad-interest-group=(), run-ad-auction=(), attribution-reporting=(), conversion-measurement=(), private-aggregation=(), shared-storage=(), private-state-token-issuance=(), private-state-token-redemption=()">
+    <meta http-equiv="Cross-Origin-Opener-Policy" content="same-origin">
+    <meta http-equiv="Cross-Origin-Embedder-Policy" content="require-corp">
+    <meta http-equiv="Cross-Origin-Resource-Policy" content="same-site">
+
+    <!-- Content Security Policy (CSP)
+    This policy helps to prevent XSS attacks by controlling the sources from which content can be loaded -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; 
+        script-src 'self' 'unsafe-inline' 'unsafe-eval'; 
+        style-src 'self' 'unsafe-inline' http://fonts.googleapis.com; 
+        font-src 'self' http://fonts.gstatic.com; 
+        img-src 'self' data: https://*.google.com https://*.googleapis.com; 
+        frame-src 'self' https://*.google.com; 
+        connect-src 'self'">
+
+    <!-- Add font preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Favicon and Apple Touch Icons -->
+    <link rel="icon" type="image/svg+xml" href="./img/logo/SiteForge.svg">
+    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/contact.css" />
+    <link rel="alternate icon" type="image/png" href="./img/logo/SiteForge.png" />
+    <link rel="shortcut icon" href="./img/logo/SiteForge.ico" type="image/x-icon" />
+
+    <!-- Multiple Apple "touch" icons for different devices -->
+    <link rel="apple-touch-icon" href="./img/logo/apple-touch-icon.png" />
+    <link rel="apple-touch-icon" sizes="57x57" href="./img/logo/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="./img/logo/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="76x76" href="./img/logo/apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="./img/logo/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon" sizes="120x120" href="./img/logo/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="./img/logo/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="./img/logo/apple-touch-icon-152x152.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="./img/logo/apple-touch-icon-180x180.png" />
+
+    <!-- Site name-->
+    <title>Contact - SiteForge</title>
+
+</head>
+
+<body>
+
+    <!-- Cookie Consent for Privacy -->
+    <div id="cookie-consent" class="cookie-banner hidden" role="alert">
+        <div class="cookie-content">
+            <p>We use cookies to enhance your experience. By continuing to visit this site you agree to our use of
+                cookies.
+                <a href="/privacy" class="cookie-link">Learn more</a>
+            </p>
+            <div class="cookie-buttons">
+                <button id="cookie-accept" class="cookie-btn accept">Accept</button>
+                <button id="cookie-decline" class="cookie-btn decline">Decline</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <nav class="navbar" aria-label="Main navigation">
+            <div class="navbar-left">
+
+                <!-- Company Logo -->
+                <div class="logo">
+                    <a href="./">
+                        <img src="./img/logo/SiteForge-Light.svg" alt="SiteForge" class="logo-image light-mode">
+                        <img src="./img/logo/SiteForge.svg" alt="SiteForge" class="logo-image dark-mode">
+                    </a>
+                </div>
+
+                <!-- Hamburger button mobile menu -->
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span class="hamburger-box">
+                        <span class="hamburger-inner"></span>
+                    </span>
+                </button>
+
+                <!-- Navigation Links -->
+                <ul class="nav-links" role="menubar">
+                    <li role="none"><a href="./" role="menuitem">Home</a></li>
+                    <li role="none"><a href="about" role="menuitem">About</a></li>
+                    <li role="none"><a href="services" role="menuitem">Services</a></li>
+                    <li role="none"><a href="examples" role="menuitem">Examples</a></li>
+                    <li role="none"><a href="contact" role="menuitem" aria-current="page">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="navbar-right">
+                <div class="auth-buttons">
+
+                    <!-- Theme Toggle -->
+                    <button type="button" class="theme-toggle" aria-label="Toggle dark mode" data-theme-toggle>
+                        <img src="./img/icons/sun.svg" alt="Theme Toggle" class="theme-icon" role="presentation">
+                    </button>
+
+                    <!-- Authentication Buttons -->
+                    <button type="button" class="signup-btn">Sign Up for Free</button>
+                    <button type="button" class="login-btn">Login</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content">
+
+        <!-- Support Info Section -->
+        <section class="support-info-section container">
+            <div class="contact-grid">
+
+                <!-- Left Column: Contact Info + Location -->
+                <div class="contact-info-wrapper">
+
+                    <!-- Contact Information -->
+                    <div class="contact-info">
+                        <h2>Get in Touch</h2>
+
+                        <!-- Customer Notice -->
+                        <div class="info-block notice">
+                            <p class="important-notice">⚠️ This contact form is for non-customers or login issues only.
+                            </p>
+                            <p>Current customers, please use our <a href="404" class="support-link">Customer Support
+                                    Portal</a></p>
+                        </div>
+
+                        <!-- Support Hours -->
+                        <div class="info-block">
+                            <h3>⏰ Support Hours</h3>
+                            <div class="support-hours">
+                                <h4>🏢 Enterprise Support</h4>
+                                <p>24 / 7 / 365 Premium Support</p>
+
+                                <h4>👥 Customer Support</h4>
+                                <ul class="hours-list">
+                                    <li><span>Monday - Friday:</span> 7:00 AM - 9:00 PM EST</li>
+                                    <li><span>Saturday:</span> 9:00 AM - 6:00 PM EST</li>
+                                    <li><span>Sunday:</span> 10:00 AM - 4:00 PM EST</li>
+                                </ul>
+
+                                <h4>💼 Sales Support</h4>
+                                <ul class="hours-list">
+                                    <li><span>Monday - Friday:</span> 9:00 AM - 6:00 PM EST</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Only US based Support team -->
+                        <p class="us-support-note">🇺🇸 All support teams are based in the United States</p>
+
+                        <!-- Emergency Support -->
+                        <div class="info-block emergency-block">
+                            <h3>🚨 Emergency Support</h3>
+                            <p>24/7 Critical Support Line:</p>
+                            <a href="tel:+1-888-555-0123" class="phone-link">1-888-555-0123</a>
+                            <p class="emergency-note">* For hosting emergencies and critical system issues only</p>
+                        </div>
+
+                        <!-- Location Info -->
+                        <div class="info-block location-block">
+                            <h3>📍 Our Location</h3>
+                            <address>
+                                SiteForge HQ<br>
+                                143 Bostwick Ave NE<br>
+                                Grand Rapids, MI 49503
+                            </address>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Right Column: Contact Form + Map -->
+                <div class="form-map-wrapper">
+
+                    <!-- Contact Form -->
+                    <div class="contact-form">
+                        <h2>Send Us a Message</h2>
+                        <form id="contactForm" action="#" method="POST" autocomplete="on">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" id="name" name="name" autocomplete="name" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" autocomplete="email">
+                                <!-- Error message will be inserted here -->
+                            </div>
+
+                            <div class="form-group">
+                                <label for="subject">Subject</label>
+                                <select id="subject" name="subject" autocomplete="off" required>
+                                    <option value="">Select a topic...</option>
+                                    <option value="support">Technical Support</option>
+                                    <option value="billing">Billing Question</option>
+                                    <option value="sales">Sales Inquiry</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" name="message" rows="5" autocomplete="off" required></textarea>
+                            </div>
+
+                            <button type="submit" class="submit-btn">Send Message</button>
+                        </form>
+                    </div>
+
+                    <!-- Map (Inside form column) -->
+                    <div class="map-container">
+                        <div class="map-placeholder">
+
+                            <!-- Google Maps in-line frame embed -->
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d23359.101601912116!2d-85.6906551!3d42.9595709!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8819adc634f07e1f%3A0xe415bfe2547972a!2sGrand%20Rapids%20Community%20College!5e0!3m2!1sen!2sus!4v1743356246725!5m2!1sen!2sus"
+                                width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+
+                        <! -- Directions Link -->
+                            <div class="directions-link">
+                                <a href="https://maps.app.goo.gl/WxvbNrt614fPaCWy8" target="_blank"
+                                    rel="noopener noreferrer">
+                                    Get Directions →
+                                </a>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+
+        <!-- Footer navigation links -->
+        <nav class="footer-nav" aria-label="Footer navigation">
+            <ul class="footer-links">
+                <li><a href="./">Home</a></li>
+                <li><a href="about">About</a></li>
+                <li><a href="contact">Contact</a></li>
+                <li><a href="404">Privacy Policy</a></li>
+                <li><a href="404">Terms of Service</a></li>
+            </ul>
+        </nav>
+
+        <!-- Footer info/copyright -->
+        <div class="footer-info">
+            <p>&copy; 2025 SiteForge. All rights reserved.</p>
+        </div>
+
+        <!-- Social media links -->
+        <div class="social-media-icons" aria-label="Social media links">
+            <a href="404" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram">
+                <img src="./img/icons/instagram.svg" alt="Instagram" role="presentation">
+            </a>
+            <a href="404" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Facebook">
+                <img src="./img/icons/facebook.svg" alt="Facebook" role="presentation">
+            </a>
+            <a href="404" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Twitter">
+                <img src="./img/icons/Twitter.svg" alt="Twitter" role="presentation">
+            </a>
+            <a href="404" target="_blank" rel="noopener noreferrer" aria-label="Follow us on LinkedIn">
+                <img src="./img/icons/linkedin.svg" alt="LinkedIn" role="presentation">
+            </a>
+            <a href="404" target="_blank" rel="noopener noreferrer" aria-label="Follow us on GitHub">
+                <img src="./img/icons/github.svg" alt="GitHub" role="presentation">
+            </a>
+        </div>
+
+        <!-- Sticky bottom footer -->
+        <div class="footer-bottom">
+            <p class="credit">Template designed & built with <span class="heart">♥</span> by <a
+                    href="https://danielhipskind.com/" target="_blank" rel="noopener noreferrer">Daniel Hipskind</a></p>
+            <p class="version">Version 1.0.0, <a href="README.md">Read More</a> about this project</p>
+        </div>
+    </footer>
+    <script type="application/javascript" src="./js/script.js"></script>
+</body>
+
+</html>

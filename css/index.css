@@ -1,0 +1,863 @@
+/**
+ * SiteForge Index Page Styles
+ * Main styling for the homepage components
+ * 
+ * @version 1.0.0
+ * @author Daniel Hipskind
+ * 
+ * @dependencies
+ * - main.css: Core styles and variables
+ * 
+ * @sections
+ * - Hero Section
+ * - Features Grid
+ * - News Section
+ * - Newsletter
+ * - Social Proof
+ * - Dark Mode Overrides
+ * - Media Queries
+ */
+
+@import url('./main.css');
+
+/**
+ * Hero Section Component
+ * Full-width landing section with background image
+ * 
+ * @structure
+ * - Full viewport height
+ * - Overlay gradient
+ * - Centered content
+ * 
+ * @animations
+ * - Fade in on load
+ * - Progressive image loading
+ * 
+ * @accessibility
+ * - Text contrast meets WCAG standards
+ * - Proper heading hierarchy
+ */
+
+.hero-section {
+  position: relative;
+  min-height: 100vh;
+  background-color: transparent;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/**
+ * Hero Background Effect
+ * Gradient overlay with background image
+ * 
+ * @features
+ * - Dark overlay gradient
+ * - Progressive loading
+ * - Smooth opacity transition
+ */
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url('../img/index/hero.jpg');
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/**
+ * Full-width Section Layout
+ * Extends sections beyond container bounds
+ * 
+ * @components
+ * - Hero section
+ * - Newsletter section
+ * - CTA section
+ * 
+ * @calculations
+ * - Negative margins compensate for container padding
+ * - Uses viewport width calculations
+ */
+.hero-section,
+.newsletter-section,
+.cta-section {
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  position: relative;
+}
+
+.hero-section.loaded::before {
+  opacity: 1;
+}
+
+
+/**
+ * Hero Content Container
+ * Centers and styles the hero text content
+ * 
+ * @typography
+ * - Light text for contrast
+ * - Text shadow for readability
+ * - Responsive font sizing
+ * 
+ * @layout
+ * - Flexbox centered
+ * - Max-width container
+ * - Z-index for overlay
+ */
+.hero-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  color: #f5f5f5;
+  max-width: 1200px;
+  margin: 0;
+  width: 100%;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+  font-weight: 700;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.hero-content p {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  max-width: 600px;
+}
+
+.hero-content .cta-button {
+  padding: 1rem 2rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.hero-content .cta-button:hover {
+  background-color: #038f5a;
+  transform: translateY(-2px);
+}
+
+/* Content containers for full-width sections */
+.hero-content,
+.newsletter-content,
+.cta-content {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+}
+
+.hero-section h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  max-width: 800px;
+  color: #f5f5f5;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 5;
+}
+
+.hero-section h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+}
+
+.hero-section p {
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  font-size: 1.1rem;
+  text-align: center;
+  color: #f5f5f5;
+}
+
+/**
+ * Features Section Component
+ * Grid layout of feature highlights
+ * 
+ * @structure
+ * - 3-column grid layout
+ * - Responsive card design
+ * - Icon-driven features
+ * 
+ * @interactions
+ * - Hover lift effect
+ * - Icon scale animation
+ * - Touch feedback on mobile
+ * 
+ * @accessibility
+ * - High contrast icons
+ * - Clear feature descriptions
+ * - Touch-friendly targets
+ */
+
+.features-section {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  padding: 4rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.feature-card {
+  background-color: #f8f8f8;
+  padding: 2.5rem;
+  border-radius: 10px;
+  text-align: center;
+  transition: transform 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+}
+
+.feature-card img {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 1rem;
+  transition: transform 0.3s ease;
+  filter: invert(41%) sepia(98%) saturate(1071%) hue-rotate(127deg) brightness(91%) contrast(101%);
+}
+
+.feature-card:hover img {
+  transform: scale(1.1);
+}
+
+.feature-card h3 {
+  margin-bottom: 1rem;
+  color: var(--text-color);
+}
+
+.cta-section {
+  background-color: #04aa6d;
+  color: white;
+  padding: 4rem 0;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+/**
+ * News Section Component
+ * Latest updates and article cards
+ * 
+ * @structure
+ * - 2-column news grid
+ * - Image cards with excerpts
+ * - Read more links
+ * 
+ * @animations
+ * - Card hover effects
+ * - Arrow transition
+ * - Shadow depth changes
+ * 
+ * @responsiveness
+ * - Stack on mobile
+ * - Adjusted image heights
+ * - Touch-optimized interactions
+ */
+
+.news-section {
+  padding: 2rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.news-card {
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.news-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.news-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.news-content {
+  padding: 1.5rem;
+}
+
+.read-more {
+  color: #04aa6d;
+  text-decoration: none;
+  font-weight: 500;
+  display: inline-block;
+  margin-top: 1rem;
+}
+
+.news-card .read-more {
+  position: relative;
+  padding-right: 1.5rem;
+}
+
+.news-card .read-more::after {
+  content: '→';
+  position: absolute;
+  right: 0;
+  transition: transform 0.3s ease;
+}
+
+.news-card:hover .read-more::after {
+  transform: translateX(5px);
+}
+
+/**
+ * Newsletter Section Component
+ * Email subscription interface
+ * 
+ * @structure
+ * - Full-width background
+ * - Centered content
+ * - Form layout
+ * 
+ * @features
+ * - Input validation
+ * - Success/error states
+ * - Privacy disclaimer
+ * 
+ * @accessibility
+ * - Clear input labels
+ * - Form validation messages
+ * - Focus states
+ */
+
+.newsletter-section {
+  background-color: #f8f8f8;
+  padding: 4rem 0;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.newsletter-content {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.newsletter-form {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.newsletter-form input {
+  flex: 1;
+  padding: 0.75rem;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.newsletter-disclaimer {
+  font-size: 0.8rem;
+  color: #666;
+  margin-top: 1rem;
+  font-style: italic;
+}
+
+.social-proof-section {
+  padding: 4rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.testimonial {
+  background: #f2f2f2;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.testimonial:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+.testimonial cite {
+  display: block;
+  margin-top: 1rem;
+  color: #04aa6d;
+  font-style: normal;
+}
+
+body.dark .social-proof-section h2,
+body.dark .cta-content h2,
+body.dark .newsletter-content h2,
+body.dark .news-section h2,
+body.dark .news-content h3,
+body.dark .feature-card h3 {
+  color: #f5f5f5;
+}
+
+body.dark .hero-section {
+  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+    url('./img/index/hero.jpg');
+}
+
+body.dark .hero-section h1 {
+  color: #f5f5f5;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+dark.mode .t body.dark .hero-section h2 {
+  color: #04aa6d;
+}
+
+body.dark .hero-section p {
+  color: #ececec;
+}
+
+body.dark .news-card,
+body.dark .social-proof-section blockquote {
+  background-color: #2d2d2d;
+  color: #f5f5f5;
+}
+
+body.dark .newsletter-section {
+  background-color: #2d2d2d;
+}
+
+body.dark .newsletter-form input {
+  background-color: #1a1a1a;
+  border-color: #404040;
+  color: #f5f5f5;
+}
+
+body.dark .newsletter-form input::placeholder {
+  color: #888;
+}
+
+body.dark .newsletter-form input:focus {
+  border-color: #04aa6d;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(4, 170, 109, 0.2);
+}
+
+body.dark .newsletter-disclaimer {
+  color: #888;
+}
+
+body.dark .testimonial {
+  background-color: #2d2d2d;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+body.dark .testimonial:hover {
+  box-shadow: 0 8px 15px rgba(4, 170, 109, 0.15);
+  border-color: var(--primary-color);
+}
+
+body.dark .feature-card img {
+  filter: invert(55%) sepia(98%) saturate(861%) hue-rotate(127deg) brightness(92%) contrast(101%);
+}
+
+body.dark .read-more {
+  color: #f5f5f5;
+}
+
+body.dark .read-more::after {
+  color: #04aa6d;
+}
+
+body.dark .news-card .read-more:hover {
+  color: #04aa6d;
+}
+
+body.dark .hero-content {
+  color: #f5f5f5;
+}
+
+body.dark .hero-content .cta-button {
+  background-color: var(--primary-color);
+}
+
+body.dark .hero-content .cta-button:hover {
+  background-color: #038f5a;
+}
+
+/**
+ * Responsive Design
+ * Mobile and tablet adaptations
+ * 
+ * @breakpoints
+ * - 768px: Tablet/Mobile transition
+ * - 480px: Small mobile devices
+ * 
+ * @adjustments
+ * - Font size reductions
+ * - Padding modifications
+ * - Grid layout changes
+ * - Touch interactions
+ */
+@media (max-width: 768px) {
+  .features-section {
+    grid-template-columns: 1fr;
+    padding: 2rem 1rem;
+  }
+
+  .feature-card {
+    background: #ffffff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin: 0 0.5rem;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .feature-card:active {
+    transform: scale(0.98);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  }
+
+  .feature-card img {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 0.75rem;
+  }
+
+  .feature-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .feature-card p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 0;
+  }
+
+  .social-proof-section {
+    padding: 2rem 1rem;
+  }
+
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 0 0.5rem;
+  }
+
+  .testimonial {
+    background-color: #f8f8f8;
+    padding: 1.5rem;
+    border-radius: 16px;
+    margin: 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .hero-section {
+    margin-top: 60px;
+    min-height: 100vh;
+    /* Keep full height on mobile */
+    padding: 0 1rem;
+    /* Adjusted padding */
+    background-attachment: scroll;
+    text-align: center;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+      url('../img/index/hero-mobile.jpg');
+  }
+
+  .hero-section h1 {
+    font-size: 2rem;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    padding: 0 1rem;
+  }
+
+  .hero-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    padding: 0 1rem;
+  }
+
+  .hero-section p {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+    padding: 0 1rem;
+    max-width: 100%;
+  }
+
+  .hero-section .cta-button {
+    width: 90%;
+    max-width: 300px;
+    padding: 1rem;
+    font-size: 1rem;
+    margin-top: 1.5rem;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+
+  .hero-section .cta-button:active {
+    transform: scale(0.98);
+  }
+
+  .hero-section h1,
+  .hero-section h2,
+  .hero-section p {
+    animation: fadeInUp 0.6s ease-out forwards;
+  }
+
+  .hero-section h2 {
+    animation-delay: 0.2s;
+  }
+
+  .hero-section p {
+    animation-delay: 0.4s;
+  }
+
+  .hero-section .cta-button {
+    animation-delay: 0.6s;
+  }
+
+  .hero-content {
+    padding: 1rem;
+    width: 90%;
+    /* Slightly smaller width on mobile */
+  }
+
+  .testimonial:active {
+    transform: scale(0.98);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  }
+
+  .testimonial blockquote {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  .testimonial cite {
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .testimonial img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+
+  .news-section {
+    padding: 2rem 1rem;
+  }
+
+  .news-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .news-card {
+    background: #ffffff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin: 0 0.5rem;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .news-card:active {
+    transform: scale(0.98);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  }
+
+  .news-card img {
+    height: 180px;
+    object-fit: cover;
+  }
+
+  .news-content {
+    padding: 1.25rem;
+  }
+
+  .news-content h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .news-content p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+  }
+
+  .read-more {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1.25rem;
+    font-weight: 500;
+  }
+
+  body.dark .feature-card {
+    background-color: #2d2d2d;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    color: #f2f2f2;
+  }
+
+  body.dark .hero-section {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+      url('../img/index/darkmode-hero-mobile.jpg');
+  }
+}
+
+@media (min-width: 769px) {
+  .hero-section {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+      url('../img/index/hero.jpg');
+    background-attachment: fixed;
+  }
+
+  body.dark .hero-section {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+      url('../img/index/hero.jpg');
+  }
+
+  body.dark .feature-card {
+    background-color: #2d2d2d;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    color: #f2f2f2
+  }
+
+  body.dark .feature-card:active {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  }
+
+  body.dark .testimonial {
+    background-color: #2d2d2d;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  body.dark .testimonial:active {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  }
+
+  body.dark .news-card {
+    background: #2d2d2d;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  body.dark .news-card:active {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  }
+
+  body.dark .hero-section {
+    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+      url('../img/index/hero.jpg');
+    background-size: cover;
+    background-position: center;
+  }
+
+  body.dark .hero-section h1 {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-section {
+    min-height: 50vh;
+    padding: 1.5rem 0.5rem;
+  }
+
+  .hero-section h1 {
+    font-size: 1.75rem;
+  }
+
+  .hero-section h2 {
+    font-size: 1.25rem;
+  }
+
+  .features-section {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 1.5rem 0.5rem;
+  }
+
+  .feature-card {
+    padding: 1.25rem;
+    margin: 0 0.5rem;
+  }
+
+  .social-proof-section {
+    padding: 1.5rem 0.5rem;
+  }
+
+  .testimonial {
+    padding: 1.25rem;
+  }
+
+  .testimonial blockquote {
+    font-size: 0.95rem;
+  }
+
+  .news-section {
+    padding: 1.5rem 0.5rem;
+  }
+
+  .news-card img {
+    height: 160px;
+  }
+
+  .news-content {
+    padding: 1rem;
+  }
+
+  .news-content h3 {
+    font-size: 1.1rem;
+  }
+}

@@ -1,0 +1,1219 @@
+/**
+ * SiteForge Main Stylesheet
+ * Global styles and shared components
+ *
+ * @version 1.0.0
+ * @author Daniel Hipskind
+ * 
+ * @sections
+ * - CSS Variables & Theme
+ * - Base Elements
+ * - Typography
+ * - Layout Components
+ * - Navigation
+ * - Footer
+ * - Interactive Elements
+ * - Dark Mode
+ * - Utilities
+ * - Responsive Design
+ */
+
+/**
+ * Global CSS Variables
+ * Core design tokens and theme values
+ * 
+ * @colors
+ * --primary-color: Main brand green
+ * --primary-hover: Darker shade for interactions
+ * --text-color: Primary text color
+ * --text-muted: Secondary text color
+ * 
+ * @layout
+ * --max-width: Maximum content width
+ * --spacing-*: Consistent spacing units
+ * --radius-*: Border radius variants
+ * 
+ * @effects
+ * --shadow-*: Box shadow variants
+ */
+
+.preload * {
+  transition: none !important;
+}
+
+:root {
+  /* Colors */
+  --primary-color: #04aa6d;
+  --primary-hover: #038756;
+  --text-color: #111;
+  --text-muted: #333;
+  --bg-color: #ffffff;
+  --bg-alt: #f2f2f2;
+  --border-color: #eee;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 8px 15px rgba(0, 0, 0, 0.1);
+  /* Border Radius */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  /* Layout */
+  --header-height: 36px;
+  --header-height-mobile: 32px;
+  --footer-height: 34px;
+  --container-max: 1200px;
+  --max-width: 1200px;
+  /* Spacing */
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 2rem;
+}
+
+
+/**
+ * Base Reset & Global Styles
+ * Core element styling and reset
+ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root.dark {
+  color-scheme: dark;
+}
+
+body.dark {
+  background-color: #1a1a1a;
+  color: #f5f5f5;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+main {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+/**
+ * Typography System
+ * Font families, sizes, and text styles
+ * 
+ * @fonts
+ * - Primary: Poppins
+ * - Headers: Space Grotesk
+ * 
+ * @sizes
+ * h1: 2rem aka 32px
+ * h2: 1.75rem aka 28px
+ * h3: 1.5rem aka 24px
+ * h4: 1.25rem aka 20px
+ */
+
+body {
+  font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.1;
+  background-color: var(--bg-color);
+  padding-top: 90px;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: var(--text-color);
+  text-align: center;
+  font-weight: 600;
+  font-family: 'Space Grotesk', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+h2 {
+  font-size: 1.75rem;
+  margin-bottom: 0.5rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+h4 {
+  font-size: 1.25rem;
+}
+
+h5,
+h6 {
+  color: var(--text-color);
+  font-family: 'Space Grotesk', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.2;
+}
+
+header {
+  background-color: var(--bg-alt);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  height: 80px;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/**
+ * Navigation Components
+ * Header and navigation structure
+ * 
+ * @structure
+ * - Fixed header
+ * - Logo placement
+ * - Navigation links
+ * - Authentication buttons
+ * - Mobile hamburger menu
+ * 
+ * @components
+ * - .navbar: Main navigation container
+ * - .nav-links: Navigation items list
+ * - .hamburger: Mobile menu trigger
+ * - .auth-buttons: Login/Signup controls
+ * 
+ * @states
+ * - .active: Mobile menu open state
+ * - [aria-current]: Current page indicator
+ * - :hover: Link hover effects
+ */
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 1.25rem 2rem;
+  height: 100%;
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logo {
+  flex-shrink: 0;
+}
+
+.logo-image {
+  width: 64px;
+  height: 64px;
+  transition: opacity 0.3s ease;
+}
+
+.logo-image.light-mode {
+  display: block;
+}
+
+.logo-image.dark-mode {
+  display: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  justify-content: center;
+}
+
+.nav-links a {
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  padding: 0.5rem 0;
+}
+
+.nav-links li {
+  position: relative;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--primary-color);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.nav-links a:hover::after {
+  transform: scaleX(1);
+}
+
+.nav-links a[aria-current='page']::after {
+  transform: scaleX(1);
+}
+
+.auth-buttons {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.logo a {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: #333;
+}
+
+.auth-buttons {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-left: auto;
+}
+
+.signup-btn,
+.login-btn {
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/**
+ * Interactive Elements
+ * Buttons, links, and hover states
+ * 
+ * @components
+ * - .cta-button: Call-to-action buttons
+ * - .nav-links: Navigation items
+ * - .social-media-icons: Social media links
+ * 
+ * @animations
+ * - Transform on hover
+ * - Smooth transitions
+ * - Scale effects
+ */
+
+.cta-button {
+  background-color: white;
+  color: var(--primary-color);
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-top: 2rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.signup-btn {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.signup-btn:hover,
+.cta-button:hover {
+  color: white;
+  background-color: #038756;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(4, 170, 109, 0.2);
+}
+
+.login-btn {
+  background-color: transparent;
+  color: #333;
+  border: 1px solid #333;
+}
+
+.login-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+/**
+ * Cookie Consent Banner
+ * Privacy compliance notification
+ * 
+ * @structure
+ * - Fixed position banner
+ * - Content container
+ * - Action buttons
+ * 
+ * @components
+ * - .cookie-banner: Main container
+ * - .cookie-content: Text and controls
+ * - .cookie-buttons: Action buttons
+ * 
+ * @states
+ * - .hidden: Banner hidden state
+ * - .accept/.decline: Button variants
+ */
+
+.cookie-banner {
+  position: fixed;
+  bottom: 60px;
+  left: 0;
+  right: 0;
+  background: #f2f2f2;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 999;
+  padding: 1rem 1rem 35px 1rem;
+}
+
+.cookie-banner.hidden {
+  display: none;
+}
+
+.cookie-content {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.cookie-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.cookie-btn {
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  border: none;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.cookie-btn.accept {
+  background: var(--primary-color);
+  color: white;
+}
+
+.cookie-btn.decline {
+  background: #f5f5f5;
+  color: #333;
+}
+
+.cookie-link {
+  color: var(--primary-color);
+  text-decoration: underline;
+}
+
+.cookie-content p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+/**
+ * Utility Classes
+ * Reusable helper classes
+ * 
+ * @classes
+ * - .hidden: Hide elements
+ * - .visually-hidden: Accessibility hiding
+ * - .container: Content wrapper
+ * - .preload: Prevent transitions
+ * 
+ * @animations
+ * - @keyframes pulse: Heartbeat effect
+ * - @keyframes fadeInUp: Entry animation
+ */
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.cta-button {
+  background-color: white;
+  color: var(--primary-color);
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cta-button:hover {
+  background-color: #038756;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(4, 170, 109, 0.2);
+}
+
+.hamburger {
+  display: none;
+}
+
+.hidden {
+  display: none;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Text selection styling */
+::selection {
+  background-color: rgba(4, 170, 109, 0.4);
+  color: inherit;
+}
+
+/* For Firefox */
+::-moz-selection {
+  background-color: rgba(4, 170, 109, 0.4);
+  color: inherit;
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+  width: 100%;
+}
+
+/**
+ * Theme Toggle System
+ * Light/Dark mode implementation
+ * 
+ * @features
+ * - Theme persistence
+ * - Smooth transitions
+ * - Icon switching
+ * 
+ * @components
+ * - .theme-toggle: Toggle button
+ * - .theme-icon: Theme indicator
+ * - .theme-transition: Transition handler
+ * 
+ * @states
+ * - body.dark: Dark theme active
+ * - .preload: Prevent initial transition
+ */
+
+.theme-toggle {
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  filter: none;
+}
+
+.theme-toggle:hover {
+  transform: rotate(30deg);
+}
+
+.theme-icon {
+  width: 24px;
+  height: 24px;
+  transition: all 0.3s ease;
+}
+
+/**
+ * Footer Component
+ * Main site footer with navigation and social links
+ * 
+ * @structure
+ * - Footer container
+ * - Navigation grid
+ * - Link columns
+ * - Social media icons
+ * - Copyright bar
+ * 
+ * @components
+ * - .footer-nav: Navigation grid
+ * - .footer-links: Link columns
+ * - .social-media-icons: Social icons
+ * - .footer-info: Copyright section
+ */
+
+.footer {
+  background-color: var(--bg-alt);
+  color: #333;
+  padding: 4rem 2rem;
+  border-top: 1px solid #eee;
+  margin-top: auto;
+}
+
+.footer-nav {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 4rem;
+  padding: 0 1rem;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+
+.footer-links h4 {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.footer-links a {
+  color: #666;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.3s ease, transform 0.3s ease;
+  display: inline-block;
+}
+
+.footer-links a:hover {
+  color: var(--primary-color);
+  transform: translateY(3px);
+}
+
+.footer-info {
+  max-width: var(--max-width);
+  margin: 3rem auto 0;
+  padding: 2rem 1rem 0;
+  border-top: 1px solid #eee;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* Remove this if you are using the theme */
+.footer-bottom {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #f2f2f2;
+  padding: 1rem 2rem;
+  border-top: 1px solid #eee;
+  text-align: center;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  z-index: 1000;
+  height: 80px;
+}
+
+/* Remove this if you are using the theme */
+.footer-bottom .credit {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 0.5rem;
+}
+
+/* Remove this if you are using the theme */
+.footer-bottom a {
+  color: #04aa6d;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+/* Remove this if you are using the theme */
+.footer-bottom a:hover {
+  color: #038756;
+  text-decoration: underline;
+}
+
+/* Remove this if you are using the theme */
+.footer-bottom .version {
+  font-size: 0.8rem;
+  color: #888;
+}
+
+/* Remove this if you are using the theme */
+.footer-bottom .heart {
+  color: #ff4f4f;
+  display: inline-block;
+  animation: pulse 1.5s infinite;
+}
+
+.social-media-icons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.social-media-icons a {
+  padding: 0.75rem;
+  border-radius: 50%;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.social-media-icons img {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.3s ease;
+}
+
+.social-media-icons a:hover {
+  transform: translateY(-3px);
+  background-color: rgba(4, 170, 109, 0.1);
+  box-shadow: 0 4px 12px rgba(4, 170, 109, 0.15);
+}
+
+.social-media-icons a:hover img {
+  transform: scale(1.1);
+}
+
+.social-media-icons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+/* Theme transition class */
+.theme-transition {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Remove transition during theme switch */
+.theme-transition * {
+  transition: none !important;
+}
+
+/**
+ * Dark Mode Styles
+ * Theme overrides for dark color scheme
+ * 
+ * @features
+ * - Color inversions
+ * - Background changes
+ * - Shadow adjustments
+ * - Contrast maintenance
+ */
+
+body:not(.dark) .theme-toggle .theme-icon {
+  filter: invert(0%);
+}
+
+body.dark header {
+  background-color: #1a1a1a;
+  color: #f5f5f5;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+body.dark ::selection {
+  background-color: rgba(4, 170, 109, 0.5);
+  color: inherit;
+}
+
+body.dark ::-moz-selection {
+  background-color: rgba(4, 170, 109, 0.5);
+  color: inherit;
+}
+
+body.dark .theme-toggle .theme-icon {
+  filter: invert(100%) brightness(1.5);
+}
+
+/* Dark mode settings */
+body.dark .logo-image.light-mode {
+  display: none;
+}
+
+body.dark .logo-image.dark-mode {
+  display: block;
+}
+
+body.dark .logo a,
+body.dark .nav-links a,
+body.dark .theme-toggle {
+  color: #f5f5f5;
+}
+
+body.dark .login-btn {
+  border-color: #f5f5f5;
+  color: #f5f5f5;
+}
+
+body.dark .footer {
+  background-color: #1a1a1a;
+  border-top: 1px solid #2d2d2d;
+}
+
+body.dark .footer-links h4 {
+  color: #f5f5f5;
+}
+
+body.dark .footer-links a {
+  color: #888;
+}
+
+body.dark .footer-info {
+  border-top: 1px solid #2d2d2d;
+  color: #888;
+}
+
+body.dark .social-media-icons a {
+  color: #f5f5f5;
+}
+
+body.dark .social-media-icons a:hover {
+  color: #04aa6d;
+}
+
+body.dark .social-media-icons img {
+  filter: brightness(0) invert(1);
+}
+
+/* Remove this if you are using the theme */
+body.dark .footer-bottom {
+  background-color: #1a1a1a;
+  border-top-color: #2d2d2d;
+}
+
+/* Remove this if you are using the theme */
+body.dark .footer-bottom .credit {
+  color: #ddd;
+}
+
+/* Remove this if you are using the theme */
+body.dark .footer-bottom .credit a {
+  color: #04aa6d;
+}
+
+/* Remove this if you are using the theme */
+body.dark .footer-bottom .version {
+  color: #888;
+}
+
+body.dark .footer-links a {
+  color: #888;
+}
+
+body.dark .footer-links a:hover {
+  color: #04aa6d;
+}
+
+body.dark {
+  background-color: #1a1a1a;
+  color: #f5f5f5;
+}
+
+body.dark .cta-button {
+  background-color: #1a1a1a;
+  color: #04aa6d;
+  border: 2px solid #04aa6d;
+}
+
+body.dark .cta-button:hover {
+  background-color: #04aa6d;
+  color: #1a1a1a;
+  border-color: transparent;
+}
+
+body.dark .cookie-banner {
+  background: #2d2d2d;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+}
+
+body.dark .cookie-btn.decline {
+  background: #404040;
+  color: #f5f5f5;
+}
+
+body.dark .cta-section {
+  background-color: #038756;
+}
+
+body.dark .cta-button {
+  background-color: #1a1a1a;
+  color: #04aa6d;
+  border: 2px solid #04aa6d;
+}
+
+body.dark .cta-button:hover {
+  background-color: #04aa6d;
+  color: #1a1a1a;
+  border-color: transparent;
+  box-shadow: 0 4px 12px rgba(4, 170, 109, 0.3);
+}
+
+body.dark .hamburger-inner,
+body.dark .hamburger-inner::before,
+body.dark .hamburger-inner::after {
+  background-color: #f5f5f5;
+}
+
+body.dark .hamburger.active .hamburger-inner,
+body.dark .hamburger.active .hamburger-inner::before,
+body.dark .hamburger.active .hamburger-inner::after {
+  background-color: #f5f5f5;
+}
+
+body.dark .social-media-icons a:hover {
+  background-color: rgba(4, 170, 109, 0.2);
+  box-shadow: 0 4px 12px rgba(4, 170, 109, 0.2);
+}
+
+/**
+ * Responsive Design
+ * Mobile and tablet adaptations
+ * 
+ * @breakpoints
+ * - 768px: Main mobile breakpoint
+ * - 480px: Small mobile devices
+ * 
+ * @adjustments
+ * - Stack navigation
+ * - Adjust spacing
+ * - Modify font sizes
+ * - Reorganize footer
+ */
+
+@media (max-width: 768px) {
+  body {
+    padding-top: 70px;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .cookie-banner {
+    bottom: 60px;
+    padding-bottom: 1rem;
+    z-index: 991;
+  }
+
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    padding: 0 1rem;
+    z-index: 1000;
+  }
+
+  .cookie-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+
+  .hamburger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;
+  }
+
+  .navbar-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .logo {
+    height: 40px;
+  }
+
+  .logo-image {
+    height: 40px;
+    width: auto;
+  }
+
+  .navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .auth-buttons {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .signup-btn,
+  .login-btn {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  .theme-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    padding: 0.5rem;
+  }
+
+  .nav-links li:last-child {
+    margin-bottom: 40px;
+  }
+
+  .nav-links li:nth-child(1) {
+    transition-delay: 0.1s;
+  }
+
+  .nav-links li:nth-child(2) {
+    transition-delay: 0.2s;
+  }
+
+  .nav-links li:nth-child(3) {
+    transition-delay: 0.3s;
+  }
+
+  .nav-links li:nth-child(4) {
+    transition-delay: 0.4s;
+  }
+
+  .nav-links li:nth-child(5) {
+    transition-delay: 0.5s;
+  }
+
+  .hamburger-inner,
+  .hamburger-inner::before,
+  .hamburger-inner::after {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: #333;
+    position: relative;
+    transition: all 0.3s ease;
+  }
+
+  .hamburger-inner::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: -8px;
+    transition: all 0.3s ease;
+  }
+
+  .hamburger-inner::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    transition: all 0.3s ease;
+  }
+
+  .hamburger.active .hamburger-inner {
+    transform: rotate(45deg);
+  }
+
+  .hamburger.active .hamburger-inner::before {
+    transform: rotate(0deg);
+    top: 0;
+  }
+
+  .hamburger.active .hamburger-inner::after {
+    transform: rotate(-90deg);
+    bottom: 0;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background: #f2f2f2;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    z-index: 999;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .nav-links.active {
+    transform: translateX(0);
+  }
+
+  .nav-links li {
+    margin: 1.5rem 0;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  .nav-links.active li {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .nav-links a {
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
+
+  .nav-links.active~.navbar-right,
+  .nav-links.active~.logo {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .footer {
+    padding: 3rem 1rem;
+  }
+
+  .footer-nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  .footer-links h4 {
+    text-align: center;
+  }
+
+  .footer-links a:hover {
+    transform: translateX(0) translateY(-2px);
+  }
+
+  .footer-info {
+    text-align: center;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+  }
+
+  .footer-links {
+    min-width: 120px;
+    text-align: center;
+  }
+
+  .social-media-icons {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 1.5rem 0;
+  }
+
+  .social-media-icons img {
+    width: 18px;
+    /* Even smaller on mobile */
+    height: 18px;
+    /* Even smaller on mobile */
+  }
+
+  /* Remove this if you are using the theme */
+  .footer-bottom {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 0.75rem;
+    border-top: 1px solid #eee;
+    z-index: 990;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Remove this if you are using the theme */
+  .footer-bottom .credit {
+    font-size: 0.8rem;
+    margin: 0;
+  }
+
+  /* Remove this if you are using the theme */
+  .footer-bottom .heart {
+    margin: 0 0.25rem;
+  }
+
+  body.dark .nav-links {
+    background: #1a1a1a;
+    border-right: 1px solid #2d2d2d;
+    height: 100vh;
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding: 1.5rem 1rem 60px;
+  }
+
+  .social-media-icons {
+    gap: 1.5rem;
+  }
+
+  .footer-bottom .credit {
+    .theme-icon {
+      filter: invert(1) brightness(1.5);
+    }
+  }
+
+  .social-media-icons img {
+    width: 18px;
+    height: 18px;
+  }
+}

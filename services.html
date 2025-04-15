@@ -1,0 +1,502 @@
+<!--DOCType HTML-->
+<!DOCTYPE html>
+
+<!-- Set language to English and preload, preloaded CSS-->
+<html lang="en" class="preload">
+
+<head>
+
+    <!-- Deferred JavaScript for performance 
+  Download while downloading page but run after page is executed -->
+    <script src="./js/script.js" defer></script>
+
+    <!-- Base URL for relative links -->
+    <base href="/~danielhipskind/Final_Project/">
+
+    <!-- Meta Tags -->
+    <meta charset="UTF-8">
+
+    <!-- Set viewport for responsive design -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- General Meta Tags -->
+    <meta name="description"
+        content="SiteForge - Open source website builder with powerful hosting solutions. Create, customize, and deploy your dream website easily">
+    <meta name="author" content="Daniel Hipskind">
+    <meta name="keywords" content="template, website builder, web hosting, open source, visual editor">
+    <meta name="theme-color" content="#04aa6d">
+
+    <!-- Apple Tags -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Microsoft Tags -->
+    <meta name="msapplication-TileColor" content="#04aa6d">
+    <meta name="msapplication-TileImage" content="./img/logo/SiteForge.png">
+    <meta name="msapplication-config" content="./img/logo/SiteForge.png">
+
+    <!-- Twitter Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@SiteForge">
+    <meta name="twitter:title" content="Services - SiteForge">
+    <meta name="twitter:description" content="Create, customize, and deploy your dream website easily with SiteForge.">
+    <meta name="twitter:image" content="./img/logo/SiteForge.png">
+
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Services - SiteForge">
+    <meta property="og:description" content="Create, customize, and deploy your dream website easily with SiteForge.">
+    <meta property="og:image" content="./img/logo/SiteForge.png">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Services - SiteForge">
+    <meta property="og:locale" content="en_US">
+
+    <!-- CORS (Cross-Origin Resource Sharing) Permissions Policy
+  This policy restricts the use of certain features to improve security and privacy -->
+    <meta http-equiv="Permissions-Policy"
+        content="browsing-topics=(), interest-cohort=(), join-ad-interest-group=(), run-ad-auction=(), attribution-reporting=(), conversion-measurement=(), private-aggregation=(), shared-storage=(), private-state-token-issuance=(), private-state-token-redemption=()">
+    <meta http-equiv="Cross-Origin-Opener-Policy" content="same-origin">
+    <meta http-equiv="Cross-Origin-Embedder-Policy" content="require-corp">
+    <meta http-equiv="Cross-Origin-Resource-Policy" content="same-site">
+
+    <!-- Content Security Policy (CSP)
+    This policy helps to prevent XSS attacks by controlling the sources from which content can be loaded -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; 
+            script-src 'self' 'unsafe-inline' 'unsafe-eval'; 
+            style-src 'self' 'unsafe-inline' http://fonts.googleapis.com; 
+            font-src 'self' http://fonts.gstatic.com; 
+            img-src 'self' data: https://*.google.com https://*.googleapis.com; 
+            frame-src 'self' https://*.google.com; 
+            connect-src 'self'">
+
+    <!-- Add font preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Favicon and Apple Touch Icons -->
+    <link rel="icon" type="image/svg+xml" href="./img/logo/SiteForge.svg">
+    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/services.css" />
+    <link rel="alternate icon" type="image/png" href="./img/logo/SiteForge.png" />
+    <link rel="shortcut icon" href="./img/logo/SiteForge.ico" type="image/x-icon" />
+
+    <!-- Multiple Apple "touch" icons for different devices -->
+    <link rel="apple-touch-icon" href="./img/logo/apple-touch-icon.png" />
+    <link rel="apple-touch-icon" sizes="57x57" href="./img/logo/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="./img/logo/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="76x76" href="./img/logo/apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="./img/logo/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon" sizes="120x120" href="./img/logo/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="./img/logo/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="./img/logo/apple-touch-icon-152x152.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="./img/logo/apple-touch-icon-180x180.png" />
+
+    <!-- Site name -->
+    <title>Services - SiteForge</title>
+
+</head>
+
+<body>
+    <!--Cookie Consent-->
+    <div id="cookie-consent" class="cookie-banner hidden" role="alert">
+        <div class="cookie-content">
+            <p>We use cookies to enhance your experience. By continuing to visit this site you agree to our use of
+                cookies.
+                <a href="404" class="cookie-link">Learn more</a>
+            </p>
+            <div class="cookie-buttons">
+                <button id="cookie-accept" class="cookie-btn accept">Accept</button>
+                <button id="cookie-decline" class="cookie-btn decline">Decline</button>
+            </div>
+        </div>
+    </div>
+    <!-- Header -->
+    <header>
+        <nav class="navbar" aria-label="Main navigation">
+            <div class="navbar-left">
+                <div class="logo">
+                    <a href="./">
+                        <img src="./img/logo/SiteForge-Light.svg" alt="SiteForge" class="logo-image light-mode">
+                        <img src="./img/logo/SiteForge.svg" alt="SiteForge" class="logo-image dark-mode">
+                    </a>
+                </div>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span class="hamburger-box">
+                        <span class="hamburger-inner"></span>
+                    </span>
+                </button>
+                <!-- Navigation Links -->
+                <ul class="nav-links" role="menubar">
+                    <li role="none"><a href="./" role="menuitem">Home</a></li>
+                    <li role="none"><a href="about" role="menuitem">About</a></li>
+                    <li role="none"><a href="services" role="menuitem" aria-current="page">Services</a></li>
+                    <li role="none"><a href="examples" role="menuitem">Examples</a>
+                    </li>
+                    <li role="none"><a href="contact" role="menuitem">Contact</a></li>
+                </ul>
+            </div>
+            <!-- Authentication Buttons -->
+            <div class="navbar-right">
+                <div class="auth-buttons">
+                    <!-- Theme Toggle -->
+                    <button type="button" class="theme-toggle" aria-label="Toggle dark mode">
+                        <img src="./img/icons/sun.svg" alt="" class="theme-icon" role="presentation">
+                    </button>
+                    <!-- Authentication Buttons -->
+                    <button type="button" class="signup-btn">Sign Up for Free</button>
+                    <button type="button" class="login-btn">Login</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <body>
+
+        <main id="main-content">
+
+            <!-- Hero Section -->
+            <section class="services-hero" aria-labelledby="services-title">
+                <div class="services-hero-content">
+                    <h1 id="services-title">Our Services</h1>
+                    <p>Choose the perfect plan for your website needs</p>
+                </div>
+            </section>
+
+            <!-- Pricing Section -->
+            <section class="pricing-section" aria-labelledby="pricing-title">
+                <div class="pricing-grid">
+                    <!-- Free Tier -->
+                    <article class="pricing-card">
+                        <div class="pricing-header">
+                            <h3>Community Edition</h3>
+                            <p class="price">Free</p>
+                            <p class="price-description">Perfect for personal projects</p>
+                        </div>
+                        <ul class="features-list">
+                            <li>✓ Full Source Code Access</li>
+                            <li>✓ Visual Editor</li>
+                            <li>✓ Basic Templates</li>
+                            <li>✓ Community Support</li>
+                            <li>✓ Self-hosting Option</li>
+                        </ul>
+                        <button class="cta-button">Download Now</button>
+                    </article>
+
+                    <!-- Pro Tier -->
+                    <article class="pricing-card featured">
+                        <div class="pricing-header">
+                            <h3>Professional</h3>
+                            <p class="price">$29<span>/month</span></p>
+                            <p class="price-description">For growing businesses</p>
+                        </div>
+                        <ul class="features-list">
+                            <li>✓ All Community Features</li>
+                            <li>✓ Managed Hosting</li>
+                            <li>✓ Premium Templates</li>
+                            <li>✓ Priority Support</li>
+                            <li>✓ Custom Domain</li>
+                        </ul>
+                        <button class="cta-button primary">Get Started</button>
+                    </article>
+
+                    <!-- Enterprise Tier -->
+                    <article class="pricing-card">
+                        <div class="pricing-header">
+                            <h3>Enterprise</h3>
+                            <p class="price">$99<span>/month</span></p>
+                            <p class="price-description">For large organizations</p>
+                        </div>
+                        <ul class="features-list">
+                            <li>✓ All Professional Features</li>
+                            <li>✓ Dedicated Support</li>
+                            <li>✓ Custom Integration</li>
+                            <li>✓ Advanced Security</li>
+                            <li>✓ SLA Guarantee</li>
+                        </ul>
+                        <button class="cta-button">Contact Sales</button>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Features Comparison -->
+            <section class="features-comparison" aria-labelledby="features-title">
+                <h2 id="features-title" class="section-title">Feature Comparison</h2>
+                <div class="comparison-table-wrapper">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th>Community</th>
+                                <th>Professional</th>
+                                <th>Enterprise</th>
+                            </tr>
+                        </thead>
+                        <tbody class="comparison-body">
+                            <!-- First 4 rows visible by default -->
+                            <tr>
+                                <td>Visual Editor</td>
+                                <td>✓</td>
+                                <td>✓</td>
+                                <td>✓</td>
+                            </tr>
+                            <tr>
+                                <td>Templates</td>
+                                <td>Basic</td>
+                                <td>Premium</td>
+                                <td>Custom</td>
+                            </tr>
+                            <tr>
+                                <td>Hosting</td>
+                                <td>Self-hosted</td>
+                                <td>Managed</td>
+                                <td>Dedicated</td>
+                            </tr>
+                            <tr>
+                                <td>Storage Space</td>
+                                <td>-</td>
+                                <td>Unlimited</td>
+                                <td>Unlimited</td>
+                            </tr>
+                        </tbody>
+                        <!-- Hidden rows -->
+                        <tbody class="comparison-body-extended hidden">
+                            <!-- Rest of the existing rows -->
+                            <tr>
+                                <td>Support</td>
+                                <td>Community</td>
+                                <td>Priority</td>
+                                <td>24/7 Dedicated</td>
+                            </tr>
+                            <tr>
+                                <td>Custom Domain</td>
+                                <td>—</td>
+                                <td>✓</td>
+                                <td>✓</td>
+                            </tr>
+                            <tr>
+                                <td>SSL Certificate</td>
+                                <td>Self-managed</td>
+                                <td>Included</td>
+                                <td>Included</td>
+                            </tr>
+                            <tr>
+                                <td>CDN Integration</td>
+                                <td>—</td>
+                                <td>✓</td>
+                                <td>✓</td>
+                            </tr>
+                            <tr>
+                                <td>Automatic Backups</td>
+                                <td>—</td>
+                                <td>Daily</td>
+                                <td>Hourly</td>
+                            </tr>
+                            <tr>
+                                <td>Version Control</td>
+                                <td>Basic</td>
+                                <td>Advanced</td>
+                                <td>Enterprise</td>
+                            </tr>
+                            <tr>
+                                <td>API Access</td>
+                                <td>—</td>
+                                <td>✓</td>
+                                <td>✓</td>
+                            </tr>
+                            <tr>
+                                <td>Uptime SLA</td>
+                                <td>—</td>
+                                <td>99.9%</td>
+                                <td>99.99%</td>
+                            </tr>
+                            <tr>
+                                <td>Security Scanning</td>
+                                <td>Basic</td>
+                                <td>Advanced</td>
+                                <td>Enterprise</td>
+                            </tr>
+                            <tr>
+                                <td>Team Members</td>
+                                <td>1</td>
+                                <td>Up to 5</td>
+                                <td>Unlimited</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <button class="comparison-toggle" aria-expanded="false">
+                    <span class="toggle-text">Show More Features</span>
+                    <svg class="toggle-icon" viewBox="0 0 24 24" width="24" height="24">
+                        <path d="M7 10l5 5 5-5H7z" fill="currentColor" />
+                    </svg>
+                </button>
+                </div>
+            </section>
+
+            <!-- FAQ Section -->
+            <section class="faq-section" aria-labelledby="faq-title">
+                <h2 id="faq-title" class="section-title">Frequently Asked Questions</h2>
+                <div class="faq-grid">
+                    <details class="faq-item">
+                        <summary>Is SiteForge really free to download?</summary>
+                        <p>Yes! The Community Edition is completely free and open source. You can download, modify, and
+                            self-host it without any charges.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>What's included in managed hosting?</summary>
+                        <p>Our managed hosting includes automatic updates, security monitoring, daily backups, CDN
+                            integration, and 24/7 infrastructure maintenance.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Can I upgrade or downgrade my plan?</summary>
+                        <p>Yes, you can change your plan at any time. Changes will be reflected in your next billing
+                            cycle.
+                        </p>
+                    </details>
+                    <!-- Add more FAQ items as needed -->
+                </div>
+            </section>
+
+            <!-- Testimonials Section -->
+            <section class="testimonials-section" aria-labelledby="testimonials-title">
+                <h2 id="testimonials-title" class="testimonial-title">What Our Customers Say</h2>
+                <div class="testimonials-grid">
+                    <!-- Testimonial 1 -->
+                    <article class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="testimonial-rating">
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                            </div>
+                            <blockquote class="testimonial-quote">
+                                "SiteForge transformed our web development process. The visual editor is intuitive, and
+                                the
+                                hosting service is reliable. Best decision for our business!"
+                            </blockquote>
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="./img/services/avatar1.svg" alt="King Carrot" class="author-avatar" width="50"
+                                height="50" loading="lazy">
+                            <div class="author-info">
+                                <div class="author-name">King Carrot</div>
+                                <div class="author-role">Local US-Midwest Grocery Store</div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Testimonial 2 -->
+                    <article class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="testimonial-rating">
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                            </div>
+                            <blockquote class="testimonial-quote">
+                                "As an artist, I appreciate the clean code and flexibility. The enterprise features are
+                                robust, and the support team is exceptional."
+                            </blockquote>
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="./img/services/avatar2.png" alt="Colorier le Phénix" class="author-avatar"
+                                width="50" height="50" loading="lazy">
+                            <div class="author-info">
+                                <div class="author-name">Colorier le Phénix</div>
+                                <div class="author-role">Local French Artist Studio</div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Testimonial 3 -->
+                    <article class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="testimonial-rating">
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                            </div>
+                            <blockquote class="testimonial-quote">
+                                "Perfect for our startup! The professional plan gives us everything we need, and the
+                                managed
+                                hosting saves us so much time."
+                            </blockquote>
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="./img/services/avatar3.svg" alt="MC Studios" class="author-avatar" width="50"
+                                height="50" loading="lazy">
+                            <div class="author-info">
+                                <div class="author-name">MC Studios</div>
+                                <div class="author-role">Creative Studio</div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Perfromance Metrics - Added using JS -->
+            <div class="performance-metrics" hidden>
+                <template id="metric-template">
+                    <div class="metric">
+                        <span class="metric-name"></span>
+                        <span class="metric-value"></span>
+                    </div>
+                </template>
+            </div>
+        </main>
+    </body>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <nav class="footer-nav" aria-label="Footer navigation">
+            <ul class="footer-links">
+                <li><a href="./">Home</a></li>
+                <li><a href="about">About</a></li>
+                <li><a href="contact">Contact</a></li>
+                <li><a href="404">Privacy Policy</a></li>
+                <li><a href="404">Terms of Service</a></li>
+            </ul>
+        </nav>
+        <div class="footer-info">
+            <p>&copy; 2025 SiteForge. All rights reserved.</p>
+        </div>
+
+        <!-- Social media links -->
+        <div class="social-media-icons" aria-label="Social media links">
+            <a href="404" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram">
+                <img src="./img/icons/instagram.svg" alt="Instagram" role="presentation">
+            </a>
+            <a href="404" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Facebook">
+                <img src="./img/icons/facebook.svg" alt="Facebook" role="presentation">
+            </a>
+            <a href="404" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Twitter">
+                <img src="./img/icons/Twitter.svg" alt="Twitter" role="presentation">
+            </a>
+            <a href="404" target="_blank" rel="noopener noreferrer" aria-label="Follow us on LinkedIn">
+                <img src="./img/icons/linkedin.svg" alt="LinkedIn" role="presentation">
+            </a>
+            <a href="404" target="_blank" rel="noopener noreferrer" aria-label="Follow us on GitHub">
+                <img src="./img/icons/github.svg" alt="GitHub" role="presentation">
+            </a>
+        </div>
+
+        <!-- Footer Bottom Sticky -->
+        <div class="footer-bottom">
+            <p class="credit">Template designed & built with <span class="heart">♥</span> by <a
+                    href="https://danielhipskind.com/" target="_blank" rel="noopener noreferrer">Daniel Hipskind</a></p>
+            <p class="version">Version 1.0.0, <a href="README.md">Read More</a> about this project</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

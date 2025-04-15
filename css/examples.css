@@ -1,0 +1,859 @@
+/**
+ * Examples Page Styles
+ * Main stylesheet for the examples/portfolio page
+ *
+ * @version 1.0.0
+ * @author Daniel Hipskind
+ * @requires main.css
+ * 
+ * @sections
+ * - Hero Banner
+ * - Popular Community Themes 
+ * - Premium Theme Slider
+ * - Resources & Downloads
+ * - Client Showcase
+ * 
+ * @components
+ * - Project Cards
+ * - Theme Cards
+ * - Resource Cards
+ * - Client Cards
+ * - Navigation Dots
+ * - Buttons
+ * 
+ * @breakpoints
+ * - 768px: Tablet & Mobile
+ * - 480px: Small Mobile
+ */
+
+/* Import base styles */
+@import url('./main.css');
+
+/**
+ * Global Layout Styles
+ * Basic grid and card layouts used across sections
+ */
+.clients-grid,
+.resources-grid {
+  gap: 2rem;
+}
+
+.client-card,
+.resource-card {
+  background: #f8f8f8;
+  padding: 2rem;
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+/**
+ * Typography
+ * Heading and text styles
+ */
+h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  color: var(--text-color);
+  font-weight: 600;
+}
+
+h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+  text-align: center;
+}
+
+p {
+  font-size: 1rem;
+  color: var(--text-muted);
+  color: var(--text-color);
+}
+
+/**
+ * Button Styles
+ * Shared styles for all action buttons
+ */
+.download-btn,
+.buy-pro,
+.case-study-link {
+  display: block;
+  padding: 0.75rem 1.5rem;
+  background: var(--primary-color);
+  color: white;
+  text-decoration: none;
+  border: none;
+  border-radius: var(--radius-md);
+  font-weight: 500 !important;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-align: center;
+  width: 200px;
+  margin: 1rem auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.download-btn:hover,
+.buy-pro:hover,
+.case-study-link:hover {
+  background: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(4, 170, 109, 0.2);
+}
+
+.download-btn:active,
+.buy-pro:active,
+.case-study-link:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(4, 170, 109, 0.1);
+}
+
+/**
+ * Hero Section
+ * Full-width banner with optimized background
+ */
+.examples-hero {
+  position: relative;
+  width: 100vw;
+  min-height: 60vh;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  margin-top: var(--header-height);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.0)),
+    url('../img/examples/hero.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 4rem 2rem;
+}
+
+.examples-hero-content {
+  max-width: 800px;
+  padding: 0 1rem;
+  z-index: 1;
+}
+
+.examples-hero h1 {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.examples-hero p {
+  font-size: 1.25rem;
+  max-width: 600px;
+  margin: 0 auto;
+  opacity: 0.9;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .examples-hero {
+    min-height: 45vh;
+    padding: 3rem 1rem;
+    margin-top: var(--header-height-mobile);
+    background-attachment: scroll;
+  }
+
+  .examples-hero h1 {
+    font-size: 2.25rem;
+  }
+
+  .examples-hero p {
+    font-size: 1rem;
+  }
+}
+
+/**
+ * Popular community theme grid Section 
+ * Matching index.css news section style
+ */
+.featured-projects {
+  padding: 4rem 2rem;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.project-card {
+  background: var(--bg-alt);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.project-image {
+  height: 240px;
+  width: 100%;
+  position: relative;
+}
+
+.project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.project-content {
+  padding: 1.5rem;
+  text-align: left;
+}
+
+.project-content h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+  color: var(--text-color);
+  text-align: left;
+}
+
+.project-content p {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+  color: var(--text-muted);
+}
+
+.view-project-btn {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 500;
+  display: inline-block;
+  margin-top: 0.5rem;
+  position: relative;
+  padding-right: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+.view-project-btn::after {
+  content: '→';
+  position: absolute;
+  right: 0;
+  transition: transform 0.3s ease;
+}
+
+.view-project-btn:hover {
+  color: var(--primary-hover);
+}
+
+.view-project-btn:hover::after {
+  transform: translateX(5px);
+}
+
+.project-tags {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.tag {
+  background: var(--bg-alt);
+  color: var(--primary-color);
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.tag:hover {
+  background: var(--primary-color);
+  color: white;
+}
+
+
+/**
+ * Theme Slider Section 
+ * Premium themes carousel functionality
+ */
+.theme-showcase {
+  padding: 2rem 2rem;
+  position: relative;
+  overflow: hidden;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.themes-slider {
+  display: flex;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: #f8f8f8;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  padding-top: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.themes-slider:hover {
+  transform: translateY(-5px) translateX(1px);
+  box-shadow: var(--shadow-lg);
+  transition: all 0.3s ease;
+}
+
+.theme-card {
+  flex: 0 0 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0;
+  position: absolute;
+  transform: translateX(100%);
+  transition: all 0.8s ease;
+  padding: 1.5rem;
+  background: var(--bg-alt);
+  border-radius: var(--radius-lg);
+}
+
+.theme-card.active {
+  opacity: 1;
+  transform: translateX(0);
+  position: relative;
+  transition: all 0.8s ease-in-out;
+}
+
+.theme-image {
+  width: 100%;
+  max-width: 1200px;
+  max-height: 600px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.theme-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.theme-image {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.theme-content {
+  text-align: center;
+  padding-top: 2rem;
+  max-width: 600px;
+}
+
+.theme-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1.5rem;
+}
+
+.price {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+/**
+ * Slider Navigation
+ * @component Navigation dots and controls for theme carousel
+ */
+
+.slider-nav {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.nav-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--border-color);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.nav-dot.active {
+  background: var(--primary-color);
+  transform: scale(1.2);
+}
+
+/**
+ * Resources Section
+ * @section Resources
+ * @description Downloads and documentation cards grid
+ * @components
+ * - Resource cards with icons
+ * - Download buttons
+ * - Responsive grid layout
+ */
+.resources-section {
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  padding: 4rem 2rem;
+  background-color: var(--primary-color);
+}
+
+.resources-section h2 {
+  color: #f5f5f5;
+}
+
+.resources-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  max-width: var(--max-width);
+  margin: 2rem auto;
+  gap: 2rem;
+}
+
+.resource-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.resource-icon {
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 1.5rem;
+  display: block;
+}
+
+.resource-card h3 {
+  margin-bottom: 0.5rem;
+}
+
+.resource-card p {
+  margin-bottom: 1.5rem;
+}
+
+/**
+ * Client Showcase Section
+ * @section Clients
+ * @description Grid layout for client case studies and logos
+ * @components
+ * - Client cards with hover effects
+ * - Grayscale logo transitions
+ * - Stats display
+ */
+.clients-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 2rem;
+}
+
+.client-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  background-color: #dcdcdc;
+}
+
+.client-logo {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  margin: 0 auto 2rem;
+  display: block;
+  transition: transform 0.3s ease;
+  padding: 1rem;
+  filter: grayscale(100%);
+}
+
+.client-card:hover .client-logo {
+  transform: scale(1.1);
+}
+
+.client-content h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+}
+
+.client-content p {
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+}
+
+.client-stats {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.stat strong {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  margin-bottom: 0.25rem;
+}
+
+.client-showcase {
+  padding: 2rem 2rem 4rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/**
+ * Dark Mode Styles
+ * Theme overrides for dark color scheme
+ */
+body.dark h1,
+body.dark h2,
+body.dark h3,
+body.dark p {
+  color: #f2f2f2;
+}
+
+body.dark .text-muted {
+  color: #c9c9c9;
+}
+
+body.dark .project-card,
+body.dark .theme-card,
+body.dark .client-card,
+body.dark .resource-card {
+  background: #2d2d2d;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+body.dark .project-card:hover,
+body.dark .theme-card:hover,
+body.dark .client-card:hover,
+body.dark .resource-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  background: #2a2a2a;
+}
+
+body.dark .client-content h3,
+body.dark .resource-card h3 {
+  color: #f5f5f5;
+}
+
+body.dark .tag {
+  background: var(--primary-color);
+  color: #f5f5f5;
+}
+
+body.dark .examples-hero {
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)),
+    url('../img/examples/hero.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+body.dark .examples-hero h1,
+body.dark .examples-hero p {
+  color: var(--primary-color);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+body.dark .tag:hover {
+  background: var(--primary-hover);
+  box-shadow: 0 2px 8px rgba(103, 129, 120, 0.2);
+}
+
+body.dark .stat strong {
+  color: #f5f5f5;
+}
+
+body.dark .resources-section {
+  background-color: var(--primary-color);
+}
+
+body.dark .download-btn,
+body.dark .buy-pro,
+body.dark .case-study-link {
+  background: var(--primary-color);
+  color: #f5f5f5;
+}
+
+body.dark .view-project-btn {
+  color: #f5f5f5;
+}
+
+body.dark .view-project-btn::after {
+  color: var(--primary-color);
+}
+
+body.dark .view-project-btn:hover {
+  color: var(--primary-color);
+}
+
+body.dark .download-btn:hover,
+body.dark .buy-pro:hover,
+body.dark .case-study-link:hover {
+  background: #025f3b;
+  box-shadow: 0 4px 12px rgba(4, 170, 109, 0.3);
+}
+
+body.dark .resource-card {
+  background: #2d2d2d;
+}
+
+body.dark .resource-icon {
+  filter: brightness(0) invert(1);
+}
+
+body.dark .themes-slider {
+  background: #2d2d2d;
+}
+
+body.dark .theme-image {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+body.dark .nav-dot.active {
+  background: var(--primary-color);
+}
+
+body.dark .slider-controls {
+  color: #f5f5f5;
+}
+
+body.dark .theme-card {
+  background: #2d2d2d;
+}
+
+body.dark .client-logo {
+  filter: grayscale(100%) brightness(1.2);
+}
+
+/* Dark mode transitions */
+.project-card,
+.theme-card,
+.client-card,
+.resource-card,
+.tag,
+.nav-dot {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/**
+ * Mobile Responsive Styles
+ * Comprehensive mobile optimizations
+ */
+@media (max-width: 768px) {
+
+  /* Hero Section */
+  .examples-hero {
+    min-height: 45vh;
+    padding: 3rem 1rem;
+    margin-top: var(--header-height-mobile);
+    background-attachment: scroll;
+  }
+
+  .examples-hero {
+    position: relative;
+    width: 100vw;
+    min-height: 45vh;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    margin-top: var(--header-height-mobile);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.5)),
+      url('../img/examples/hero.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    padding: 3rem 1rem;
+  }
+
+  body.dark .examples-hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.5)),
+      url('../img/examples/hero.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: scroll;
+  }
+
+  .examples-hero h1 {
+    font-size: 2.25rem;
+  }
+
+  .examples-hero p {
+    font-size: 1rem;
+  }
+
+  /* Featured Projects */
+  .featured-projects {
+    padding: 3rem 1rem;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .project-card {
+    box-shadow: var(--shadow-md);
+    margin: 0;
+  }
+
+  /* Theme Showcase */
+  .theme-showcase {
+    padding: 3rem 1rem;
+  }
+
+  .themes-slider {
+    border-radius: var(--radius-md);
+    margin: 0;
+  }
+
+  .theme-card {
+    padding: 0;
+  }
+
+  .theme-image {
+    height: 200px;
+  }
+
+  .theme-content {
+    padding: 1.5rem;
+  }
+
+  /* Client Showcase */
+  .clients-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    max-width: 500px;
+    margin: 2rem auto;
+  }
+
+  .client-card {
+    padding: 1.5rem;
+  }
+
+  .client-stats {
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+
+  /* Resources Section */
+  .resources-section {
+    padding: 3rem 1rem;
+  }
+
+  .resources-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    max-width: 500px;
+    margin: 2rem auto;
+  }
+
+  /* Typography */
+  h2 {
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  h3 {
+    font-size: 1.25rem;
+  }
+
+  p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .project-image {
+    height: 200px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  /* Buttons */
+  .download-btn,
+  .buy-pro,
+  .case-study-link {
+    width: 100%;
+    max-width: 250px;
+    padding: 0.75rem;
+    margin: 1rem auto;
+  }
+
+  .view-project-btn {
+    margin-top: 1rem;
+    display: inline-flex;
+    align-items: center;
+  }
+}
+
+/* Small Mobile Devices */
+@media (max-width: 480px) {
+  .examples-hero h1 {
+    font-size: 1.75rem;
+  }
+
+  .examples-hero p {
+    font-size: 0.9rem;
+  }
+
+  .theme-image {
+    height: 180px;
+  }
+
+  .client-stats {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .stat {
+    width: 100%;
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
