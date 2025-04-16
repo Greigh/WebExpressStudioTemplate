@@ -1,6 +1,6 @@
 /**
- * SiteForge Core JavaScript
- * Lightweight implementation for the SiteForge template using vanilla JavaScript
+ * Web Express Studio Core JavaScript
+ * Lightweight implementation for the Web Express Studio template using vanilla JavaScript
  *
  * @fileoverview Handles core functionality including:
  * - Theme management (light/dark mode)
@@ -17,7 +17,7 @@
  * Core Configuration Module
  *
  * @description
- * Manages base configuration settings for SiteForge application. Central
+ * Manages base configuration settings for Web Express Studio application. Central
  * configuration object that defines:
  * - Base URL path for application routing
  * - Valid navigation paths for route handling
@@ -477,7 +477,7 @@ const initializeCookieConsent = () => {
       // Simulate storing preference
       // In a real implementation, you would send this to your server
       alert(
-        'SiteForge Demo Message\n\nPreference will be stored temporarily for 30 minutes.'
+        'Web Express Studio Demo Message\n\nPreference will be stored temporarily for 30 minutes.'
       );
     };
 
@@ -489,7 +489,7 @@ const initializeCookieConsent = () => {
     learnMoreLink.addEventListener('click', (e) => {
       e.preventDefault();
       alert(
-        'SiteForge Demo Message\n\nPreference will be stored temporarily for 30 minutes.'
+        'Web Express Studio Demo Message\n\nPreference will be stored temporarily for 30 minutes.'
       );
       handlePreference('declined');
     });
@@ -715,6 +715,267 @@ function loadHeroImage() {
 }
 
 /**
+ * Popup Notification Module
+ *
+ * @description
+ * Manages the site disclaimer popup notification system.
+ * Implements a temporary session-based popup that displays important site information
+ * and credits. Features dark mode support and responsive design.
+ *
+ * @function initializePopupNotification
+ *
+ * @example
+ * // Initialize when DOM is ready
+ * document.addEventListener('DOMContentLoaded', initializePopupNotification);
+ *
+ * @returns {void}
+ *
+ * @listens click - On close button, overlay, or accept button click
+ *
+ * @fires sessionStorage#setItem - When popup is closed
+ * @fires setTimeout - To delay popup appearance
+ *
+ * @property {HTMLElement} popupOverlay - The popup overlay container
+ * @property {HTMLElement} popup - The popup content container
+ * @property {HTMLElement} closeBtn - The close button element
+ * @property {HTMLElement} acceptBtn - The accept button element
+ *
+ * @css
+ * - Uses CSS variables for theming
+ * - Implements backdrop filters
+ * - Supports dark/light mode
+ * - Includes animations
+ *
+ * @accessibility
+ * - Uses semantic HTML
+ * - Includes proper ARIA attributes
+ * - Ensures keyboard navigation
+ * - Maintains color contrast
+ *
+ * @storage
+ * - Uses sessionStorage for temporary state
+ * - Expires after 30 minutes
+ * - Stores user acknowledgment
+ *
+ * @dependencies
+ * - Requires CSS variables from main.css
+ * - Uses system font stack
+ * - Needs backdrop-filter support
+ */
+const initializePopupNotification = () => {
+  const popupShown = sessionStorage.getItem('popupShown');
+  if (popupShown) return;
+
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+
+  const popupCSS = `
+    .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: none;
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+      z-index: 99999;
+      transition: all 0.3s ease;
+    }
+    .popup {
+      background: var(--bg-color);
+      color: var(--text-color);
+      padding: 2rem;
+      border-radius: 1rem;
+      width: 90%;
+      max-width: 500px;
+      box-shadow: var(--shadow);
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border: 1px solid transparent;
+      z-index: 100000;
+      transition: all 0.3s ease;
+    }
+    body.dark .popup {
+      background: #2a2a2a;
+      color: #f2f2f2;
+    }
+    .popup-list {
+      text-align: left;
+    }
+    .popup-content {
+      text-align: center;
+    }
+    .popup-content h3 {
+      color: var(--primary-color);
+      margin-bottom: 1.5rem;
+      font-size: 1.5rem;
+    }
+    .popup-content ul {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 1.5rem;
+    }
+    .popup-content li {
+      margin-bottom: 0.75rem;
+      line-height: 1.5;
+    }
+    .popup-credit, .popup-version {
+      font-size: 0.9rem;
+      opacity: 0.8;
+      margin-top: 1rem;
+    }
+    .popup-credit .heart {
+      color: #ff0000;
+      animation: heartbeat 1.5s ease-in-out infinite;
+    }
+    .popup-content a {
+      color: var(--primary-color);
+      text-decoration: none;
+      transition: opacity 0.3s ease;
+    }
+    .popup-content a:hover {
+      opacity: 0.8;
+    }
+    .popup-btn {
+      background: var(--primary-color);
+      color: var(--bg-color);
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      font-weight: 600;
+      margin-top: 0.25rem;
+      transition: all 0.3s ease;
+    }
+    .popup-btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+
+    /* Dark mode styles */
+    .popup.dark-theme {
+      background: var(--dark-bg);
+      color: var(--dark-text);
+      border-color: var(--dark-border);
+    }
+    .popup.dark-theme h3 {
+      color: var(--dark-primary);
+    }
+    .popup.dark-theme a {
+      color: var(--dark-primary);
+    }
+    .popup.dark-theme .popup-btn {
+      background: var(--dark-primary);
+      color: var(--dark-bg);
+    }
+    .popup.dark-theme .popup-btn:hover {
+      background: var(--dark-primary-hover);
+    }
+    .popup.dark-theme .close {
+      color: var(--dark-text);
+    }
+  .popup-list ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 1.5rem;
+  }
+  
+  .popup-list li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.75rem;
+    line-height: 1.5;
+    text-align: left;
+  }
+  
+  .popup-list li::before {
+    content: ">";
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
+  
+  .popup.dark-theme .popup-list li::before {
+    color: var(--dark-primary);
+  }
+`;
+
+  // Add event listener for system theme changes
+  const handleThemeChange = (e) => {
+    const popup = document.getElementById('popup');
+    if (popup) {
+      if (e.matches) {
+        popup.classList.add('dark-theme');
+      } else {
+        popup.classList.remove('dark-theme');
+      }
+    }
+  };
+
+  // Listen for system theme changes
+  prefersDark.addListener(handleThemeChange);
+
+  // Apply initial theme
+  handleThemeChange(prefersDark);
+
+  // Clean up listener when popup is closed
+  const closePopup = () => {
+    prefersDark.removeListener(handleThemeChange);
+    document.getElementById('popupOverlay').style.display = 'none';
+    sessionStorage.setItem('popupShown', 'true');
+    sessionStorage.setItem('popupExpires', Date.now() + 30 * 60 * 1000);
+  };
+
+  const popupHTML = `
+    <div class="popup-overlay" id="popupOverlay">
+      <div class="popup" id="popup">
+        <div class="popup-content">
+          <h3>Welcome to Web Express Studio</h3>
+          <div class="popup-list">
+            <ul>
+              <li>This is a demonstration website created as an educational template project.</li>
+              <li>This template has no relation to any other company or entity named Web Express Studio. Inspired by the WordPress controversy that emerged in September 2024, this website was established to address the issues it raised. Keep in mind it is just a template.</li>
+              <li>If you'd like to learn more about this project, you can read more <a href="https://github.com/Greigh/WebExpressStudioTemplate/blob/main/README.md" target="_blank">here</a>.</li>
+            </ul>
+          </div>
+          <button class="popup-btn" id="popupAccept">I Understand</button>
+          <p class="popup-credit">Template designed & built with <span class="heart">♥</span> by
+          <a href="https://danielhipskind.com/" target="_blank" rel="noopener noreferrer">Daniel Hipskind</a></p>
+        </div>
+      </div>
+    </div>
+  `;
+
+  document.body.insertAdjacentHTML('beforeend', popupHTML);
+
+  const styleTag = document.createElement('style');
+  styleTag.innerHTML = popupCSS;
+  document.head.appendChild(styleTag);
+
+  setTimeout(() => {
+    document.getElementById('popupOverlay').style.display = 'block';
+  });
+
+  document.addEventListener('click', function (event) {
+    if (
+      event.target.id === 'popupOverlay' ||
+      event.target.id === 'popupAccept'
+    ) {
+      closePopup();
+    }
+  });
+};
+
+/**
  * Main initialization logic
  * Runs when DOM content is loaded
  * Initializes core functionality:
@@ -731,18 +992,24 @@ function loadHeroImage() {
  * @fires initializeComparisonTable
  * @fires initializeCookieConsent
  * @fires loadHeroImage
+ * @fires initializePopupNotification
  *
  */
 document.addEventListener('DOMContentLoaded', () => {
-  // Core initialization
-  initializeTheme();
-  initializeNavigation();
-  initializeForms();
-  initializeThemeSlider();
-  initializeComparisonTable();
-  initializeCookieConsent();
-  loadHeroImage();
+  // Initialize popup first, before any other initialization
+  initializePopupNotification();
 
-  // Remove preload class for transitions
-  document.documentElement.classList.remove('preload');
+  // Add a slight delay for other initializations
+  setTimeout(() => {
+    initializeTheme();
+    initializeNavigation();
+    initializeForms();
+    initializeThemeSlider();
+    initializeComparisonTable();
+    initializeCookieConsent();
+    loadHeroImage();
+
+    // Remove preload class for transitions
+    document.documentElement.classList.remove('preload');
+  }, 100);
 });

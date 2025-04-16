@@ -1,4 +1,4 @@
-# SiteForge Template Documentation
+# Web Express Studio Template Documentation
 
 <div align="center">
   <h3>Open Source Website Builder Template</h3>
@@ -6,7 +6,7 @@
 </div>
 
 ## Table of Contents
-- [SiteForge Template Documentation](#siteforge-template-documentation)
+- [Web Express Studio Template Documentation](#Web Express Studio-template-documentation)
   - [Table of Contents](#table-of-contents)
   - [Introduction](#introduction)
   - [What can this be used for?](#what-can-this-be-used-for)
@@ -42,7 +42,7 @@
 
 ## Introduction
 
-This documentation provides an overview of the SiteForge template project and its features. The template is a responsive web design that includes a header, footer, and various sections for content. It is built using HTML, CSS, and JavaScript. The project is structured to be modular, allowing for easy updates and maintenance. The design is user-friendly and includes features such as dark mode support and a responsive layout including but not limited to mobile-friendly design, clean and modern aesthetics, and a focus on usability. The site uses limited JavaScript for interactivity, primarily for the mobile navigation menu and dark mode toggle, but the core functionality is achieved through HTML and CSS.
+This documentation provides an overview of the Web Express Studio template project and its features. The template is a responsive web design that includes a header, footer, and various sections for content. It is built using HTML, CSS, and JavaScript. The project is structured to be modular, allowing for easy updates and maintenance. The design is user-friendly and includes features such as dark mode support and a responsive layout including but not limited to mobile-friendly design, clean and modern aesthetics, and a focus on usability. The site uses limited JavaScript for interactivity, primarily for the mobile navigation menu and dark mode toggle, but the core functionality is achieved through HTML and CSS.
 
 This project was designed for CIS-148 during the Winter-to-Spring 2025 semester at Grand Rapids Community College (GRCC) but will also be available via my [portfolio](https://danielhipskind.com/). The template went above and beyond the [project guidelines](#Project-Guidelines) of the class in order to provide an example of my talents and skills. I have little to no "verifiable experience" in web development, but over the years I have grown accustomed to learning and applying various web technologies. This template is a culmination of my learning and experimentation with web design and development.
 
@@ -77,7 +77,7 @@ The template is designed to be a starting point for anyone looking to create a p
 
 ## Core Files
 
-SiteForge/ (aka Final_Project/)
+Web Express Studio/ (aka Final_Project/)
 ├── README.md
 ├── LICENSE
 ├── .htaccess
@@ -123,10 +123,10 @@ SiteForge/ (aka Final_Project/)
     │   └── avatar3.svg
     ├── logo/
     │   ├── favicon.ico
-    │   ├── SiteForge.png
-    │   ├── SiteForge.svg
-    │   ├── SiteForge.pxd
-    │   ├── SiteForge.webp
+    │   ├── Web Express Studio.png
+    │   ├── Web Express Studio.svg
+    │   ├── Web Express Studio.pxd
+    │   ├── Web Express Studio.webp
     │   └── apple-touch-icon.png
     └── icons/
         ├── sun.svg
@@ -342,7 +342,7 @@ The .htaccess file is included in the project to provide additional configuratio
 
 ## License
 
-This project is licensed under the BSD-3 Clause License. You are free to use, modify, and distribute the code as long as you include the original copyright notice and license in any copies or substantial portions of the software. The software is provided "as is," without warranty of any kind. See the [LICENSE](LICENSE) file for more details. The license allows for both personal and commercial use, making it a flexible option for developers looking to use this template as a starting point for their own projects however, note that the license does not grant permission to use the name "SiteForge" or any of its trademarks without prior written consent.
+This project is licensed under the BSD-3 Clause License. You are free to use, modify, and distribute the code as long as you include the original copyright notice and license in any copies or substantial portions of the software. The software is provided "as is," without warranty of any kind. See the [LICENSE](LICENSE) file for more details. The license allows for both personal and commercial use, making it a flexible option for developers looking to use this template as a starting point for their own projects however, note that the license does not grant permission to use the name "Web Express Studio" or any of its trademarks without prior written consent.
 
 -----------------------------------------------------------------------------------------------------
 

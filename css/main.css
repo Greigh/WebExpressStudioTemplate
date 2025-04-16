@@ -69,6 +69,14 @@
   --spacing-sm: 0.5rem;
   --spacing-md: 1rem;
   --spacing-lg: 2rem;
+
+  /* Dark Mode */
+  --dark-bg: #1a1a1a;
+  --dark-text: #f2f2f2;
+  --dark-primary: #038756;
+  --dark-primary-hover: #038756;
+  --dark-border: #333333;
+  --dark-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
 
