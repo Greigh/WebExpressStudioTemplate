@@ -1,13 +1,13 @@
 /**
  * SiteForge Contact Page Styles
  * Styling for contact form, information, and map components
- * 
+ *
  * @version 1.0.0
  * @author Daniel Hipskind
- * 
+ *
  * @dependencies
  * - main.css: Core styles and variables
- * 
+ *
  * @sections
  * - Contact Grid Layout
  * - Contact Information
@@ -19,8 +19,36 @@
  * - Media Queries
  */
 
+/* Import base styles */
 @import url('./main.css');
 
+/* Set dark theme as default */
+:root {
+  --contact-card-bg: #2d2d2d;
+  --contact-input-bg: #1a1a1a;
+  --contact-border: #404040;
+  --contact-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  --contact-text: #f5f5f5;
+  --contact-label: #f5f5f5;
+  --contact-placeholder: #888;
+  --contact-hours-border: #404040;
+  --map-filter: invert(90%) hue-rotate(180deg);
+  --notice-text: #333333;
+}
+
+/* Light theme overrides */
+html:not(.dark) {
+  --contact-card-bg: #f8f8f8;
+  --contact-input-bg: #ffffff;
+  --contact-border: #eee;
+  --contact-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --contact-text: #333;
+  --contact-label: #333;
+  --contact-placeholder: #666;
+  --contact-hours-border: #eee;
+  --map-filter: none;
+  --notice-text: #333333;
+}
 
 /**
  * Text Alignment
@@ -39,7 +67,7 @@ span,
 /**
  * Contact Grid Layout
  * Two-column layout for contact info and form
- * 
+ *
  * @structure
  * - Left column: Contact information (300-400px)
  * - Right column: Contact form (flexible width)
@@ -58,7 +86,7 @@ span,
 /**
  * Emergency Notice Component
  * High-visibility alert for urgent support needs
- * 
+ *
  * @accessibility
  * - High contrast colors
  * - Clear visual hierarchy
@@ -99,30 +127,30 @@ span,
 /**
  * Map Section Component
  * Interactive map display with location details
- * 
+ *
  * @structure
  * - Map container wrapper
  * - Map placeholder/iframe
  * - Directions link
  * - Location information
- * 
+ *
  * @features
  * - Embedded Google Maps
  * - Fallback static image
  * - Click-through directions
  * - Responsive scaling
- * 
+ *
  * @accessibility
  * - ARIA labels for map container
  * - Alternative text for static image
  * - Keyboard navigation support
  * - Screen reader descriptions
- * 
+ *
  * @performance
  * - Lazy loading implementation
  * - Responsive image loading
  * - Optimized iframe loading
- * 
+ *
  * @darkMode
  * - Map inversion filter
  * - Adjusted contrast
@@ -138,7 +166,7 @@ span,
 /**
  * Map Placeholder Component
  * Handles both iframe and static image display
- * 
+ *
  * @states
  * - Loading
  * - Error fallback
@@ -150,6 +178,7 @@ span,
   height: 400px;
   overflow: hidden;
   border-radius: 16px 16px 0 0;
+  filter: var(--map-filter);
 }
 
 .map-placeholder iframe {
@@ -196,10 +225,10 @@ span,
 }
 
 .contact-info {
-  background: #f8f8f8;
+  background: var(--contact-card-bg);
+  box-shadow: var(--contact-shadow);
   padding: 2.5rem;
   border-radius: 16px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .contact-info h2 {
@@ -237,7 +266,8 @@ span,
   display: flex;
   justify-content: space-between;
   padding: 0.5rem 0;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid var(--contact-hours-border);
+  color: var(--contact-text);
 }
 
 .hours-list li:last-child {
@@ -265,10 +295,10 @@ span,
 }
 
 .contact-form {
-  background: #f8f8f8;
+  background: var(--contact-card-bg);
+  box-shadow: var(--contact-shadow);
   padding: 2.5rem;
   border-radius: 16px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .contact-form h2 {
@@ -286,7 +316,7 @@ span,
   display: block;
   margin-bottom: 0.5rem;
   font-weight: 500;
-  color: #333;
+  color: var(--contact-label);
 }
 
 .form-group input,
@@ -294,10 +324,17 @@ span,
 .form-group textarea {
   width: 100%;
   padding: 0.75rem;
-  border: 2px solid #eee;
+  background: var(--contact-input-bg);
+  border: 2px solid var(--contact-border);
   border-radius: 8px;
+  color: var(--contact-text);
   font-size: 1rem;
   transition: all 0.3s ease;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: var(--contact-placeholder);
 }
 
 .form-group input:focus,
@@ -349,169 +386,36 @@ span,
 /**
  * Dark Mode Overrides
  * Theme adaptations for dark color scheme
- * 
+ *
  * @colors
  * - Background: #2d2d2d
  * - Text: #f5f5f5
  * - Inputs: #1a1a1a
  * - Borders: #404040
- * 
+ *
  * @accessibility
  * - Maintains contrast ratios
  * - Preserves visual hierarchy
  */
 
-body.dark .emergency-note {
+html.dark .emergency-note {
   color: #aaa;
 }
 
-body.dark .notice p,
-body.dark .emergency-block p,
-body.dark .emergency-block h3 {
-  color: #333333 !important;
-}
-
-
-body.dark .contact-info,
-body.dark .contact-form {
-  background: #2d2d2d;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-}
-
-body.dark .contact-info h2,
-body.dark .contact-form h2,
-body.dark .map-section h2 {
-  color: var(--primary-color);
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-body.dark .info-block h3 {
-  color: #f5f5f5;
-}
-
-body.dark .form-group label {
-  color: #f5f5f5;
-}
-
-body.dark .form-group input,
-body.dark .form-group select,
-body.dark .form-group textarea {
-  background: #1a1a1a;
-  border-color: #404040;
-  color: #f5f5f5;
-}
-
-body.dark .form-group input:focus,
-body.dark .form-group select:focus,
-body.dark .form-group textarea:focus {
-  border-color: var(--primary-color);
-  box-shadow: 0 0 0 3px rgba(4, 170, 109, 0.2);
-}
-
-body.dark .form-group input::placeholder,
-body.dark .form-group textarea::placeholder {
-  color: #888;
-}
-
-/* Dark mode hours list */
-body.dark .hours-list li {
-  border-bottom-color: #404040;
-  color: #f5f5f5;
-}
-
-body.dark .hours-list li:last-child {
-  border-bottom: none;
-}
-
-body.dark .phone-link {
-  color: var(--primary-color);
-}
-
-body.dark .phone-link:hover {
-  color: #038756;
-}
-
-body.dark .emergency-note {
-  color: #aaa;
-}
-
-body.dark .map-placeholder {
-  filter: invert(90%) hue-rotate(180deg);
-}
-
-body.dark .directions-link {
-  background: #2d2d2d;
-  border-top-color: #404040;
-}
-
-body.dark .directions-link a {
-  color: #04aa6d;
-}
-
-body.dark .directions-link a:hover {
-  color: #038756;
-}
-
-body.dark .submit-btn:hover {
-  background: #038756;
-  box-shadow: 0 4px 12px rgba(4, 170, 109, 0.3);
-}
-
-body.dark .location-section {
-  background-color: #2d2d2d;
-}
-
-body.dark .location-info {
-  background: #1a1a1a;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-}
-
-body.dark .us-support-note {
-  color: #aaa;
-}
-
-body.dark .form-group input:focus,
-body.dark .form-group select:focus,
-body.dark .form-group textarea:focus {
-  border-color: var(--primary-color);
-  box-shadow: 0 0 0 3px rgba(4, 170, 109, 0.2);
-}
-
-body.dark .directions-link {
-  background: #2d2d2d;
-  border-top-color: #404040;
-}
-
-body.dark .contact-info,
-body.dark .contact-form {
-  background: #2d2d2d;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-}
-
-body.dark .hours-list li {
-  border-bottom-color: #404040;
-}
-
-body.dark .form-group label {
-  color: #f5f5f5;
-}
-
-body.dark .form-group input,
-body.dark .form-group select,
-body.dark .form-group textarea {
-  background: #1a1a1a;
-  border-color: #404040;
-  color: #f5f5f5;
+html.dark .notice p,
+html.dark .emergency-block p,
+html.dark .emergency-block h3 {
+  color: var(--notice-text) !important;
 }
 
 /**
  * Responsive Design
  * Mobile and tablet adaptations
- * 
+ *
  * @breakpoints
  * - 768px: Tablet/Mobile transition
  * - 480px: Small mobile devices
- * 
+ *
  * @adjustments
  * - Single column layout
  * - Reduced padding

@@ -5,26 +5,26 @@
  * @version 1.0.0
  * @author Daniel Hipskind
  * @requires main.css
- * 
+ *
  * @sections
- * - Services Hero 
+ * - Services Hero
  * - Pricing Plans
  * - Features Comparison
  * - FAQ Section
  * - Client Testimonials
- * 
+ *
  * @components
  * - Pricing Cards
  * - Feature Tables
  * - FAQ Accordions
  * - Testimonial Cards
- * 
+ *
  * @features
  * - Responsive pricing grid
  * - Interactive comparison table
  * - Expandable features list
  * - Dark mode support
- * 
+ *
  * @breakpoints
  * - 1024px: 2-column pricing grid
  * - 768px: Single column layouts
@@ -32,6 +32,26 @@
  */
 
 @import url('./main.css');
+
+/* Light theme defaults */
+:root {
+  --service-card-bg: #f8f8f8;
+  --service-hover-bg: #f1f1f1;
+  --service-table-bg: #f8f8f8;
+  --service-faq-bg: #f2f2f2;
+  --service-text: var(--text-color);
+  --service-border: var(--border-color);
+}
+
+/* Dark theme overrides */
+html.dark {
+  --service-card-bg: #2d2d2d;
+  --service-hover-bg: #363636;
+  --service-table-bg: #2d2d2d;
+  --service-faq-bg: #2d2d2d;
+  --service-text: #f5f5f5;
+  --service-border: #404040;
+}
 
 /* General Typography and hover effects */
 h1 {
@@ -61,27 +81,27 @@ h2 {
 /**
  * Pricing Section
  * Grid layout for pricing plan cards
- * 
+ *
  * @section Pricing and hero heading
  * @description Displays pricing tiers with features and CTAs
- * 
+ *
  * @layout
  * - 3-column grid on desktop
  * - 2-column on tablet
  * - Single column on mobile
  * - Featured card scaling effect
- * 
+ *
  * @components
  * - Pricing cards with hover effects
  * - Feature lists
  * - CTA buttons
  * - Price tags with currency
- * 
+ *
  * @spacing
  * - Grid gap: 2rem
  * - Card padding: 2rem
  * - Vertical rhythm with margins
- * 
+ *
  * @features
  * - Hover animations
  * - Featured card highlighting
@@ -118,7 +138,7 @@ h2 {
 }
 
 .pricing-card {
-  background: #f8f8f8;
+  background: var(--service-card-bg);
   border-radius: var(--radius-lg);
   padding: 2rem;
   text-align: center;
@@ -196,28 +216,28 @@ h2 {
 /**
  * Features Comparison Section and Table
  * Interactive comparison table for plan features
- * 
+ *
  * @section Features Comparison
  * @description Expandable table showing feature differences between plans
- * 
+ *
  * @components
  * - Scrollable table wrapper
  * - Fixed header row
  * - Expandable body rows
  * - Toggle button for additional features
- * 
+ *
  * @layout
  * - Full-width container with max-width
  * - Sticky first column on mobile
  * - Rounded corners on containers
  * - Custom scrollbar styling
- * 
+ *
  * @features
  * - Horizontal scroll on mobile
  * - Smooth animations
  * - Interactive hover states
  * - Responsive design
- * 
+ *
  * @darkMode
  * - Custom background colors
  * - Themed scrollbar
@@ -301,7 +321,9 @@ h2 {
 }
 
 .comparison-table td {
-  background: #f8f8f8;
+  background: var(--service-table-bg);
+  color: var(--service-text);
+  border-bottom: 1px solid var(--service-border);
 }
 
 .comparison-table td:not(:first-child) {
@@ -309,7 +331,7 @@ h2 {
 }
 
 .comparison-table tbody tr:hover td {
-  background: #f1f1f1;
+  background: var(--service-hover-bg);
 }
 
 .comparison-toggle {
@@ -358,21 +380,21 @@ h2 {
 /**
  * FAQ Section
  * Expandable accordion-style frequently asked questions
- * 
+ *
  * @section FAQ
  * @description Interactive FAQ section with expandable items
- * 
+ *
  * @layout
  * - Single column layout
  * - Max width container
  * - Stacked accordion items
- * 
+ *
  * @components
  * - FAQ items with hover effects
  * - Summary/detail elements
  * - Animated transitions
  * - Interactive hover states
- * 
+ *
  * @features
  * - Smooth expand/collapse
  * - Color transitions
@@ -393,7 +415,7 @@ h2 {
 
 /* Individual FAQ Items */
 .faq-item {
-  background: #f2f2f2;
+  background: var(--service-faq-bg);
   border-radius: var(--radius-md);
   margin-bottom: 1rem;
   transition: all 0.3s ease;
@@ -421,22 +443,22 @@ h2 {
 /**
  * Testimonials Section
  * Customer testimonial cards in a grid layout
- * 
+ *
  * @section Testimonials
  * @description Social proof section with customer reviews and ratings
- * 
+ *
  * @layout
  * - 3-column grid on desktop
- * - 2-column on tablet 
+ * - 2-column on tablet
  * - Single column on mobile
  * - Full-width background
- * 
+ *
  * @components
  * - Testimonial cards with shadows
  * - Author avatars
  * - Star ratings
  * - Customer quotes
- * 
+ *
  * @features
  * - Hover animations
  * - Avatar image handling
@@ -469,7 +491,7 @@ h2 {
 }
 
 .testimonial-card {
-  background: #fff;
+  background: var(--service-card-bg);
   border-radius: var(--radius-lg);
   padding: 2rem;
   text-align: left;
@@ -531,23 +553,23 @@ h2 {
 /**
  * Dark Mode Styles
  * Theme overrides for dark color scheme
- * 
+ *
  * @section Dark Mode
  * @description Dark mode style overrides for the services/pricing page
- * 
+ *
  * @components
  * - Typography colors
  * - Card backgrounds
  * - Table styles
  * - Button states
  * - Hover effects
- * 
+ *
  * @colors
  * - Background: #1a1a1a (main), #2d2d2d (cards)
  * - Text: #f5f5f5 (primary), #efefef (secondary)
  * - Borders: #404040
  * - Accents: var(--primary-color)
- * 
+ *
  * @features
  * - Smooth transitions
  * - Enhanced contrast
@@ -556,174 +578,174 @@ h2 {
 */
 
 /* Typography Adjustments */
-body.dark .price span,
-body.dark .features-list li,
-body.dark .faq-item summary,
-body.dark .testimonial-quote,
-body.dark .author-name,
-body.dark .comparison-table td:not(:first-child),
-body.dark h1,
-body.dark h2,
-body.dark h3,
-body.dark p {
-  color: #f5f5f5;
+html.dark .price span,
+html.dark .features-list li,
+html.dark .faq-item summary,
+html.dark .testimonial-quote,
+html.dark .author-name,
+html.dark .comparison-table td:not(:first-child),
+html.dark h1,
+html.dark h2,
+html.dark h3,
+html.dark p {
+  color: var(--service-text);
 }
 
 /* Card & Container Backgrounds */
-body.dark .pricing-card,
-body.dark .testimonial-card,
-body.dark .comparison-table,
-body.dark .faq-item {
-  background: #2d2d2d;
+html.dark .pricing-card,
+html.dark .testimonial-card,
+html.dark .comparison-table,
+html.dark .faq-item {
+  background: var(--service-card-bg);
 }
 
-body.dark .comparison-table {
+html.dark .comparison-table {
   background: transparent;
 }
 
-body.dark .services-hero {
+html.dark .services-hero {
   background: #1a1a1a;
 }
 
-body.dark .pricing-card {
-  background: #2d2d2d;
+html.dark .pricing-card {
+  background: var(--service-card-bg);
   border: 1px solid transparent;
 }
 
-body.dark .pricing-section {
+html.dark .pricing-section {
   background: #1a1a1a;
 }
 
-body.dark .pricing-card.featured {
+html.dark .pricing-card.featured {
   border-color: var(--primary-color);
   box-shadow: 0 0 15px rgba(4, 170, 109, 0.15);
 }
 
-body.dark .pricing-card:hover {
+html.dark .pricing-card:hover {
   border-color: var(--primary-color);
   box-shadow: 0 8px 15px rgba(4, 170, 109, 0.15);
 }
 
-body.dark .comparison-table tbody tr:hover td {
-  background: #363636;
+html.dark .comparison-table tbody tr:hover td {
+  background: var(--service-hover-bg);
 }
 
-body.dark .comparison-table th {
+html.dark .comparison-table th {
   background: #025f3b;
   color: #ffffff;
   border-bottom: 1px solid #004d2f;
 }
 
-body.dark .comparison-table td {
-  background: #2d2d2d;
-  color: #f5f5f5;
-  border-bottom: 1px solid var(--border-color);
+html.dark .comparison-table td {
+  background: var(--service-table-bg);
+  color: var(--service-text);
+  border-bottom: 1px solid var(--service-border);
 }
 
-body.dark .comparison-table th,
-body.dark .comparison-table td {
+html.dark .comparison-table th,
+html.dark .comparison-table td {
   border-bottom: 1px solid #404040;
 }
 
-body.dark .comparison-table tr:last-child td {
+html.dark .comparison-table tr:last-child td {
   border-bottom: none;
 }
 
-body.dark .comparison-table td:not(:first-child).checkmark {
+html.dark .comparison-table td:not(:first-child).checkmark {
   color: var(--primary-color);
 }
 
-body.dark .comparison-table td:first-child {
+html.dark .comparison-table td:first-child {
   color: var(--primary-color);
   font-weight: 600;
 }
 
-body.dark .comparison-body tr:last-child td {
+html.dark .comparison-body tr:last-child td {
   border-bottom: 1px solid #404040;
 }
 
-body.dark .comparison-table tr:last-child td:first-child {
+html.dark .comparison-table tr:last-child td:first-child {
   border-bottom-left-radius: var(--radius-md);
 }
 
-body.dark .comparison-table tr:last-child td:last-child {
+html.dark .comparison-table tr:last-child td:last-child {
   border-bottom-right-radius: var(--radius-md);
 }
 
-body.dark .faq-section {
+html.dark .faq-section {
   background: #1a1a1a;
 }
 
-body.dark .faq-item:hover {
+html.dark .faq-item:hover {
   border-color: var(--primary-color);
 }
 
-body.dark .cta-button {
+html.dark .cta-button {
   background: #2d2d2d;
   color: #f5f5f5;
 }
 
-body.dark .cta-button.primary {
+html.dark .cta-button.primary {
   background: var(--primary-color);
 }
 
-body.dark .cta-button:hover {
+html.dark .cta-button:hover {
   background: #404040;
   color: #ffffff;
 }
 
-body.dark .cta-button.primary:hover {
+html.dark .cta-button.primary:hover {
   background: #038c58;
 }
 
-body.dark .pricing-card:hover {
+html.dark .pricing-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 15px rgba(4, 170, 109, 0.15);
 }
 
-body.dark .faq-item summary:hover {
+html.dark .faq-item summary:hover {
   color: var(--primary-color);
 }
 
-body.dark .price-description,
-body.dark .faq-item p {
+html.dark .price-description,
+html.dark .faq-item p {
   color: #efefef;
 }
 
-body.dark .comparison-toggle {
-  background-color: #2d2d2d;
-  color: #f5f5f5;
+html.dark .comparison-toggle {
+  background-color: var(--service-card-bg);
+  color: var(--service-text);
 }
 
-body.dark .comparison-toggle:hover {
+html.dark .comparison-toggle:hover {
   background: var(--primary-color);
 }
 
-body.dark .author-avatar {
+html.dark .author-avatar {
   filter: brightness(0) invert(1);
 }
 
-body.dark .author-role {
+html.dark .author-role {
   color: #a0a0a0;
 }
 
 /**
  * Responsive Design
  * Mobile and tablet adaptations
- * 
+ *
  * @section Mobile & Tablet Styles
  * @description Responsive layout adjustments for smaller screens
- * 
+ *
  * @breakpoints
  * - 1024px: Tablet layout
  * - 768px: Mobile layout
- * 
+ *
  * @features
  * - Single column grids
  * - Scrollable comparison table
  * - Optimized pricing cards
  * - Accessible mobile elements
- * 
+ *
  * @layout
  * - Stacked pricing cards
  * - Horizontal scroll tables
@@ -784,12 +806,12 @@ body.dark .author-role {
     left: 0;
     background: var(--bg-color);
     z-index: 1;
-    border-right: 1px solid var(--border-color);
+    border-right: 1px solid var(--service-border);
     min-width: 140px;
   }
 
-  body.dark .comparison-table td:first-child {
-    background: #1a1a1a;
+  html.dark .comparison-table td:first-child {
+    background: var(--bg-color);
   }
 
   .comparison-toggle {

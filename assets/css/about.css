@@ -5,26 +5,26 @@
  * @version 1.0.0
  * @author Daniel Hipskind
  * @requires main.css
- * 
+ *
  * @sections
  * - Global Presence Map
  * - Awards & Milestones
  * - Team Members Grid
  * - Timeline Events
  * - Mission Statement
- * 
+ *
  * @components
  * - Testimonial Markers
  * - Award Cards
  * - Team Member Cards
  * - Timeline Items
- * 
+ *
  * @features
  * - Interactive World Map
  * - Hover Animations
  * - Dark Mode Support
  * - Responsive Layout
- * 
+ *
  * @breakpoints
  * - 1024px: Tablet Landscape
  * - 768px: Tablet & Mobile
@@ -33,6 +33,32 @@
 
 /* Import base styles */
 @import url('./main.css');
+
+/* Set dark theme as default */
+:root {
+  --about-card-bg: #2d2d2d;
+  --about-text: #f5f5f5;
+  --about-muted: #888;
+  --about-border: #404040;
+  --about-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  --timeline-bg: #2d2d2d;
+  --team-card-bg: #2d2d2d;
+  --map-filter: invert(1) brightness(0.8) hue-rotate(180deg);
+  --icon-filter: brightness(0) invert(1);
+}
+
+/* Light theme overrides */
+html:not(.dark) {
+  --about-card-bg: #f8f8f8;
+  --about-text: #333;
+  --about-muted: #666;
+  --about-border: #eee;
+  --about-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --timeline-bg: #f8f8f8;
+  --team-card-bg: #f8f8f8;
+  --map-filter: none;
+  --icon-filter: none;
+}
 
 /**
  * Layout Components
@@ -96,16 +122,16 @@
 /**
  * Global Presence Section
  * Interactive world map with testimonial markers
- * 
+ *
  * @component World Map & Testimonials
  * @requires world-map.svg, world-map-dark.svg
- * 
+ *
  * @features
  * - Responsive background image
  * - Positioned testimonial markers
  * - Staggered fade-in animations on mobile
  * - Dark mode support
- * 
+ *
  * @breakpoints
  * - Desktop: Fixed position markers
  * - Mobile: Stacked markers with animations
@@ -130,17 +156,19 @@
   min-height: 80vh;
   margin: 1rem calc(-50vw + 50%) 0 calc(-50vw + 50%);
   padding: 2rem 0;
+  filter: var(--map-filter);
 }
 
 .testimonial-marker {
   position: absolute;
   width: 250px;
   padding: 0.85rem;
-  background: #f2f2f2;
+  background: var(--about-card-bg);
   border-radius: var(--radius-sm);
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--about-shadow);
   transition: all 0.3s ease;
   transform: translateY(0);
+  color: var(--about-text);
 }
 
 .testimonial-marker.visible {
@@ -151,7 +179,7 @@
   margin-top: 0.5rem;
   font-size: 0.8rem;
   font-style: italic;
-  color: var(--text-muted);
+  color: var(--about-muted);
 }
 
 .testimonial-marker blockquote .region {
@@ -202,11 +230,11 @@
 /**
  * Awards Section
  * Grid layout showcasing company achievements and milestones
- * 
+ *
  * @layout
  * - Desktop: 3-column grid (award | milestone | award)
  * - Mobile: Single column stack
- * 
+ *
 */
 .awards-container {
   display: grid;
@@ -238,14 +266,14 @@
 .milestone img {
   width: 50px;
   height: 50px;
-  filter: brightness(0);
+  filter: var(--icon-filter);
   transition: filter 0.3s ease;
 }
 
 /**
  * Bottom Sections
  * Two-column layout containing team profiles and company timeline
- * 
+ *
  * @layout
  * - Desktop: 2fr 1fr grid (team | timeline)
  * - Mobile: Single column stack
@@ -262,13 +290,13 @@
 /**
  * Team Members Grid
  * Responsive grid layout for team profiles
- * 
+ *
  * @component Team Grid
  * @layout
  * - Desktop: 2 columns
  * - Tablet: 2 columns
  * - Mobile: 1 column, centered
- * 
+ *
  * @features
  * - Responsive images
  * - Social media links
@@ -293,12 +321,13 @@
 }
 
 .team-member {
-  background: #f8f8f8;
+  background: var(--about-card-bg);
   border-radius: var(--radius-lg);
   padding: 1.5rem;
   text-align: center;
   transition: transform 0.3s ease;
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--about-shadow);
+  color: var(--about-text);
 }
 
 .member-social {
@@ -315,7 +344,7 @@
 
 .member-bio {
   font-size: 0.9rem;
-  color: var(--text-muted);
+  color: var(--about-muted);
   line-height: 1.5;
   margin-bottom: 1.5rem;
 }
@@ -362,10 +391,10 @@
 
 /**
  * Timeline Section
- * 
+ *
  * @component Timeline
  * @description Vertical timeline layout showing company milestones with stack events that vertically with dates and descriptions
- * 
+ *
  * @layout
  * - Desktop: Left-aligned timeline
  * - Mobile: Centered timeline with stacked events
@@ -375,12 +404,13 @@
 }
 
 .timeline-item {
-  background: #f8f8f8;
+  background: var(--about-card-bg);
   border-radius: var(--radius-md);
   padding: 1.5rem;
   margin-bottom: 2rem;
   transition: transform 0.3s ease;
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--about-shadow);
+  color: var(--about-text);
 }
 
 .timeline-item:last-child {
@@ -394,113 +424,95 @@
 /**
  * Dark Mode Styles
  * Theme overrides for dark color scheme
- * 
+ *
  * @component Dark Theme
  * @description Dark mode style overrides for the about page
- * 
+ *
  * @features
  * - Dark backgrounds
  * - Inverted icons and images
  * - Custom shadows
  * - Hover states
- * 
+ *
  * @sections
  * - Typography: #f2f2f2 headings, #f5f5f5 body
  * - Cards: #2d2d2d background
  * - Interactive: Green highlight states
  * - Images: Brightness/inversion filters
  */
-body.dark h1,
-body.dark h2,
-body.dark h3,
-body.dark h4,
-body.dark .testimonial-marker blockquote {
+html.dark h1,
+html.dark h2,
+html.dark h3,
+html.dark h4,
+html.dark .testimonial-marker blockquote {
   color: #f2f2f2;
 }
 
-body.dark .member-social img,
-body.dark .member-social a img,
-body.dark .member-social:hover img,
-body.dark .member-social:hover a img {
+html.dark .member-social img,
+html.dark .member-social a img,
+html.dark .member-social:hover img,
+html.dark .member-social:hover a img {
   filter: brightness(0) invert(1) !important;
   transition: all 0.3s ease;
 }
 
-body.dark p,
-body.dark .testimonial-marker .testimonial-footer,
-body.dark .date {
+html.dark p,
+html.dark .testimonial-marker .testimonial-footer,
+html.dark .date {
   color: #f5f5f5;
 }
 
-body.dark .testimonial-marker,
-body.dark .milestone,
-body.dark .timeline-item {
-  background: #2d2d2d;
-}
-
-body.dark .award:hover,
-body.dark .milestone:hover,
-body.dark .mission-statement:hover {
+html.dark .award:hover,
+html.dark .milestone:hover,
+html.dark .mission-statement:hover {
   box-shadow: 0 8px 15px rgba(4, 170, 109, 0.15);
   transition: all 0.3s ease;
 }
 
-body.dark .timeline-item:hover,
-body.dark .team-member:hover,
-body.dark .testimonial-marker:hover {
+html.dark .timeline-item:hover,
+html.dark .team-member:hover,
+html.dark .testimonial-marker:hover {
   border-color: var(--primary-color);
   box-shadow: 0 8px 15px rgba(4, 170, 109, 0.15);
   transition: all 0.3s ease;
 }
 
-body.dark .awards-timeline,
-body.dark .bottom-sections {
+html.dark .awards-timeline,
+html.dark .bottom-sections {
   background-blend-mode: multiply;
 }
 
-body.dark .mission-statement,
-body.dark .award {
+html.dark .mission-statement,
+html.dark .award {
   background: var(--primary-color);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease;
 }
 
-body.dark .map-container {
-  background: url('../img/about/world-map.svg') no-repeat center;
-  background-size: cover;
-  background-position: center;
-  filter: invert(1) brightness(0.8) hue-rotate(180deg);
-}
-
-body.dark .milestone:hover img,
-body.dark .milestone img {
+html.dark .milestone:hover img,
+html.dark .milestone img {
   filter: brightness(0) invert(1);
 }
 
-body.dark .award img {
+html.dark .award img {
   filter: none;
 }
 
-body.dark .award:hover img {
+html.dark .award:hover img {
   filter: none;
 }
 
-body.dark .timeline::before {
+html.dark .timeline::before {
   background: var(--primary-color);
   opacity: 0.3;
 }
 
-body.dark .team-member {
-  background: #2d2d2d;
-  box-shadow: var(--shadow-md);
-}
-
-body.dark .team-member:hover img {
+html.dark .team-member:hover img {
   filter: brightness(1.1);
   transition: all 0.3s ease;
 }
 
-body.dark .member-image:hover img {
+html.dark .member-image:hover img {
   border-color: var(--primary-color);
   transform: scale(1.05);
   box-shadow: 0 0 15px rgba(4, 170, 109, 0.3);
@@ -509,14 +521,14 @@ body.dark .member-image:hover img {
 /**
  * Responsive Design
  * Mobile and tablet adaptations
- * 
+ *
  * @breakpoints
  * - 768px: Main mobile breakpoint
  * - 1024px: Tablet landscape
- * 
+ *
  * @keyFeatures
  * - Stacked grid layouts (single column)
- * - Centered content alignment  
+ * - Centered content alignment
  * - Adjusted font sizes and spacing
  * - Animated testimonial markers
  * - Scrollable world map
@@ -563,7 +575,7 @@ body.dark .member-image:hover img {
     background-attachment: scroll;
   }
 
-  body.dark .map-container {
+  html.dark .map-container {
     background: url('../img/about/world-map.svg') no-repeat center;
     background-size: contain !important;
     background-attachment: scroll;
@@ -627,8 +639,8 @@ body.dark .member-image:hover img {
     animation-delay: calc(var(--marker-index) * 0.2s);
   }
 
-  body.dark .awards-timeline,
-  body.dark .bottom-sections {
+  html.dark .awards-timeline,
+  html.dark .bottom-sections {
     border-top: none !important;
     border-bottom: none !important;
   }

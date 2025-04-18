@@ -1,6 +1,30 @@
 /* Import main stylesheet for global styles and variables */
 @import url('./main.css');
 
+/* Set dark theme as default */
+:root {
+  --error-bg: #2d2d2d;
+  --error-text: #f5f5f5;
+  --error-muted: #888;
+  --error-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  --suggestions-bg: rgba(255, 255, 255, 0.05);
+  --btn-secondary-bg: rgba(255, 255, 255, 0.1);
+  --btn-secondary-hover: rgba(255, 255, 255, 0.15);
+  --icon-filter: brightness(0) invert(1);
+}
+
+/* Light theme overrides */
+html:not(.dark) {
+  --error-bg: var(--bg-color);
+  --error-text: var(--text-color);
+  --error-muted: var(--text-muted);
+  --error-shadow: var(--shadow-lg);
+  --suggestions-bg: var(--bg-alt);
+  --btn-secondary-bg: var(--bg-alt);
+  --btn-secondary-hover: var(--bg-darker);
+  --icon-filter: none;
+}
+
 /**
  * 404 Error Page Component
  * Clean, minimal design without hero image
@@ -45,12 +69,12 @@
 
 /* Error Content Section */
 .error-content {
+  background: var(--error-bg);
+  box-shadow: var(--error-shadow);
   max-width: 800px;
   margin: -50px auto 0;
   padding: var(--spacing-lg);
-  background: var(--bg-color);
   border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-lg);
   position: relative;
   z-index: 2;
   margin-bottom: var(--footer-height);
@@ -63,18 +87,18 @@
 
 .error-message h2 {
   font-size: 2rem;
-  color: var(--text-color);
+  color: var(--error-text);
   margin-bottom: 1rem;
 }
 
 .error-message p {
   font-size: 1.1rem;
-  color: var(--text-muted);
+  color: var(--error-muted);
 }
 
 /* Suggestions Section */
 .error-suggestions {
-  background: var(--bg-alt);
+  background: var(--suggestions-bg);
   border-radius: var(--radius-md);
   padding: 1.5rem 2rem;
   margin: 2rem 0;
@@ -91,7 +115,7 @@
   align-items: center;
   gap: 0.75rem;
   padding: 0.5rem 0;
-  color: var(--text-color);
+  color: var(--error-text);
 }
 
 /* Action Buttons */
@@ -125,69 +149,18 @@
 }
 
 .error-btn.secondary {
-  background: var(--bg-alt);
-  color: var(--text-color);
+  background: var(--btn-secondary-bg);
+  color: var(--error-text);
 }
 
 .error-btn.secondary:hover {
-  background: var(--bg-darker);
+  background: var(--btn-secondary-hover);
   transform: translateY(-2px);
 }
 
-/* Dark Mode Styles */
-body.dark .error-hero {
-  background: var(--primary-color);
-}
-
-body.dark .error-hero h1,
-body.dark .error-hero p {
-  color: #f5f5f5;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-}
-
-body.dark .error-content {
-  background: #2d2d2d;
-  box-shadow: var(--shadow-lg);
-}
-
-body.dark .error-message h2,
-body.dark .error-suggestions h3,
-body.dark .error-message p,
-body.dark .error-suggestions li {
-  color: #f5f5f5;
-}
-
-body.dark .error-suggestions {
-  background: rgba(255, 255, 255, 0.05);
-}
-
-body.dark .error-suggestions .suggestion-icon {
-  color: var(--primary-color);
-}
-
-body.dark .error-btn.primary {
-  background: var(--primary-color);
-  color: #f5f5f5;
-}
-
-body.dark .error-btn.primary:hover {
-  background: var(--primary-hover);
-  box-shadow: 0 4px 12px rgba(4, 170, 109, 0.2);
-}
-
-body.dark .error-btn.secondary {
-  background: rgba(255, 255, 255, 0.1);
-  color: #f5f5f5;
-}
-
-body.dark .error-btn.secondary:hover {
-  background: rgba(255, 255, 255, 0.15);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-
 /* Dark mode SVG icon adjustments */
-body.dark .error-btn img {
-  filter: brightness(0) invert(1);
+html.dark .error-btn img {
+  filter: var(--icon-filter);
 }
 
 /* Responsive Design */

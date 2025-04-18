@@ -1,13 +1,13 @@
 /**
  * SiteForge Index Page Styles
  * Main styling for the homepage components
- * 
+ *
  * @version 1.0.0
  * @author Daniel Hipskind
- * 
+ *
  * @dependencies
  * - main.css: Core styles and variables
- * 
+ *
  * @sections
  * - Hero Section
  * - Features Grid
@@ -20,19 +20,39 @@
 
 @import url('./main.css');
 
+/* Set dark theme as default */
+:root {
+  --feature-card-bg: #2d2d2d;
+  --feature-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  --news-card-bg: #2d2d2d;
+  --testimonial-bg: #2d2d2d;
+  --newsletter-bg: #2d2d2d;
+  --hero-overlay: rgba(0, 0, 0, 0.8);
+}
+
+/* Light theme overrides */
+html:not(.dark) {
+  --feature-card-bg: #ffffff;
+  --feature-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --news-card-bg: #ffffff;
+  --testimonial-bg: #f2f2f2;
+  --newsletter-bg: #f8f8f8;
+  --hero-overlay: rgba(0, 0, 0, 0.7);
+}
+
 /**
  * Hero Section Component
  * Full-width landing section with background image
- * 
+ *
  * @structure
  * - Full viewport height
  * - Overlay gradient
  * - Centered content
- * 
+ *
  * @animations
  * - Fade in on load
  * - Progressive image loading
- * 
+ *
  * @accessibility
  * - Text contrast meets WCAG standards
  * - Proper heading hierarchy
@@ -51,7 +71,7 @@
 /**
  * Hero Background Effect
  * Gradient overlay with background image
- * 
+ *
  * @features
  * - Dark overlay gradient
  * - Progressive loading
@@ -64,7 +84,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+  background-image: linear-gradient(var(--hero-overlay), var(--hero-overlay)),
     url('../img/index/hero.jpg');
   background-size: cover;
   background-position: center;
@@ -75,12 +95,12 @@
 /**
  * Full-width Section Layout
  * Extends sections beyond container bounds
- * 
+ *
  * @components
  * - Hero section
  * - Newsletter section
  * - CTA section
- * 
+ *
  * @calculations
  * - Negative margins compensate for container padding
  * - Uses viewport width calculations
@@ -102,12 +122,12 @@
 /**
  * Hero Content Container
  * Centers and styles the hero text content
- * 
+ *
  * @typography
  * - Light text for contrast
  * - Text shadow for readability
  * - Responsive font sizing
- * 
+ *
  * @layout
  * - Flexbox centered
  * - Max-width container
@@ -195,17 +215,17 @@
 /**
  * Features Section Component
  * Grid layout of feature highlights
- * 
+ *
  * @structure
  * - 3-column grid layout
  * - Responsive card design
  * - Icon-driven features
- * 
+ *
  * @interactions
  * - Hover lift effect
  * - Icon scale animation
  * - Touch feedback on mobile
- * 
+ *
  * @accessibility
  * - High contrast icons
  * - Clear feature descriptions
@@ -222,12 +242,12 @@
 }
 
 .feature-card {
-  background-color: #f8f8f8;
+  background-color: var(--feature-card-bg);
+  box-shadow: var(--feature-shadow);
   padding: 2.5rem;
   border-radius: 10px;
   text-align: center;
   transition: transform 0.3s ease;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .feature-card:hover {
@@ -262,17 +282,17 @@
 /**
  * News Section Component
  * Latest updates and article cards
- * 
+ *
  * @structure
  * - 2-column news grid
  * - Image cards with excerpts
  * - Read more links
- * 
+ *
  * @animations
  * - Card hover effects
  * - Arrow transition
  * - Shadow depth changes
- * 
+ *
  * @responsiveness
  * - Stack on mobile
  * - Adjusted image heights
@@ -293,7 +313,7 @@
 }
 
 .news-card {
-  background: #fff;
+  background: var(--news-card-bg);
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -342,17 +362,17 @@
 /**
  * Newsletter Section Component
  * Email subscription interface
- * 
+ *
  * @structure
  * - Full-width background
  * - Centered content
  * - Form layout
- * 
+ *
  * @features
  * - Input validation
  * - Success/error states
  * - Privacy disclaimer
- * 
+ *
  * @accessibility
  * - Clear input labels
  * - Form validation messages
@@ -360,7 +380,7 @@
  */
 
 .newsletter-section {
-  background-color: #f8f8f8;
+  background-color: var(--newsletter-bg);
   padding: 4rem 0;
   text-align: center;
   transition: background-color 0.3s ease;
@@ -407,7 +427,7 @@
 }
 
 .testimonial {
-  background: #f2f2f2;
+  background: var(--testimonial-bg);
   padding: 2rem;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -426,109 +446,100 @@
   font-style: normal;
 }
 
-body.dark .social-proof-section h2,
-body.dark .cta-content h2,
-body.dark .newsletter-content h2,
-body.dark .news-section h2,
-body.dark .news-content h3,
-body.dark .feature-card h3 {
-  color: #f5f5f5;
-}
-
-body.dark .hero-section {
+html.dark .hero-section {
   background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
-    url('./img/index/hero.jpg');
+    url('../img/index/hero.jpg');
 }
 
-body.dark .hero-section h1 {
+html.dark .hero-section h1 {
   color: #f5f5f5;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-dark.mode .t body.dark .hero-section h2 {
+dark.mode .t html.dark .hero-section h2 {
   color: #04aa6d;
 }
 
-body.dark .hero-section p {
+html.dark .hero-section p {
   color: #ececec;
 }
 
-body.dark .news-card,
-body.dark .social-proof-section blockquote {
+html.dark .news-card,
+html.dark .social-proof-section blockquote {
   background-color: #2d2d2d;
   color: #f5f5f5;
 }
 
-body.dark .newsletter-section {
+html.dark .newsletter-section {
   background-color: #2d2d2d;
 }
 
-body.dark .newsletter-form input {
+html.dark .newsletter-form input {
   background-color: #1a1a1a;
   border-color: #404040;
   color: #f5f5f5;
 }
 
-body.dark .newsletter-form input::placeholder {
+html.dark .newsletter-form input::placeholder {
   color: #888;
 }
 
-body.dark .newsletter-form input:focus {
+html.dark .newsletter-form input:focus {
   border-color: #04aa6d;
   outline: none;
   box-shadow: 0 0 0 2px rgba(4, 170, 109, 0.2);
 }
 
-body.dark .newsletter-disclaimer {
+html.dark .newsletter-disclaimer {
   color: #888;
 }
 
-body.dark .testimonial {
+html.dark .testimonial {
   background-color: #2d2d2d;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-body.dark .testimonial:hover {
+html.dark .testimonial:hover {
   box-shadow: 0 8px 15px rgba(4, 170, 109, 0.15);
   border-color: var(--primary-color);
 }
 
-body.dark .feature-card img {
+html.dark .feature-card img {
   filter: invert(55%) sepia(98%) saturate(861%) hue-rotate(127deg) brightness(92%) contrast(101%);
 }
 
-body.dark .read-more {
+html.dark .read-more {
   color: #f5f5f5;
 }
 
-body.dark .read-more::after {
+html.dark .read-more::after {
   color: #04aa6d;
 }
 
-body.dark .news-card .read-more:hover {
+html.dark .news-card .read-more:hover {
   color: #04aa6d;
 }
 
-body.dark .hero-content {
+html.dark .hero-content {
   color: #f5f5f5;
 }
 
-body.dark .hero-content .cta-button {
+html.dark .hero-content .cta-button {
   background-color: var(--primary-color);
 }
 
-body.dark .hero-content .cta-button:hover {
+html.dark .hero-content .cta-button:hover {
   background-color: #038f5a;
 }
 
 /**
  * Responsive Design
  * Mobile and tablet adaptations
- * 
+ *
  * @breakpoints
  * - 768px: Tablet/Mobile transition
  * - 480px: Small mobile devices
- * 
+ *
  * @adjustments
  * - Font size reductions
  * - Padding modifications
@@ -542,10 +553,10 @@ body.dark .hero-content .cta-button:hover {
   }
 
   .feature-card {
-    background: #ffffff;
+    background-color: var(--feature-card-bg);
+    box-shadow: var(--feature-shadow);
     border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     margin: 0 0.5rem;
     -webkit-tap-highlight-color: transparent;
     touch-action: manipulation;
@@ -585,11 +596,10 @@ body.dark .hero-content .cta-button:hover {
   }
 
   .testimonial {
-    background-color: #f8f8f8;
+    background-color: var(--testimonial-bg);
     padding: 1.5rem;
     border-radius: 16px;
     margin: 0;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     -webkit-tap-highlight-color: transparent;
     touch-action: manipulation;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -603,7 +613,7 @@ body.dark .hero-content .cta-button:hover {
     /* Adjusted padding */
     background-attachment: scroll;
     text-align: center;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    background-image: linear-gradient(var(--hero-overlay), var(--hero-overlay)),
       url('../img/index/hero-mobile.jpg');
   }
 
@@ -701,10 +711,9 @@ body.dark .hero-content .cta-button:hover {
   }
 
   .news-card {
-    background: #ffffff;
+    background: var(--news-card-bg);
     border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     margin: 0 0.5rem;
     -webkit-tap-highlight-color: transparent;
     touch-action: manipulation;
@@ -744,66 +753,66 @@ body.dark .hero-content .cta-button:hover {
     font-weight: 500;
   }
 
-  body.dark .feature-card {
-    background-color: #2d2d2d;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  html.dark .feature-card {
+    background-color: var(--feature-card-bg);
+    box-shadow: var(--feature-shadow);
     color: #f2f2f2;
   }
 
-  body.dark .hero-section {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
-      url('../img/index/darkmode-hero-mobile.jpg');
+  html.dark .hero-section {
+    background-image: linear-gradient(var(--hero-overlay), var(--hero-overlay)),
+      url('../img/index/hero.jpg');
   }
 }
 
 @media (min-width: 769px) {
   .hero-section {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    background-image: linear-gradient(var(--hero-overlay), var(--hero-overlay)),
       url('../img/index/hero.jpg');
     background-attachment: fixed;
   }
 
-  body.dark .hero-section {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+  html.dark .hero-section {
+    background-image: linear-gradient(var(--hero-overlay), var(--hero-overlay)),
       url('../img/index/hero.jpg');
   }
 
-  body.dark .feature-card {
-    background-color: #2d2d2d;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  html.dark .feature-card {
+    background-color: var(--feature-card-bg);
+    box-shadow: var(--feature-shadow);
     color: #f2f2f2
   }
 
-  body.dark .feature-card:active {
+  html.dark .feature-card:active {
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
   }
 
-  body.dark .testimonial {
-    background-color: #2d2d2d;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  html.dark .testimonial {
+    background-color: var(--testimonial-bg);
+    box-shadow: var(--feature-shadow);
   }
 
-  body.dark .testimonial:active {
+  html.dark .testimonial:active {
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
   }
 
-  body.dark .news-card {
-    background: #2d2d2d;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  html.dark .news-card {
+    background: var(--news-card-bg);
+    box-shadow: var(--feature-shadow);
   }
 
-  body.dark .news-card:active {
+  html.dark .news-card:active {
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
   }
 
-  body.dark .hero-section {
-    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+  html.dark .hero-section {
+    background: linear-gradient(var(--hero-overlay), var(--hero-overlay)),
       url('../img/index/hero.jpg');
     background-size: cover;
     background-position: center;
   }
 
-  body.dark .hero-section h1 {
+  html.dark .hero-section h1 {
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
   }
 }

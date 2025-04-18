@@ -13,6 +13,27 @@
  * @license BSD-3-Clause
  */
 
+(() => {
+  // Run before anything else loads
+  const darkModeOn =
+    localStorage.getItem('theme') === 'dark' ||
+    (!localStorage.getItem('theme') &&
+      window.matchMedia('(prefers-color-scheme: dark)').matches);
+
+  // Apply theme immediately
+  if (darkModeOn) {
+    document.documentElement.classList.add('dark');
+  }
+
+  // Hide content until theme is applied
+  document.documentElement.style.visibility = 'hidden';
+})();
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Make content visible after theme is applied
+  document.documentElement.style.visibility = 'visible';
+});
+
 /**
  * Core Configuration Module
  *
@@ -30,14 +51,20 @@
  *
  */
 const CONFIG = {
-  /**
-   * Base URL path for the application
-   * Change this to your own path for production
-   */
-  basePath: '/~danielhipskind/Final_Project',
+  basePath: (() => {
+    const scripts = document.getElementsByTagName('script');
+    const path = scripts[scripts.length - 1].src;
+    const jsIndex = path.lastIndexOf('/js/');
+    return jsIndex !== -1 ? path.substring(0, jsIndex + 1) : '/';
+  })(),
 
-  // Valid navigation paths for route handling
-  navigationPaths: ['/', '/about', '/services', '/examples', '/contact'],
+  navigationPaths: [
+    '/webexpressstudio/',
+    '/webexpressstudio/about',
+    '/webexpressstudio/services',
+    '/webexpressstudio/examples',
+    '/webexpressstudio/contact',
+  ],
 };
 
 /**
@@ -217,60 +244,6 @@ const LoadingState = {
 };
 
 /**
- * Server Detection Module
- * Checks if the current server is Apache
- * @async
- * @function isApacheServer
- * @returns {Promise<boolean>} True if Apache server, false otherwise
- */
-async function isApacheServer() {
-  /**
-   * Check if the server is Apache by fetching the current URL
-   * @description
-   * This function uses the Fetch API to make a request to the current URL
-   *
-   * @Note
-   * This is a workaround and may not work in all environments due to CORS
-   * and security policies. In a real-world scenario, you probably won't
-   * need this. Unless you don't know what server you're working with.
-   *
-   * @see https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API
-   * @see https://developer.mozilla.org/en-US/docs/Web/API/Headers/
-   * @see https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
-   *
-   * More info:
-   * @see https://developer.mozilla.org/en-US/docs/Web/API/
-   * @see https://developer.mozilla.org/en-US/docs/Web/HTTP/
-   *
-   */
-  try {
-    const response = await fetch(window.location.href);
-    const server = response.headers.get('server');
-    return server && server.toLowerCase().includes('apache');
-  } catch (error) {
-    console.warn('Server detection failed:', error);
-    return false;
-  }
-}
-
-// Update the routing logic
-isApacheServer().then((isApache) => {
-  // Only handle routing if not on Apache
-  if (!isApache) {
-    // Check if the current path is in the navigation paths and create a variable
-    const path = window.location.pathname.replace(CONFIG.basePath, '');
-    // Handle 404
-    if (!CONFIG.navigationPaths.includes(path) && path !== '/404.html') {
-      window.location.href = `${CONFIG.basePath}/404.html`;
-    }
-    // Handle Index
-    if (path === '/' || path === '') {
-      window.location.href = `${CONFIG.basePath}/index.html`;
-    }
-  }
-});
-
-/**
  * Theme Management Module
  *
  * @description
@@ -290,34 +263,33 @@ isApacheServer().then((isApache) => {
  * @property {string} storedTheme - User's stored theme preference
  */
 const initializeTheme = () => {
-  // Check if elements exist and set up variables
   const themeToggle = document.querySelector('.theme-toggle');
-  const storedTheme = localStorage.getItem('theme');
 
-  // Apply theme without RAF to prevent flash
-  if (
-    storedTheme === 'dark' ||
-    (!storedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)
-  ) {
-    document.documentElement.classList.add('dark');
-    document.body.classList.add('dark');
+  // Default to dark mode
+  if (!localStorage.getItem('theme')) {
+    localStorage.setItem('theme', 'dark');
   }
 
-  // Set up theme toggle button
   if (themeToggle) {
-    // Set initial state based on stored theme
-    themeToggle.addEventListener('click', () => {
-      // Toggle theme classes
-      document.documentElement.classList.toggle('dark');
+    // Update icon based on current theme
+    updateThemeIcon(document.documentElement.classList.contains('dark'));
 
-      // Toggle button state
-      document.body.classList.toggle('dark');
-      // Update localStorage with the current theme
-      localStorage.setItem(
-        'theme',
-        document.body.classList.contains('dark') ? 'dark' : 'light'
-      );
+    themeToggle.addEventListener('click', () => {
+      const isDark = document.documentElement.classList.contains('dark');
+      document.documentElement.classList.toggle('dark');
+      localStorage.setItem('theme', isDark ? 'light' : 'dark');
+      updateThemeIcon(!isDark);
     });
+  }
+};
+
+const updateThemeIcon = (isDark) => {
+  const themeToggle = document.querySelector('.theme-toggle');
+  if (themeToggle) {
+    const iconSrc = isDark
+      ? './assets/img/icons/sun.svg'
+      : './assets/img/icons/moon.svg';
+    themeToggle.querySelector('img').src = iconSrc;
   }
 };
 
@@ -698,7 +670,7 @@ function loadHeroImage() {
   if (!heroSection) return; // Guard clause
 
   const img = new Image();
-  img.src = './img/index/hero.jpg';
+  img.src = './assets/img/index/hero.jpg';
 
   // Add loading attribute
   heroSection.setAttribute('aria-busy', 'true');
@@ -886,7 +858,7 @@ const initializePopupNotification = () => {
     padding: 0;
     margin-bottom: 1.5rem;
   }
-  
+
   .popup-list li {
     position: relative;
     padding-left: 1.5rem;
@@ -894,7 +866,7 @@ const initializePopupNotification = () => {
     line-height: 1.5;
     text-align: left;
   }
-  
+
   .popup-list li::before {
     content: ">";
     position: absolute;
@@ -903,7 +875,7 @@ const initializePopupNotification = () => {
     font-weight: bold;
     transition: color 0.3s ease;
   }
-  
+
   .popup.dark-theme .popup-list li::before {
     color: var(--dark-primary);
   }
@@ -922,15 +894,19 @@ const initializePopupNotification = () => {
   };
 
   // Listen for system theme changes
-  prefersDark.addListener(handleThemeChange);
+  prefersDark.addEventListener('change', handleThemeChange);
 
   // Apply initial theme
   handleThemeChange(prefersDark);
 
   // Clean up listener when popup is closed
   const closePopup = () => {
-    prefersDark.removeListener(handleThemeChange);
-    document.getElementById('popupOverlay').style.display = 'none';
+    prefersDark.removeEventListener('change', handleThemeChange);
+    const overlay = document.getElementById('popupOverlay');
+    if (overlay) {
+      overlay.style.display = 'none';
+      overlay.remove();
+    }
     sessionStorage.setItem('popupShown', 'true');
     sessionStorage.setItem('popupExpires', Date.now() + 30 * 60 * 1000);
   };
@@ -970,7 +946,9 @@ const initializePopupNotification = () => {
       event.target.id === 'popupOverlay' ||
       event.target.id === 'popupAccept'
     ) {
+      event.preventDefault();
       closePopup();
+      return false;
     }
   });
 };
@@ -996,20 +974,14 @@ const initializePopupNotification = () => {
  *
  */
 document.addEventListener('DOMContentLoaded', () => {
-  // Initialize popup first, before any other initialization
+  document.documentElement.style.visibility = 'visible';
+
+  initializeTheme();
   initializePopupNotification();
-
-  // Add a slight delay for other initializations
-  setTimeout(() => {
-    initializeTheme();
-    initializeNavigation();
-    initializeForms();
-    initializeThemeSlider();
-    initializeComparisonTable();
-    initializeCookieConsent();
-    loadHeroImage();
-
-    // Remove preload class for transitions
-    document.documentElement.classList.remove('preload');
-  }, 100);
+  initializeNavigation();
+  initializeForms();
+  initializeThemeSlider();
+  initializeComparisonTable();
+  initializeCookieConsent();
+  loadHeroImage();
 });

@@ -1,14 +1,36 @@
 <!--DOCType HTML-->
 <!DOCTYPE html>
 
-<!-- Set language to English and preload, preloaded CSS-->
+
 <html lang="en" class="preload">
 
 <head>
+  <script>
+    (function () {
+      // Force dark mode first to prevent flash
+      document.documentElement.classList.add('preload', 'dark');
 
-  <!-- Base URL for relative links -->
-  <base href="/~danielhipskind/Final_Project/">
+      // Check stored theme after forcing dark
+      const storedTheme = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
+      // Only change if explicitly set to light
+      if (storedTheme === 'light') {
+        document.documentElement.classList.remove('dark');
+      } else if (!storedTheme) {
+        // If no stored theme, save the default (dark)
+        localStorage.setItem('theme', 'dark');
+      }
+
+      // Remove preload class after a brief delay
+      window.addEventListener('DOMContentLoaded', () => {
+        setTimeout(() => {
+          document.documentElement.classList.remove('preload');
+        }, 100);
+      });
+    })();
+  </script>
+  <script src="./assets/js/script.js" defer></script>
   <!-- Meta Tags -->
   <meta charset="UTF-8">
 
@@ -29,43 +51,23 @@
 
   <!-- Microsoft Tags -->
   <meta name="msapplication-TileColor" content="#04aa6d">
-  <meta name="msapplication-TileImage" content="./img/logo/WebExpressStudio.png">
-  <meta name="msapplication-config" content="./img/logo/WebExpressStudio.png">
-
-  <!-- Twitter Tags -->
+  <meta name="msapplication-TileImage" content="./assets/img/logo/WebExpressStudio.png">
+  <meta name="msapplication-config" content="./assets/img/logo/WebExpressStudio.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@Web Express Studio">
   <meta name="twitter:title" content="Web Express Studio - Open Source Website Builder">
   <meta name="twitter:description"
     content="Create, customize, and deploy your dream website easily with Web Express Studio.">
-  <meta name="twitter:image" content="./img/logo/WebExpressStudio.png">
+  <meta name="twitter:image" content="./assets/img/logo/WebExpressStudio.png">
 
   <!-- Open Graph Tags -->
   <meta property="og:title" content="Web Express Studio - Open Source Website Builder">
   <meta property="og:description"
     content="Create, customize, and deploy your dream website easily with Web Express Studio.">
-  <meta property="og:image" content="./img/logo/WebExpressStudio.png">
+  <meta property="og:image" content="./assets/img/logo/WebExpressStudio.png">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Web Express Studio">
   <meta property="og:locale" content="en_US">
-
-  <!-- CORS (Cross-Origin Resource Sharing) Permissions Policy
-  This policy restricts the use of certain features to improve security and privacy -->
-  <meta http-equiv="Permissions-Policy"
-    content="browsing-topics=(), interest-cohort=(), join-ad-interest-group=(), run-ad-auction=(), attribution-reporting=(), conversion-measurement=(), private-aggregation=(), shared-storage=(), private-state-token-issuance=(), private-state-token-redemption=()">
-  <meta http-equiv="Cross-Origin-Opener-Policy" content="same-origin">
-  <meta http-equiv="Cross-Origin-Embedder-Policy" content="require-corp">
-  <meta http-equiv="Cross-Origin-Resource-Policy" content="same-site">
-
-  <!-- Content Security Policy (CSP)
-  This policy helps to prevent XSS attacks by controlling the sources from which content can be loaded -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: http:; 
-            script-src 'self' 'unsafe-inline' 'unsafe-eval' https: http:; 
-            style-src 'self' 'unsafe-inline' https: http:; 
-            img-src 'self' data: https: http:; 
-            font-src 'self' https: http:; 
-            frame-src 'self' https: http:;
-            connect-src 'self' https: http:">
 
   <!-- Add font preconnect -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -75,22 +77,22 @@
     rel="stylesheet">
 
   <!-- Favicon and Apple Touch Icons -->
-  <link rel="icon" type="image/svg+xml" href="./img/logo/WebExpressStudio.svg">
-  <link rel="stylesheet" type="text/css" href="css/main.css">
-  <link rel="stylesheet" type="text/css" href="css/index.css">
-  <link rel="alternate icon" type="image/png" href="./img/logo/WebExpressStudio.png" />
-  <link rel="shortcut icon" href="./img/logo/WebExpressStudio.ico" type="image/x-icon" />
+  <link rel="icon" type="image/svg+xml" href="./assets/img/logo/WebExpressStudio.svg">
+  <link rel="stylesheet" type="text/css" href="./assets/css/main.css">
+  <link rel="stylesheet" type="text/css" href="./assets/css/index.css">
+  <link rel="alternate icon" type="image/png" href="./assets/img/logo/WebExpressStudio.png" />
+  <link rel="shortcut icon" href="./assets/img/logo/WebExpressStudio.ico" type="image/x-icon" />
 
   <!-- Multiple Apple "touch" icons for different devices -->
-  <link rel="apple-touch-icon" href="./img/logo/apple-touch-icon.png" />
-  <link rel="apple-touch-icon" sizes="57x57" href="./img/logo/apple-touch-icon-57x57.png" />
-  <link rel="apple-touch-icon" sizes="72x72" href="./img/logo/apple-touch-icon-72x72.png" />
-  <link rel="apple-touch-icon" sizes="76x76" href="./img/logo/apple-touch-icon-76x76.png" />
-  <link rel="apple-touch-icon" sizes="114x114" href="./img/logo/apple-touch-icon-114x114.png" />
-  <link rel="apple-touch-icon" sizes="120x120" href="./img/logo/apple-touch-icon-120x120.png" />
-  <link rel="apple-touch-icon" sizes="144x144" href="./img/logo/apple-touch-icon-144x144.png" />
-  <link rel="apple-touch-icon" sizes="152x152" href="./img/logo/apple-touch-icon-152x152.png" />
-  <link rel="apple-touch-icon" sizes="180x180" href="./img/logo/apple-touch-icon-180x180.png" />
+  <link rel="apple-touch-icon" href="./assets/img/logo/apple-touch-icon.png" />
+  <link rel="apple-touch-icon" sizes="57x57" href="./assets/img/logo/apple-touch-icon-57x57.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="./assets/img/logo/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="76x76" href="./assets/img/logo/apple-touch-icon-76x76.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="./assets/img/logo/apple-touch-icon-114x114.png" />
+  <link rel="apple-touch-icon" sizes="120x120" href="./assets/img/logo/apple-touch-icon-120x120.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="./assets/img/logo/apple-touch-icon-144x144.png" />
+  <link rel="apple-touch-icon" sizes="152x152" href="./assets/img/logo/apple-touch-icon-152x152.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="./assets/img/logo/apple-touch-icon-180x180.png" />
 
   <!-- Site name-->
   <title>Web Express Studio - Open Source Website Builder</title>
@@ -122,8 +124,9 @@
         <!-- Company Logo -->
         <div class="logo">
           <a href="./">
-            <img src="./img/logo/WebExpressStudio-Light.svg" alt="Web Express Studio" class="logo-image light-mode">
-            <img src="./img/logo/WebExpressStudio.svg" alt="Web Express Studio" class="logo-image dark-mode">
+            <img src="./assets/img/logo/WebExpressStudio-Light.svg" alt="Web Express Studio"
+              class="logo-image light-mode">
+            <img src="./assets/img/logo/WebExpressStudio.svg" alt="Web Express Studio" class="logo-image dark-mode">
           </a>
         </div>
 
@@ -149,7 +152,7 @@
 
           <!-- Theme Toggle -->
           <button type="button" class="theme-toggle" aria-label="Toggle dark mode" data-theme-toggle>
-            <img src="./img/icons/sun.svg" alt="Theme Toggle" class="theme-icon" role="presentation">
+            <img src="./assets/img/icons/sun.svg" alt="Theme Toggle" class="theme-icon" role="presentation">
           </button>
 
           <!-- Authentication Buttons -->
@@ -182,19 +185,19 @@
     <section class="features-section" aria-labelledby="features-title">
       <h2 id="features-title" class="visually-hidden">Our Features</h2>
       <section class="feature-card">
-        <img src="./img/index/design.svg" alt="Design icon" />
+        <img src="./assets/img/index/design.svg" alt="Design icon" />
         <h3>Smart Design Tools</h3>
         <p>Choose between our intuitive visual editor or write clean code directly - the power is in your hands.</p>
       </section>
 
       <section class="feature-card">
-        <img src="./img/index/hosting.svg" alt="Hosting icon" />
+        <img src="./assets/img/index/hosting.svg" alt="Hosting icon" />
         <h3>Simple Hosting</h3>
         <p>Deploy your site instantly with our one-click hosting solution or export to your preferred platform.</p>
       </section>
 
       <section class="feature-card">
-        <img src="./img/index/coding.svg" alt="Code icon" />
+        <img src="./assets/img/index/coding.svg" alt="Code icon" />
         <h3>Open Source</h3>
         <p>Built on open-source principles, allowing complete customization and community contributions.</p>
       </section>
@@ -205,7 +208,7 @@
       <h2>Latest Updates</h2>
       <div class="news-grid">
         <article class="news-card">
-          <img src="./img/index/news1.jpg" alt="Visual Editor Update" />
+          <img src="./assets/img/index/news1.jpg" alt="Visual Editor Update" />
           <div class="news-content">
             <h3>AI-Powered Visual Editor</h3>
             <p>Our latest update brings intelligent design suggestions and automated responsive layouts.</p>
@@ -213,7 +216,7 @@
           </div>
         </article>
         <article class="news-card">
-          <img src="./img/index/news2.jpg" alt="Community Milestone" />
+          <img src="./assets/img/index/news2.jpg" alt="Community Milestone" />
           <div class="news-content">
             <h3>10k Developer Milestone</h3>
             <p>Our community has grown to 10,000 active developers! Check out our latest community features.</p>
@@ -304,19 +307,19 @@
     <!-- Social media links -->
     <div class="social-media-icons" aria-label="Social media links">
       <a href="404" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram">
-        <img src="./img/icons/instagram.svg" alt="Instagram" role="presentation">
+        <img src="./assets/img/icons/instagram.svg" alt="Instagram" role="presentation">
       </a>
       <a href="404" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Facebook">
-        <img src="./img/icons/facebook.svg" alt="Facebook" role="presentation">
+        <img src="./assets/img/icons/facebook.svg" alt="Facebook" role="presentation">
       </a>
       <a href="404" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Twitter">
-        <img src="./img/icons/Twitter.svg" alt="Twitter" role="presentation">
+        <img src="./assets/img/icons/Twitter.svg" alt="Twitter" role="presentation">
       </a>
       <a href="404" target="_blank" rel="noopener noreferrer" aria-label="Follow us on LinkedIn">
-        <img src="./img/icons/linkedin.svg" alt="LinkedIn" role="presentation">
+        <img src="./assets/img/icons/linkedin.svg" alt="LinkedIn" role="presentation">
       </a>
       <a href="404" target="_blank" rel="noopener noreferrer" aria-label="Follow us on GitHub">
-        <img src="./img/icons/github.svg" alt="GitHub" role="presentation">
+        <img src="./assets/img/icons/github.svg" alt="GitHub" role="presentation">
       </a>
     </div>
 
@@ -329,7 +332,6 @@
         project</p>
     </div>
   </footer>
-  <script type="application/javascript" src="./js/script.js"></script>
 </body>
 
 </html>

@@ -4,7 +4,7 @@
  *
  * @version 1.0.0
  * @author Daniel Hipskind
- * 
+ *
  * @sections
  * - CSS Variables & Theme
  * - Base Elements
@@ -21,37 +21,42 @@
 /**
  * Global CSS Variables
  * Core design tokens and theme values
- * 
+ *
  * @colors
  * --primary-color: Main brand green
  * --primary-hover: Darker shade for interactions
  * --text-color: Primary text color
  * --text-muted: Secondary text color
- * 
+ *
  * @layout
  * --max-width: Maximum content width
  * --spacing-*: Consistent spacing units
  * --radius-*: Border radius variants
- * 
+ *
  * @effects
  * --shadow-*: Box shadow variants
  */
 
-.preload * {
-  transition: none !important;
+/* Add transitions back after load */
+html:not(.preload) * {
+  transition: background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease,
+    opacity 0.3s ease !important;
 }
 
+/* Core theme variables - Set dark theme as default */
 :root {
-  /* Colors */
+  /* Colors - Default to dark theme */
   --primary-color: #04aa6d;
   --primary-hover: #038756;
-  --text-color: #111;
-  --text-muted: #333;
-  --bg-color: #ffffff;
-  --bg-alt: #f2f2f2;
-  --border-color: #eee;
+  --text-color: #f5f5f5;
+  --text-muted: #888;
+  --bg-color: #1a1a1a;
+  --bg-alt: #2d2d2d;
+  --border-color: #333;
 
-  /* Shadows */
+  /* Keep existing shadow, radius, layout variables */
   --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
   --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
   --shadow-lg: 0 8px 15px rgba(0, 0, 0, 0.1);
@@ -69,16 +74,21 @@
   --spacing-sm: 0.5rem;
   --spacing-md: 1rem;
   --spacing-lg: 2rem;
-
-  /* Dark Mode */
-  --dark-bg: #1a1a1a;
-  --dark-text: #f2f2f2;
-  --dark-primary: #038756;
-  --dark-primary-hover: #038756;
-  --dark-border: #333333;
-  --dark-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
+/* Light theme overrides */
+html:not(.dark) {
+  --bg-color: #ffffff;
+  --text-color: #333333;
+  --text-muted: #666;
+  --bg-alt: #f2f2f2;
+  --border-color: #eee;
+}
+
+/* Prevent transitions during page load */
+.preload * {
+  transition: none !important;
+}
 
 /**
  * Base Reset & Global Styles
@@ -94,7 +104,7 @@
   color-scheme: dark;
 }
 
-body.dark {
+html.dark {
   background-color: #1a1a1a;
   color: #f5f5f5;
 }
@@ -111,11 +121,11 @@ main {
 /**
  * Typography System
  * Font families, sizes, and text styles
- * 
+ *
  * @fonts
  * - Primary: Poppins
  * - Headers: Space Grotesk
- * 
+ *
  * @sizes
  * h1: 2rem aka 32px
  * h2: 1.75rem aka 28px
@@ -128,6 +138,7 @@ body {
   line-height: 1.1;
   background-color: var(--bg-color);
   padding-top: 90px;
+  color: var(--text-color);
 }
 
 h1,
@@ -180,20 +191,20 @@ header {
 /**
  * Navigation Components
  * Header and navigation structure
- * 
+ *
  * @structure
  * - Fixed header
  * - Logo placement
  * - Navigation links
  * - Authentication buttons
  * - Mobile hamburger menu
- * 
+ *
  * @components
  * - .navbar: Main navigation container
  * - .nav-links: Navigation items list
  * - .hamburger: Mobile menu trigger
  * - .auth-buttons: Login/Signup controls
- * 
+ *
  * @states
  * - .active: Mobile menu open state
  * - [aria-current]: Current page indicator
@@ -244,7 +255,7 @@ header {
 }
 
 .nav-links a {
-  color: #333;
+  color: var(--text-color);
   text-decoration: none;
   font-weight: 500;
   transition: color 0.3s ease;
@@ -309,12 +320,12 @@ header {
 /**
  * Interactive Elements
  * Buttons, links, and hover states
- * 
+ *
  * @components
  * - .cta-button: Call-to-action buttons
  * - .nav-links: Navigation items
  * - .social-media-icons: Social media links
- * 
+ *
  * @animations
  * - Transform on hover
  * - Smooth transitions
@@ -361,17 +372,17 @@ header {
 /**
  * Cookie Consent Banner
  * Privacy compliance notification
- * 
+ *
  * @structure
  * - Fixed position banner
  * - Content container
  * - Action buttons
- * 
+ *
  * @components
  * - .cookie-banner: Main container
  * - .cookie-content: Text and controls
  * - .cookie-buttons: Action buttons
- * 
+ *
  * @states
  * - .hidden: Banner hidden state
  * - .accept/.decline: Button variants
@@ -437,13 +448,13 @@ header {
 /**
  * Utility Classes
  * Reusable helper classes
- * 
+ *
  * @classes
  * - .hidden: Hide elements
  * - .visually-hidden: Accessibility hiding
  * - .container: Content wrapper
  * - .preload: Prevent transitions
- * 
+ *
  * @animations
  * - @keyframes pulse: Heartbeat effect
  * - @keyframes fadeInUp: Entry animation
@@ -524,19 +535,19 @@ header {
 /**
  * Theme Toggle System
  * Light/Dark mode implementation
- * 
+ *
  * @features
  * - Theme persistence
  * - Smooth transitions
  * - Icon switching
- * 
+ *
  * @components
  * - .theme-toggle: Toggle button
  * - .theme-icon: Theme indicator
  * - .theme-transition: Transition handler
- * 
+ *
  * @states
- * - body.dark: Dark theme active
+ * - html.dark: Dark theme active
  * - .preload: Prevent initial transition
  */
 
@@ -565,14 +576,14 @@ header {
 /**
  * Footer Component
  * Main site footer with navigation and social links
- * 
+ *
  * @structure
  * - Footer container
  * - Navigation grid
  * - Link columns
  * - Social media icons
  * - Copyright bar
- * 
+ *
  * @components
  * - .footer-nav: Navigation grid
  * - .footer-links: Link columns
@@ -739,7 +750,7 @@ header {
 /**
  * Dark Mode Styles
  * Theme overrides for dark color scheme
- * 
+ *
  * @features
  * - Color inversions
  * - Background changes
@@ -751,162 +762,162 @@ body:not(.dark) .theme-toggle .theme-icon {
   filter: invert(0%);
 }
 
-body.dark header {
+html.dark header {
   background-color: #1a1a1a;
-  color: #f5f5f5;
+  color: var(--text-color);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-body.dark ::selection {
+html.dark ::selection {
   background-color: rgba(4, 170, 109, 0.5);
   color: inherit;
 }
 
-body.dark ::-moz-selection {
+html.dark ::-moz-selection {
   background-color: rgba(4, 170, 109, 0.5);
   color: inherit;
 }
 
-body.dark .theme-toggle .theme-icon {
+html.dark .theme-toggle .theme-icon {
   filter: invert(100%) brightness(1.5);
 }
 
 /* Dark mode settings */
-body.dark .logo-image.light-mode {
+html.dark .logo-image.light-mode {
   display: none;
 }
 
-body.dark .logo-image.dark-mode {
+html.dark .logo-image.dark-mode {
   display: block;
 }
 
-body.dark .logo a,
-body.dark .nav-links a,
-body.dark .theme-toggle {
+html.dark .logo a,
+html.dark .nav-links a,
+html.dark .theme-toggle {
   color: #f5f5f5;
 }
 
-body.dark .login-btn {
+html.dark .login-btn {
   border-color: #f5f5f5;
   color: #f5f5f5;
 }
 
-body.dark .footer {
-  background-color: #1a1a1a;
-  border-top: 1px solid #2d2d2d;
+html.dark .footer {
+  background-color: var(--bg-alt);
+  border-color: var(--border-color);
 }
 
-body.dark .footer-links h4 {
+html.dark .footer-links h4 {
   color: #f5f5f5;
 }
 
-body.dark .footer-links a {
+html.dark .footer-links a {
   color: #888;
 }
 
-body.dark .footer-info {
+html.dark .footer-info {
   border-top: 1px solid #2d2d2d;
   color: #888;
 }
 
-body.dark .social-media-icons a {
+html.dark .social-media-icons a {
   color: #f5f5f5;
 }
 
-body.dark .social-media-icons a:hover {
+html.dark .social-media-icons a:hover {
   color: #04aa6d;
 }
 
-body.dark .social-media-icons img {
+html.dark .social-media-icons img {
   filter: brightness(0) invert(1);
 }
 
 /* Remove this if you are using the theme */
-body.dark .footer-bottom {
+html.dark .footer-bottom {
   background-color: #1a1a1a;
   border-top-color: #2d2d2d;
 }
 
 /* Remove this if you are using the theme */
-body.dark .footer-bottom .credit {
+html.dark .footer-bottom .credit {
   color: #ddd;
 }
 
 /* Remove this if you are using the theme */
-body.dark .footer-bottom .credit a {
+html.dark .footer-bottom .credit a {
   color: #04aa6d;
 }
 
 /* Remove this if you are using the theme */
-body.dark .footer-bottom .version {
+html.dark .footer-bottom .version {
   color: #888;
 }
 
-body.dark .footer-links a {
+html.dark .footer-links a {
   color: #888;
 }
 
-body.dark .footer-links a:hover {
+html.dark .footer-links a:hover {
   color: #04aa6d;
 }
 
-body.dark {
+html.dark {
   background-color: #1a1a1a;
   color: #f5f5f5;
 }
 
-body.dark .cta-button {
+html.dark .cta-button {
   background-color: #1a1a1a;
   color: #04aa6d;
   border: 2px solid #04aa6d;
 }
 
-body.dark .cta-button:hover {
+html.dark .cta-button:hover {
   background-color: #04aa6d;
   color: #1a1a1a;
   border-color: transparent;
 }
 
-body.dark .cookie-banner {
+html.dark .cookie-banner {
   background: #2d2d2d;
   box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
 }
 
-body.dark .cookie-btn.decline {
+html.dark .cookie-btn.decline {
   background: #404040;
   color: #f5f5f5;
 }
 
-body.dark .cta-section {
+html.dark .cta-section {
   background-color: #038756;
 }
 
-body.dark .cta-button {
+html.dark .cta-button {
   background-color: #1a1a1a;
   color: #04aa6d;
   border: 2px solid #04aa6d;
 }
 
-body.dark .cta-button:hover {
+html.dark .cta-button:hover {
   background-color: #04aa6d;
   color: #1a1a1a;
   border-color: transparent;
   box-shadow: 0 4px 12px rgba(4, 170, 109, 0.3);
 }
 
-body.dark .hamburger-inner,
-body.dark .hamburger-inner::before,
-body.dark .hamburger-inner::after {
+html.dark .hamburger-inner,
+html.dark .hamburger-inner::before,
+html.dark .hamburger-inner::after {
   background-color: #f5f5f5;
 }
 
-body.dark .hamburger.active .hamburger-inner,
-body.dark .hamburger.active .hamburger-inner::before,
-body.dark .hamburger.active .hamburger-inner::after {
+html.dark .hamburger.active .hamburger-inner,
+html.dark .hamburger.active .hamburger-inner::before,
+html.dark .hamburger.active .hamburger-inner::after {
   background-color: #f5f5f5;
 }
 
-body.dark .social-media-icons a:hover {
+html.dark .social-media-icons a:hover {
   background-color: rgba(4, 170, 109, 0.2);
   box-shadow: 0 4px 12px rgba(4, 170, 109, 0.2);
 }
@@ -914,11 +925,11 @@ body.dark .social-media-icons a:hover {
 /**
  * Responsive Design
  * Mobile and tablet adaptations
- * 
+ *
  * @breakpoints
  * - 768px: Main mobile breakpoint
  * - 480px: Small mobile devices
- * 
+ *
  * @adjustments
  * - Stack navigation
  * - Adjust spacing
@@ -1197,7 +1208,7 @@ body.dark .social-media-icons a:hover {
     margin: 0 0.25rem;
   }
 
-  body.dark .nav-links {
+  html.dark .nav-links {
     background: #1a1a1a;
     border-right: 1px solid #2d2d2d;
     height: 100vh;

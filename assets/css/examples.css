@@ -5,14 +5,14 @@
  * @version 1.0.0
  * @author Daniel Hipskind
  * @requires main.css
- * 
+ *
  * @sections
  * - Hero Banner
- * - Popular Community Themes 
+ * - Popular Community Themes
  * - Premium Theme Slider
  * - Resources & Downloads
  * - Client Showcase
- * 
+ *
  * @components
  * - Project Cards
  * - Theme Cards
@@ -20,7 +20,7 @@
  * - Client Cards
  * - Navigation Dots
  * - Buttons
- * 
+ *
  * @breakpoints
  * - 768px: Tablet & Mobile
  * - 480px: Small Mobile
@@ -28,6 +28,30 @@
 
 /* Import base styles */
 @import url('./main.css');
+
+/* Set dark theme as default */
+:root {
+  --example-card-bg: #2d2d2d;
+  --example-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  --example-hover-bg: #363636;
+  --example-border: #404040;
+  --hero-overlay: rgba(0, 0, 0, 0.6);
+  --client-logo-filter: grayscale(100%) brightness(1.2);
+  --theme-slider-bg: #2d2d2d;
+  --resource-icon-filter: brightness(0) invert(1);
+}
+
+/* Light theme overrides */
+html:not(.dark) {
+  --example-card-bg: #ffffff;
+  --example-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --example-hover-bg: #f8f8f8;
+  --example-border: #eee;
+  --hero-overlay: rgba(0, 0, 0, 0.2);
+  --client-logo-filter: grayscale(100%);
+  --theme-slider-bg: #f8f8f8;
+  --resource-icon-filter: none;
+}
 
 /**
  * Global Layout Styles
@@ -40,10 +64,10 @@
 
 .client-card,
 .resource-card {
-  background: #f8f8f8;
+  background: var(--example-card-bg);
   padding: 2rem;
   border-radius: var(--radius-md);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--example-shadow);
   transition: all 0.3s ease;
 }
 
@@ -128,7 +152,7 @@ p {
   justify-content: center;
   text-align: center;
   color: #fff;
-  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.0)),
+  background: linear-gradient(var(--hero-overlay), var(--hero-overlay)),
     url('../img/examples/hero.jpg');
   background-size: cover;
   background-position: center;
@@ -174,7 +198,7 @@ p {
 }
 
 /**
- * Popular community theme grid Section 
+ * Popular community theme grid Section
  * Matching index.css news section style
  */
 .featured-projects {
@@ -190,7 +214,7 @@ p {
 }
 
 .project-card {
-  background: var(--bg-alt);
+  background: var(--example-card-bg);
   border-radius: var(--radius-lg);
   overflow: hidden;
   transition: transform 0.3s ease;
@@ -279,7 +303,7 @@ p {
 
 
 /**
- * Theme Slider Section 
+ * Theme Slider Section
  * Premium themes carousel functionality
  */
 .theme-showcase {
@@ -295,7 +319,7 @@ p {
   position: relative;
   width: 100%;
   overflow: hidden;
-  background: #f8f8f8;
+  background: var(--theme-slider-bg);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-md);
   padding-top: 0.5rem;
@@ -319,7 +343,7 @@ p {
   transform: translateX(100%);
   transition: all 0.8s ease;
   padding: 1.5rem;
-  background: var(--bg-alt);
+  background: var(--example-card-bg);
   border-radius: var(--radius-lg);
 }
 
@@ -435,6 +459,7 @@ p {
   height: 48px;
   margin: 0 auto 1.5rem;
   display: block;
+  filter: var(--resource-icon-filter);
 }
 
 .resource-card h3 {
@@ -474,7 +499,7 @@ p {
   display: block;
   transition: transform 0.3s ease;
   padding: 1rem;
-  filter: grayscale(100%);
+  filter: var(--client-logo-filter);
 }
 
 .client-card:hover .client-logo {
@@ -518,143 +543,6 @@ p {
 }
 
 /**
- * Dark Mode Styles
- * Theme overrides for dark color scheme
- */
-body.dark h1,
-body.dark h2,
-body.dark h3,
-body.dark p {
-  color: #f2f2f2;
-}
-
-body.dark .text-muted {
-  color: #c9c9c9;
-}
-
-body.dark .project-card,
-body.dark .theme-card,
-body.dark .client-card,
-body.dark .resource-card {
-  background: #2d2d2d;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-}
-
-body.dark .project-card:hover,
-body.dark .theme-card:hover,
-body.dark .client-card:hover,
-body.dark .resource-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  background: #2a2a2a;
-}
-
-body.dark .client-content h3,
-body.dark .resource-card h3 {
-  color: #f5f5f5;
-}
-
-body.dark .tag {
-  background: var(--primary-color);
-  color: #f5f5f5;
-}
-
-body.dark .examples-hero {
-  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)),
-    url('../img/examples/hero.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-body.dark .examples-hero h1,
-body.dark .examples-hero p {
-  color: var(--primary-color);
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-}
-
-body.dark .tag:hover {
-  background: var(--primary-hover);
-  box-shadow: 0 2px 8px rgba(103, 129, 120, 0.2);
-}
-
-body.dark .stat strong {
-  color: #f5f5f5;
-}
-
-body.dark .resources-section {
-  background-color: var(--primary-color);
-}
-
-body.dark .download-btn,
-body.dark .buy-pro,
-body.dark .case-study-link {
-  background: var(--primary-color);
-  color: #f5f5f5;
-}
-
-body.dark .view-project-btn {
-  color: #f5f5f5;
-}
-
-body.dark .view-project-btn::after {
-  color: var(--primary-color);
-}
-
-body.dark .view-project-btn:hover {
-  color: var(--primary-color);
-}
-
-body.dark .download-btn:hover,
-body.dark .buy-pro:hover,
-body.dark .case-study-link:hover {
-  background: #025f3b;
-  box-shadow: 0 4px 12px rgba(4, 170, 109, 0.3);
-}
-
-body.dark .resource-card {
-  background: #2d2d2d;
-}
-
-body.dark .resource-icon {
-  filter: brightness(0) invert(1);
-}
-
-body.dark .themes-slider {
-  background: #2d2d2d;
-}
-
-body.dark .theme-image {
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-}
-
-body.dark .nav-dot.active {
-  background: var(--primary-color);
-}
-
-body.dark .slider-controls {
-  color: #f5f5f5;
-}
-
-body.dark .theme-card {
-  background: #2d2d2d;
-}
-
-body.dark .client-logo {
-  filter: grayscale(100%) brightness(1.2);
-}
-
-/* Dark mode transitions */
-.project-card,
-.theme-card,
-.client-card,
-.resource-card,
-.tag,
-.nav-dot {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/**
  * Mobile Responsive Styles
  * Comprehensive mobile optimizations
  */
@@ -680,7 +568,7 @@ body.dark .client-logo {
     justify-content: center;
     text-align: center;
     color: #fff;
-    background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.5)),
+    background: linear-gradient(var(--hero-overlay), var(--hero-overlay)),
       url('../img/examples/hero.jpg');
     background-size: cover;
     background-position: center;
@@ -689,8 +577,8 @@ body.dark .client-logo {
     padding: 3rem 1rem;
   }
 
-  body.dark .examples-hero {
-    background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.5)),
+  html.dark .examples-hero {
+    background: linear-gradient(var(--hero-overlay), var(--hero-overlay)),
       url('../img/examples/hero.jpg');
     background-size: cover;
     background-position: center;
