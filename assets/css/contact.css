@@ -194,21 +194,10 @@ span,
 }
 
 .directions-link {
-  background: #f8f8f8;
+  background: var(--contact-card-bg);
   padding: 1rem;
   text-align: center;
-  border-top: 1px solid #eee;
-}
-
-.directions-link a {
-  color: var(--primary-color);
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.3s ease;
-}
-
-.directions-link a:hover {
-  color: #038756;
+  border-top: 1px solid var(--contact-border);
 }
 
 .support-info-section {
@@ -400,6 +389,11 @@ span,
 
 html.dark .emergency-note {
   color: #aaa;
+}
+
+html.dark .directions-link {
+  background: var(--contact-card-bg);
+  border-top: 1px solid var(--contact-border);
 }
 
 html.dark .notice p,

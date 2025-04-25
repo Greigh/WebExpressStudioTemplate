@@ -15,6 +15,7 @@
 
 (() => {
   // Run before anything else loads
+  document.documentElement.style.visibility = 'hidden';
   const darkModeOn =
     localStorage.getItem('theme') === 'dark' ||
     (!localStorage.getItem('theme') &&
@@ -24,9 +25,6 @@
   if (darkModeOn) {
     document.documentElement.classList.add('dark');
   }
-
-  // Hide content until theme is applied
-  document.documentElement.style.visibility = 'hidden';
 })();
 
 document.addEventListener('DOMContentLoaded', () => {

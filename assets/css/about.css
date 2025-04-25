@@ -263,6 +263,16 @@ html:not(.dark) {
   height: 50px;
 }
 
+.milestone {
+  background: var(--about-card-bg);
+  color: var(--about-text);
+}
+
+html.dark .milestone {
+  background: var(--about-card-bg);
+  color: var(--about-text);
+}
+
 .milestone img {
   width: 50px;
   height: 50px;

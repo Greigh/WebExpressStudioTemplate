@@ -111,6 +111,11 @@ html.dark {
 
 html {
   scroll-behavior: smooth;
+  background-color: #1a1a1a;
+}
+
+html:not(.dark) {
+  background-color: #ffffff;
 }
 
 main {
