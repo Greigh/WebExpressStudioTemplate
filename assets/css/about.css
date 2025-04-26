@@ -110,7 +110,6 @@ html:not(.dark) {
 
 .award,
 .milestone {
-  background: #f8f8f8;
   padding: 2rem;
   border-radius: var(--radius-md);
   text-align: center;
@@ -264,11 +263,6 @@ html:not(.dark) {
 }
 
 .milestone {
-  background: var(--about-card-bg);
-  color: var(--about-text);
-}
-
-html.dark .milestone {
   background: var(--about-card-bg);
   color: var(--about-text);
 }
@@ -468,7 +462,8 @@ html.dark .member-social:hover a img {
 
 html.dark p,
 html.dark .testimonial-marker .testimonial-footer,
-html.dark .date {
+html.dark .date,
+html.dark .milestone {
   color: #f5f5f5;
 }
 
@@ -526,6 +521,11 @@ html.dark .member-image:hover img {
   border-color: var(--primary-color);
   transform: scale(1.05);
   box-shadow: 0 0 15px rgba(4, 170, 109, 0.3);
+}
+
+html.dark .milestone {
+  background: var(--about-card-bg);
+  color: var(--about-text);
 }
 
 /**
